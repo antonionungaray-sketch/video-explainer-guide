@@ -39,6 +39,11 @@ en aprendizaje profundo.
 - **Divulgación lenta:** Kurzgesagt ~150 [P2-ficha-kurzgesagt] —
   compensado con animación densa (pilar 1 §2.3 #8 modalidad).
 
+**Calibración por variante del español:** los WPM hispanos observados
+son mayormente peninsular. Para rioplatense denso restar 10-15 WPM
+respecto al peninsular por prosodia más marcada; para neutro-latam
+dejar igual.
+
 ## Anti-patrón
 
 **Registro formal/corporativo en contenido personal.** "En este video

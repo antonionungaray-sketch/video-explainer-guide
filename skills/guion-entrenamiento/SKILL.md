@@ -39,9 +39,13 @@ Para cada decisión:
 2. **Aplicar el test de determinismo upstream** (solo si el brief tiene
    `admite-variantes: true`):
    - Si al menos 2 de los `Casos` listados en el brief son razonablemente
-     aplicables al contexto actual del usuario (audiencia + objetivo +
-     meta-formato + duración + decisiones previas): **ofrecer variantes
-     con recomendación**. Formato:
+     aplicables al contexto actual del usuario evaluado contra **TODOS
+     los ejes** (audiencia + nivel previo + idioma/variante + duración +
+     objetivo + meta-formato + decisiones previas ya aprobadas): **ofrecer
+     variantes con recomendación**. Dos casos con mismo meta-formato pero
+     distinto idioma/WPM NO cuentan como 2 aplicables si el usuario ya
+     fijó idioma.
+     Formato:
      > "Veo N direcciones distintas que funcionan: [A], [B], [C]. Mi
      > inclinación es [A] por [razón del brief]. ¿Las exploramos o voy
      > con [A]?"
@@ -105,6 +109,13 @@ META-FORMATO: [tutorial / explainer / demo / micro-curso]
 ═══ CIERRE Y CTA ═══
 [CIERRE]: [resolución del open loop inicial]
 [CTA]: [acción específica]
+
+═══ NOTAS DE PRODUCCIÓN ═══
+[WPM OBJETIVO]: [número + canal visual que lo compensa]
+[IDIOMA/ACENTO]: [ej. español rioplatense / peninsular / anglo]
+[SUBTÍTULOS DE ACCESIBILIDAD]: [sí/no + excepción al principio de redundancia]
+[CHAPTER MARKERS]: [lista por bloque]
+[CONFLICTOS FLAGGEADOS]: [lista — incluye tanto P2 vs P1 como P1 vs restricción externa legal/ética]
 ```
 
 Verifica antes de declarar la etapa completa:
@@ -116,7 +127,10 @@ Verifica antes de declarar la etapa completa:
 - [ ] Marcado de modalidad dual en el guión (no solo narración).
 - [ ] Registro y WPM objetivo definidos.
 - [ ] CTA específico al final.
-- [ ] Cero conflictos no resueltos pilar 2 vs pilar 1.
+- [ ] Cero conflictos no resueltos — tanto P2 vs P1 (tendencia vs
+      fundamento) como P1 vs restricción externa (legal, ético,
+      accesibilidad). Si hay algún conflicto, queda flaggeado en Notas
+      de Producción.
 
 ## Reglas firmes
 

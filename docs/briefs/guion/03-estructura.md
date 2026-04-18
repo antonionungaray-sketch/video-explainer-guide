@@ -39,6 +39,7 @@ abiertos — un loop sin cerrar frustra.
 - **Fireship** [P2-ficha-fireship]: lineal puro, sin confusión productiva.
   Objetivo = referencia rápida, no cambio conceptual. Estructura:
   qué-es → cómo-se-instala → cómo-se-usa → comparación → veredicto.
+  **Default para tutorial técnico ≤5 min sin misconceptions relevantes.**
 
 ## Anti-patrón
 
