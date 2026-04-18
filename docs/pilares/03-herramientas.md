@@ -20,13 +20,13 @@
 
 ---
 
-## Idea → Guión
+## Idea → Guión [P3-idea-guion]
 
-### Asistentes de escritura
+### Asistentes de escritura [P3-idea-guion-asistentes]
 - **Claude / GPT** — generación y refinado de guiones, brainstorm de hooks, conversión bullet→prosa hablada. *Status: estable. Verificado: 2026-04-17.*
 - **Notion / Obsidian / plain Markdown** — almacenamiento y versionado de guiones. Markdown es el formato más portátil y diff-friendly.
 
-### Investigación y validación
+### Investigación y validación [P3-idea-guion-investigacion]
 - **Perplexity / Claude con WebSearch** — investigación rápida con citaciones.
 - **Google Scholar** — verificar claims científicos antes de afirmar algo en un explainer.
 
