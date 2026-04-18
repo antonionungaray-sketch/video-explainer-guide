@@ -1,0 +1,20 @@
+{
+  "name": "training-video-toolkit-marketplace",
+  "description": "Marketplace para el toolkit de creación de material de entrenamiento audiovisual",
+  "owner": {
+    "name": "Antonio Nungaray",
+    "email": "antonio.nungaray@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "training-video-toolkit",
+      "description": "Plugin de Claude Code para crear material de entrenamiento audiovisual basado en evidencia (3 pilares: fundamentos cognitivos, tendencias, herramientas)",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "Antonio Nungaray",
+        "email": "antonio.nungaray@gmail.com"
+      }
+    }
+  ]
+}
