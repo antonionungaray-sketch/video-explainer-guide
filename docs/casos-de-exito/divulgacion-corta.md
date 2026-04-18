@@ -8,7 +8,7 @@
 
 ---
 
-## 3Blue1Brown (Grant Sanderson)
+## 3Blue1Brown (Grant Sanderson) [P2-ficha-3b1b]
 
 - **Canal:** https://www.youtube.com/@3blue1brown
 - **Sitio:** https://www.3blue1brown.com
@@ -32,7 +32,7 @@
 
 ---
 
-## Veritasium (Derek Muller)
+## Veritasium (Derek Muller) [P2-ficha-veritasium]
 
 - **Canal:** https://www.youtube.com/@veritasium
 - **Nicho:** divulgación científica general (física, ingeniería, paradojas matemáticas, historia de la ciencia, tecnología).
@@ -55,7 +55,7 @@
 
 ---
 
-## Kurzgesagt – In a Nutshell (Philipp Dettmer + team)
+## Kurzgesagt – In a Nutshell (Philipp Dettmer + team) [P2-ficha-kurzgesagt]
 
 - **Canal:** https://www.youtube.com/@kurzgesagt
 - **Sitio:** https://kurzgesagt.org
@@ -79,7 +79,7 @@
 
 ---
 
-## DotCSV (Carlos Santana Vega)
+## DotCSV (Carlos Santana Vega) [P2-ficha-dotcsv]
 
 - **Canal:** https://www.youtube.com/@DotCSV
 - **Canal secundario:** NotCSV / DotCSV Lab (cadencia mayor, cobertura de actualidad IA).
@@ -104,7 +104,7 @@
 
 ---
 
-## QuantumFracture (José Luis Crespo)
+## QuantumFracture (José Luis Crespo) [P2-ficha-quantumfracture]
 
 - **Canal:** https://www.youtube.com/@QuantumFracture
 - **Nicho:** divulgación de física (relatividad, cosmología, cuántica, filosofía de la ciencia) — español. Persona identificable, autoría única.

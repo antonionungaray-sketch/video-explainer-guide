@@ -24,7 +24,7 @@ Implicación: patrones del pilar 02 deben filtrarse por nicho antes de aplicarse
 
 ---
 
-## Mike Meyers / Total Seminars (arquetipo "instructor-certificación")
+## Mike Meyers / Total Seminars (arquetipo "instructor-certificación") [P2-ficha-mike-meyers]
 
 - **Canales:** https://www.youtube.com/user/TotalSeminarsChannel (~800K subs); cursos premium en https://totalsem.com y https://www.udemy.com (bestseller CompTIA A+/Security+).
 - **Nicho:** formación para certificaciones IT (CompTIA A+, Security+, Network+). Público principal: profesionales IT que necesitan acreditación específica — audiencia técnicamente captiva por requerimiento del empleador/mercado laboral, aunque el proceso de compra del curso es voluntario.
@@ -42,7 +42,7 @@ Implicación: patrones del pilar 02 deben filtrarse por nicho antes de aplicarse
 
 ---
 
-## Plataformas hispanas de formación (Platzi + Crehana)
+## Plataformas hispanas de formación (Platzi + Crehana) [P2-ficha-plataformas-hispanas]
 
 - **URLs:** https://platzi.com, https://crehana.com (plataforma LATAM; Crehana acquired por EQT 2022, pivot a corporate learning).
 - **Nicho:** cursos técnicos + creativos + soft-skills para profesionales. Platzi inclina técnico (programación, datos, negocio digital); Crehana inclina creativo + management + en los últimos años B2B corporate learning.
@@ -60,7 +60,7 @@ Implicación: patrones del pilar 02 deben filtrarse por nicho antes de aplicarse
 
 ---
 
-## Patrones transversales microlearning (research literature 2024-2025)
+## Patrones transversales microlearning (research literature 2024-2025) [P2-cluster-microlearning]
 
 - **Fuente principal:** eLearning Industry 2025, Research.com 2026, Engageli 2025, Continu research, LMS Portals 2024-2025. Triangulación en research-log #34, #35, #36.
 - **Patrones destacados (cada uno con filtro pilar-1 aplicado):**

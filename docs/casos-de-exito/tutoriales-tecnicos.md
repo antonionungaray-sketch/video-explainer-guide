@@ -8,7 +8,7 @@
 
 ---
 
-## Fireship (Jeff Delaney)
+## Fireship (Jeff Delaney) [P2-ficha-fireship]
 
 - **Canal:** https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA
 - **Nicho:** tutorial técnico (programación, frameworks, tooling)
@@ -29,7 +29,7 @@
 
 ---
 
-## ThePrimeagen (Michael Paulson)
+## ThePrimeagen (Michael Paulson) [P2-ficha-theprimeagen]
 
 - **Canal principal:** https://www.youtube.com/c/theprimeagen — 473K subs, +38% YoY (130K nuevos en 12 meses).
 - **Canales satélite:** @ThePrimeTimeagen (clips + reacciones), @TheVimeagen (VODs Twitch crudos).
@@ -53,7 +53,7 @@
 
 ---
 
-## MoureDev (Brais Moure)
+## MoureDev (Brais Moure) [P2-ficha-mouredev]
 
 - **Canal:** https://www.youtube.com/@mouredev
 - **Sitio:** https://moure.dev + https://mouredev.pro (plataforma premium)
@@ -76,7 +76,7 @@
 
 ---
 
-## Midudev (Miguel Ángel Durán)
+## Midudev (Miguel Ángel Durán) [P2-ficha-midudev]
 
 - **Canal:** https://www.youtube.com/@midudev
 - **Nicho:** tutorial técnico (JavaScript, frontend, tech-news hispano). Contraste explícito con MoureDev: Midudev se ancla en **intermediate-focused** (JS moderno, AI tooling, frameworks) mientras MoureDev se ancla en **beginner-friendly** (programación desde cero).
@@ -99,7 +99,7 @@
 
 ---
 
-## The Coding Train (Daniel Shiffman)
+## The Coding Train (Daniel Shiffman) [P2-ficha-coding-train]
 
 - **Canal:** https://www.youtube.com/@TheCodingTrain
 - **Sitio:** https://thecodingtrain.com

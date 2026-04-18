@@ -23,9 +23,9 @@
 
 ---
 
-## Idea → Guión
+## Idea → Guión [P2-idea-guion]
 
-### Patrones que funcionan ahora
+### Patrones que funcionan ahora [P2-idea-guion-patrones]
 
 - **El hook depende del nicho, no es universal.** Tutorial técnico vende *qué se aprende* (Fireship "React in 100 Seconds", Midudev "Vamos a hablar del futuro de HTML porque os va a volar la cabeza"). Divulgación vende *por qué importa* — el tema real aparece a los 30-60s (3Blue1Brown abre por su bebé, Veritasium abre por "try to push down on a zipper from above"). Onboarding corporativo casi no necesita hook — la audiencia es captiva. *Verificado 2026-04-18. Fuentes: research-log entries 26-31 (observación directa VTT divulgación), 16-21 (tutorial técnico).*
 
@@ -37,7 +37,7 @@
 
 - **Personalización explícita > contenido genérico.** Meta-análisis 2024 (Emerging Science Journal, 140 estudios MOOC 2014-2023) identifica 3 correlaciones robustas con engagement y persistence: personalización del aprendizaje, contenido interactivo, colaboración entre pares. Alinear con metas intrínsecas del aprendiz es el predictor más fuerte. *Verificado 2026-04-18. Fuente: research-log #13.*
 
-### Variantes de hook por patrón estructural
+### Variantes de hook por patrón estructural [P2-idea-guion-hooks]
 
 Observados en el atlas (lista no exhaustiva — consultar fichas para contexto):
 
@@ -54,7 +54,7 @@ Observados en el atlas (lista no exhaustiva — consultar fichas para contexto):
 
 Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO** abre con "Antes de empezar, suscríbete", ni con presentación del creador. El hook es contenido, postura o curiosidad — nunca administración del canal.
 
-### Casos de éxito
+### Casos de éxito [P2-idea-guion-casos]
 
 - **Tutorial técnico (anglo):** Fireship "React in 100 Seconds" (prototipo del formato comprimido), "The God Tier Developer Roadmap" (11 min, 7M+ views — prueba que largo funciona si la promesa es grande). ThePrimeagen "What You Need To Learn 2023" (3:45, 292K views, hook lista-retórica). Ficha en [docs/casos-de-exito/tutoriales-tecnicos.md](../casos-de-exito/tutoriales-tecnicos.md).
 - **Tutorial técnico (hispano):** MoureDev Hello-Python (100 clases, 44h, 5-6 min/clase básica — segmentación serial alineada con Guo et al. 2014). Midudev "HTML acaba de cambiar para siempre" (10:45, 166K views, hook promesa + tech).
@@ -62,7 +62,7 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Divulgación (hispano):** QuantumFracture "¿El Espacio es una Ilusión?" (25:38, 463K views — hook alegoría Platón). DotCSV "Camino a las IAs con RAZONAMIENTO SOBREHUMANO" (22:57, 289K views — hook re-anclaje serial).
 - **Onboarding corporativo:** Mike Meyers/Total Seminars CompTIA A+ curso (250K+ estudiantes en Udemy, 5-15 min por módulo, syllabus oficial = outline maestro). Fichas en [docs/casos-de-exito/onboarding-corporativo.md](../casos-de-exito/onboarding-corporativo.md).
 
-### Anti-patrones
+### Anti-patrones [P2-idea-guion-antipatrones]
 
 - **Intros largas con presentación del creador** antes del contenido — caen sistemáticamente en retention curves. Observación empírica: 10 de 10 creators del atlas evitan este patrón. *Verificado 2026-04-18.*
 - **"Antes de empezar, suscríbete"** en los primeros 30 segundos — el espectador aún no decidió si vale la pena. 9 de 10 creators del atlas NO lo hacen. *Excepción documentada:* DotCSV (hispano, IA) hace CTA explícito completo al CIERRE ("dejad vuestro me gusta... compartidlo... comentarios...") y tiene engagement consistente — la expectativa cultural hispana de nicho técnico lo acepta. El anti-patrón es *ponerlo al inicio*, no la existencia del CTA en sí.
@@ -72,9 +72,9 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 ---
 
-## Pre-producción y grabación
+## Pre-producción y grabación [P2-preprod]
 
-### Patrones que funcionan ahora
+### Patrones que funcionan ahora [P2-preprod-patrones]
 
 - **Talking-head informal supera a talking-head formal estudio** (Guo, Kim & Rubin 2014 sobre 6.9M sesiones edX — endosado por 12 años de práctica). The Coding Train es el ejemplo vivo: WPM 155 + face-cam + live-coding con errores + self-deprecación ("I don't really know these things"). MoureDev aplica el mismo principio con live-coding desde Twitch → YouTube. *Verificado 2026-04-18. Fuente: research-log #11 (re-verificación Guo et al. 2014).*
 
@@ -90,7 +90,7 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 - **Iluminación frontal suave + fondo levemente más oscuro** para separar instructor del fondo sin chroma key — observable en face-cam de ThePrimeagen, MoureDev, QuantumFracture, DotCSV, Veritasium. *Sin cambio.*
 
-### Variantes por nicho
+### Variantes por nicho [P2-preprod-variantes]
 
 - **Tutorial técnico (anglo):** 3 modelos viables — (a) **sin cara + animación densa** (Fireship), (b) **face-cam + editor PiP** (ThePrimeagen), (c) **face-cam + live-coding split** (The Coding Train). Ninguno es superior universalmente; decisión depende de si el tema soporta carga visual compensatoria.
 - **Tutorial técnico (hispano):** face-cam PiP dominante (MoureDev, Midudev). Cultura de streaming + Twitch facilita el formato.
@@ -98,14 +98,14 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Divulgación (hispano):** face-cam estudio consistente (QuantumFracture, DotCSV) — más económico que animación Kurzgesagt-scale y más escalable que Veritasium-scale.
 - **Onboarding corporativo:** face-cam dominante (Platzi, Crehana, LinkedIn Learning, Udemy). Hipótesis: la presencia del instructor señaliza "alguien responsable de esto" — útil cuando el contenido es obligatorio.
 
-### Casos de éxito
+### Casos de éxito [P2-preprod-casos]
 
 - **Sin cara + animación:** 3Blue1Brown Manim (6M+ subs), Kurzgesagt (20M+ subs, equipo de 40).
 - **Face-cam on-location + B-roll:** Veritasium (17M+ subs), producción documental HBO-style aplicada a ciencia.
 - **Face-cam + editor:** The Coding Train (1.77M+ subs, p5.js editor), MoureDev (Hello-Python con VS Code).
 - **Stream → edit down:** ThePrimeagen (473K subs main, +38% YoY, multichannel), MoureDev (Twitch → YouTube cursos).
 
-### Anti-patrones
+### Anti-patrones [P2-preprod-antipatrones]
 
 - **Studio formal + teleprompter rígido** fracasa en engagement (Guo et al. 2014). El estudio pulido sin calidez humana produce la experiencia del e-learning corporativo de los 90. Anti-patrón establecido.
 - **Forzar face-cam cuando el contenido visual debe llevar la carga.** Un curso de React con instructor dominando el frame y el código relegado a 30% es retrógrado — la persona vale en saludo/cierre, el código vale en el cuerpo. Invertir cuando corresponda (PiP pequeño, screen principal).
@@ -113,9 +113,9 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 ---
 
-## Edición y post
+## Edición y post [P2-edicion]
 
-### Patrones que funcionan ahora
+### Patrones que funcionan ahora [P2-edicion-patrones]
 
 - **Cortes con ritmo variable por densidad del contenido.** Fireship observado en 10-15 cortes/min para formatos densos; The Coding Train cortes naturales sobre pausas/errores del live-coding (menos densos). El ritmo se adapta a la carga cognitiva del segmento, no es universal. *Verificado 2026-04-18.*
 
@@ -129,7 +129,7 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 - **Zoom dinámico digital** sobre la zona explicada en lugar de mover el cursor — guía la mirada sin pedir esfuerzo al espectador. Observable en Fireship, The Coding Train, MoureDev. *Sin cambio.*
 
-### Variantes por nicho
+### Variantes por nicho [P2-edicion-variantes]
 
 - **Tutorial técnico comprimido (Fireship 100-second):** 10-15 cortes/min, 200+ WPM, memes y overlays densos. Funciona para audiencia técnica ya-familiarizada.
 - **Tutorial técnico largo (MoureDev, The Coding Train):** cortes naturales del live-coding, WPM moderado (155-170 anglo/hispano), formato serial.
@@ -137,14 +137,14 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Divulgación documental (Veritasium):** cortes editoriales entre face-cam on-location + B-roll + entrevistas. Ritmo cinematográfico.
 - **Onboarding microlearning:** módulos 5-10 min con quiz integrado al final (Articulate/Storyline style). Interactividad > tono (pattern específico del nicho — ver §Meta-formatos).
 
-### Casos de éxito
+### Casos de éxito [P2-edicion-casos]
 
 - **Compresión radical:** Fireship "X in 100 Seconds" serie — ejemplo canónico de cadencia alta + humor-como-carga-germana.
 - **Animation-driven:** 3Blue1Brown "But what is a Laplace Transform?" (34:41, 1.5M views) — Manim animation + analogía pedagógica + WPM 183.
 - **B-roll documental:** Veritasium "Why are these 3 letters on almost all of my zippers?" (20:45, 8.1M views) — B-roll denso, on-location, entrevistas editadas al script maestro.
 - **Branching interactivo:** casos de estudio Articulate Storyline (40%+ Fortune 500) — video lineal se transforma en decision-driven exploration para compliance.
 
-### Anti-patrones
+### Anti-patrones [P2-edicion-antipatrones]
 
 - **Transiciones decorativas (whoosh, glitch, spin) entre cada corte** — viola coherencia (pilar 1 §2.3 #1), aumenta carga extraña sin agregar valor. *Sin cambio; no observado en ninguno de los 10 creators del atlas.*
 - **Música en loop a volumen alto bajo voz** — degrada inteligibilidad y aprendizaje. *Sin cambio.*
@@ -153,9 +153,9 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 ---
 
-## Publicación y medición
+## Publicación y medición [P2-publicacion]
 
-### Patrones que funcionan ahora
+### Patrones que funcionan ahora [P2-publicacion-patrones]
 
 - **Thumbnails con expresión facial + 2-3 palabras grandes** — la expresión humana captura bottom-up; el texto refuerza promesa. Excepción importante: canales sin cara on-camera (Fireship, 3B1B, Kurzgesagt) usan ilustración/logo + palabras grandes. El elemento humano es ventaja pero NO es requisito. *Actualizado 2026-04-18.*
 
@@ -169,7 +169,7 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 - **Open loop título → cierre en cold-open** (ya citado en §Idea→Guión) — viable como principio de packaging. Shorts top-performing 70-90% view-rate por este mecanismo (Galloway).
 
-### Variantes por nicho
+### Variantes por nicho [P2-publicacion-variantes]
 
 - **Tutorial técnico (anglo):** cross-funnel a cursos propios o plataformas de pago (Fireship, Primeagen). CTA explícito minimal.
 - **Tutorial técnico (hispano):** funnel a comunidad Discord + curso premium (MoureDev). CTA explícito más frecuente (DotCSV).
@@ -177,7 +177,7 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Divulgación (hispano):** sponsor + CTA + cross-plug a podcast (QuantumFracture Quantum FM). Modelo mixto.
 - **Onboarding corporativo:** la "publicación" es dentro del LMS, no YouTube. El CTA es "completar quiz / pasar a siguiente módulo" no "suscribirse".
 
-### Métricas a observar
+### Métricas a observar [P2-publicacion-metricas]
 
 **Plataforma YouTube (proxies):**
 
@@ -194,11 +194,11 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Completion gamified:** 90% vs 25% no-gamified (LMS Portals 2024).
 - **Completion video no-interactivo dropped to 60% en 2024** (Research.com 2026) — la industria migra a formatos interactivos.
 
-### Métricas que importan de verdad (pilar 1 §8.4)
+### Métricas que importan de verdad (pilar 1 §8.4) [P2-publicacion-metricas-core]
 
 - Comprensión post-test, retención a 7-30 días, transferencia. Las métricas de plataforma son proxies imperfectos. En onboarding corporativo donde el LMS mide quiz scores, ya se está midiendo comprensión — pero la transferencia al puesto de trabajo sigue siendo el gap abierto.
 
-### Anti-patrones
+### Anti-patrones [P2-publicacion-antipatrones]
 
 - **Optimizar solo APV sin medir aprendizaje real** — produce contenido entretenido que no transfiere. *Sin cambio.*
 - **"Antes de empezar, suscríbete" al inicio** (ya discutido en §Idea→Guión) — sabotea al viewer antes de que decida el valor.
@@ -208,11 +208,11 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 
 ---
 
-## Meta-formatos
+## Meta-formatos [P2-meta-formatos]
 
 Formatos contenedores con convenciones aprendidas. Cada uno con referencias al atlas para ejemplos canónicos y caveat de replicabilidad.
 
-### Tutorial técnico
+### Tutorial técnico [P2-meta-tutorial]
 
 - **100 Seconds of Code (Fireship signature):** 80-120s, compresión radical, memes + overlays densos, 200+ WPM, sin cara. Requiere audiencia técnica ya-familiarizada con el vocabulario. *Caveat:* aplicar a audiencia non-técnica produce carga extraña ingestionable.
 - **Tutorial segmentado serial (MoureDev Hello-Python):** 5-6 min por clase, live-coding Twitch → YouTube, 47+ lecciones por módulo. Segmentación alineada con Guo et al. 2014 (pilar 1 §2.4). *Caveat:* requiere pipeline Twitch + comunidad activa.
@@ -220,7 +220,7 @@ Formatos contenedores con convenciones aprendidas. Cada uno con referencias al a
 - **Live-coding largo (The Coding Train Coding Challenge):** 30-90 min, face-cam + editor, self-deprecación honesta, cortes naturales. *Caveat:* requiere 3 pre-requisitos — audiencia nicho consolidada, monetización alternativa (Nebula, Patreon), rapport acumulado (5-10 años).
 - **Tech-news hispano reactivo (Midudev, DotCSV):** 10-28 min, formato screencast + face-cam, hook urgencia + twist. *Caveat:* requiere pipeline activo de noticias — creators nuevos publican tarde y pierden momentum.
 
-### Divulgación
+### Divulgación [P2-meta-divulgacion]
 
 - **Explainer conceptual corto animado (Kurzgesagt):** 9-13 min, 2D animation team, sin cara, WPM pausado (147-165), sponsor integrado al cierre. *Caveat:* equipo de 40 personas; imposible replicar individualmente.
 - **Animation-driven long-form (3Blue1Brown):** 15-50 min, motor custom (Manim), sin cara, WPM alto con pausas visuales, Patreon + no-ads. *Caveat:* años de dominio + Manim no es plug-and-play.
@@ -228,7 +228,7 @@ Formatos contenedores con convenciones aprendidas. Cada uno con referencias al a
 - **Face-cam estudio + animaciones ad-hoc (QuantumFracture, DotCSV):** 10-28 min, equivalente hispano escalable — un creador + post-producción ligera. Más replicable que Veritasium o Kurzgesagt.
 - **Hilo vertical (Shorts / Reels / TikTok):** ≤90s × N partes, cada parte cierra con open loop hacia la siguiente (Zeigarnik aplicado, pilar 1 §6.2). Benchmark: 70-90% view-rate top-performing (Galloway). *Caveat:* formato plataforma-específico; el mismo contenido necesita re-edit por plataforma.
 
-### Onboarding corporativo
+### Onboarding corporativo [P2-meta-onboarding]
 
 - **Microlearning modular (5-10 min):** default industria 2024-2025. Cada módulo auto-contenido con objetivo + demo/ejemplo + checkpoint. Completion ~80% vs ~20% long-form. *Caveat:* microlearning NO es truncar un curso largo — requiere rediseño desde el objetivo de cada módulo.
 - **Microlearning job-aid (1-3 min):** video de referencia task-specific que el empleado consulta durante el flujo de trabajo. Opera como retrieval practice implícito (pilar 1 §6.3).
@@ -236,7 +236,7 @@ Formatos contenedores con convenciones aprendidas. Cada uno con referencias al a
 - **Instructor-certificación (Mike Meyers / Total Seminars, Platzi, Crehana):** curso serial 60-120 clases, 5-15 min por módulo, syllabus oficial = outline maestro (CompTIA, ISO, SOC2, ITIL). *Caveat:* competencia técnica del instructor + plataforma con quiz/certificado — sin LMS el formato pierde sus pilares.
 - **Webinar asíncrono reeditado:** alternativa al webinar en vivo de 50+ min. Grabación → edit a 5-8 min → entrega como microlearning. Completion sube de ~50% (webinar) a ~80% (microlearning).
 
-### Meta-patrones transversales
+### Meta-patrones transversales [P2-meta-transversales]
 
 - **Duración no es el eje — la cadencia relativa al contenido lo es.** Fireship (100s comprimido), MoureDev (5-6 min segmentado), 3B1B (34 min denso), ThePrimeagen (4-12 min edit-from-stream) respetan el ceiling de ~6 min de Guo et al. 2014 con estrategias distintas: compresión radical, segmentación serial, segmentación natural dentro del video largo, o edit-down.
 - **Presencia del instructor es condicional, no obligatoria.** 6 de 10 creators del atlas muestran cara; 4 no. Ambos funcionan según el contenido.
