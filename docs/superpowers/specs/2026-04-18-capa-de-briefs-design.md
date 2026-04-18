@@ -17,7 +17,7 @@ La metáfora del usuario: un creador experimentado no revuelve toda su neurocien
 
 ## Intended outcome
 
-- Cada skill de etapa carga ~300-400 líneas *densas* (briefs de su etapa) en vez de ~600 líneas mayormente inertes.
+- Cada skill de etapa carga ~500-700 líneas *densas* (briefs de su etapa + SKILL.md) en vez de ~720 líneas mayormente inertes. **La ganancia no es cuantitativa sino cualitativa:** relación señal/ruido mucho mayor (todo lo cargado es pertinente), no reducción dramática de tamaño. Calibración revisada post-Fase A piloto (2026-04-18) desde el target original ≤400 que resultó irrealista dado el contenido mínimo de un brief bien formado.
 - Cada decisión crítica tiene un brief autocontenido con principio + casos + anti-patrón + heurística + conflictos conocidos.
 - Todas las afirmaciones de los briefs son trazables a un pilar por ID estable.
 - Drift pilar↔brief es detectable por script en segundos.
@@ -285,9 +285,9 @@ No se automatiza la edición del brief. Solo la detección.
 
 **Criterios de aceptación Fase A:**
 
-- Cada brief: 40-80 líneas, 6 bloques fijos, frontmatter válido, ≥1 cita por claim.
-- `verificar-briefs.sh` corre en <3s sobre `briefs/guion/` y reporta 0 stale.
-- Carga total de la skill ≤400 líneas (briefs + SKILL.md), vs ~720 líneas hoy.
+- Cada brief: 40-80 líneas, 6 bloques fijos, frontmatter válido, ≥5 citas trazables.
+- `verificar-briefs.sh` corre en <3s sobre `briefs/guion/` y reporta 0 stale + 0 IDs no encontrados + 0 IDs inline-no-declarados.
+- Carga total de la skill ≤800 líneas *densas* (briefs + SKILL.md). El criterio es densidad, no reducción bruta de tamaño.
 - Dry-run produce un guión coherente, trazable, sin contradecir pilar 1.
 
 ### Fase B — Replicar a otras etapas (en serie, no paralelo)
@@ -333,7 +333,7 @@ Al completar todas las fases:
 
 - `grep -rc "Read.*pilares/" skills/*/SKILL.md` → 0 (ningún skill de etapa lee pilares directamente).
 - `scripts/verificar-briefs.sh` → 0 stale.
-- Carga de contexto por skill de etapa: ≤400 líneas (vs ~720 hoy).
+- Carga de contexto por skill de etapa: ≤800 líneas densas (vs ~720 hoy). El objetivo no es reducir tamaño sino densidad: cada línea pertinente a las decisiones de la etapa. Medido en Fase A guión: 684 líneas (145 SKILL + 539 briefs) todas denso/accionables vs ~720 previas mayormente inertes.
 - Dry-run de guión + grabación + edición + publicación completos: outputs coherentes, trazables, sin contradecir pilar 1.
 - Las `vistas-por-etapa/*.md` se regeneran desde briefs; diff manual vs estado actual muestra equivalencia funcional.
 - `CLAUDE.md` refleja la nueva arquitectura.

@@ -26,7 +26,11 @@ una librería).
 **Open loops (efecto Zeigarnik)** [P1-§6.2]: tareas no completadas ocupan
 más memoria de trabajo que completadas. Abrir una pregunta al inicio y
 resolverla al final mantiene tensión cognitiva. Cerrar todos los loops
-abiertos — un loop sin cerrar frustra.
+abiertos — un loop sin cerrar frustra. **Caveat del pilar:** la traslación
+Zeigarnik→video es extrapolación práctica convergente desde varios
+mecanismos (curiosidad, open-loop en memoria de trabajo), no una
+demostración experimental directa sobre video. Usar como heurística
+robusta, no como ley.
 
 ## Casos
 

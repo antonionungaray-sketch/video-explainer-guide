@@ -8,6 +8,9 @@ fuentes:
   - P1-§2.3-#8                 # principio de modalidad
   - P1-§2.3-#2                 # principio de señalización
   - P2-idea-guion-patrones
+  - P2-ficha-kurzgesagt        # caso narración + animación isotype
+  - P2-ficha-3b1b              # caso ecuaciones en pantalla + narración
+  - P2-ficha-fireship          # caso snippets + narración complementaria
 admite-variantes: false
 sync: 2026-04-18
 version: 1

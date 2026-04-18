@@ -5,6 +5,7 @@ pregunta: ¿Tono, pacing y persona narrativa?
 fuentes:
   - P1-§2.3-#10                # personalización (tú/nosotros)
   - P1-§2.3-#11                # voz humana cálida
+  - P1-§2.3-#8                 # modalidad (compensación WPM bajo con visual denso)
   - P1-§5.4                    # voz y personalización
   - P2-idea-guion-patrones
   - P2-ficha-fireship
@@ -37,7 +38,7 @@ en aprendizaje profundo.
 - **Divulgación media:** 3Blue1Brown ~190 [P2-ficha-3b1b], Veritasium
   ~178, QuantumFracture ~168.
 - **Divulgación lenta:** Kurzgesagt ~150 [P2-ficha-kurzgesagt] —
-  compensado con animación densa (pilar 1 §2.3 #8 modalidad).
+  compensado con animación densa [P1-§2.3-#8].
 
 **Calibración por variante del español:** los WPM hispanos observados
 son mayormente peninsular. Para rioplatense denso restar 10-15 WPM

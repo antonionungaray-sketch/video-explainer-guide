@@ -2,20 +2,20 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/guion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-18T21:43:02Z
+> Última regeneración: 2026-04-18T21:55:38Z
 
 ## Decisiones críticas
 
 ### 01. audiencia
 
 - **Pregunta:** ¿Para quién es este video y qué debe poder hacer al terminar?
-- **Fuentes:** P1-§2.1 P1-§2.3-#7 P2-meta-tutorial P2-meta-divulgacion P2-meta-onboarding 
+- **Fuentes:** P1-§2.1 P1-§2.3-#7 P2-meta-tutorial P2-meta-divulgacion P2-meta-onboarding P2-ficha-fireship P2-ficha-midudev P2-ficha-kurzgesagt 
 - **Brief:** [`briefs/guion/01-audiencia.md`](../briefs/guion/01-audiencia.md)
 
 ### 02. hook
 
 - **Pregunta:** ¿Cómo captura atención bottom-up y promete recompensa cumplible?
-- **Fuentes:** P1-§1.1 P1-§1.3 P1-§7 P2-idea-guion-patrones P2-idea-guion-hooks P2-ficha-fireship P2-ficha-midudev P2-ficha-veritasium P2-ficha-kurzgesagt 
+- **Fuentes:** P1-§1.1 P1-§1.3 P1-§2.3-#7 P1-§7 P2-idea-guion-patrones P2-idea-guion-hooks P2-ficha-fireship P2-ficha-midudev P2-ficha-veritasium P2-ficha-kurzgesagt 
 - **Brief:** [`briefs/guion/02-hook.md`](../briefs/guion/02-hook.md)
 
 ### 03. estructura
@@ -39,7 +39,7 @@
 ### 06. modalidad-dual
 
 - **Pregunta:** ¿Qué se dice con voz y qué se muestra en pantalla?
-- **Fuentes:** P1-§2.2 P1-§2.3-#3 P1-§2.3-#8 P1-§2.3-#2 P2-idea-guion-patrones 
+- **Fuentes:** P1-§2.2 P1-§2.3-#3 P1-§2.3-#8 P1-§2.3-#2 P2-idea-guion-patrones P2-ficha-kurzgesagt P2-ficha-3b1b P2-ficha-fireship 
 - **Brief:** [`briefs/guion/06-modalidad-dual.md`](../briefs/guion/06-modalidad-dual.md)
 
 ### 07. voz-registro

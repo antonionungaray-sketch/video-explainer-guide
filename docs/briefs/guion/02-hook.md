@@ -5,6 +5,7 @@ pregunta: ¿Cómo captura atención bottom-up y promete recompensa cumplible?
 fuentes:
   - P1-§1.1                     # saliencia bottom-up
   - P1-§1.3                     # anticipación dopaminérgica
+  - P1-§2.3-#7                  # pre-entrenamiento (conflicto hooks muy cortos)
   - P1-§7                       # refutación "8s de atención"
   - P2-idea-guion-patrones
   - P2-idea-guion-hooks

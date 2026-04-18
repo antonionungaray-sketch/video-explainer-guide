@@ -21,7 +21,8 @@ for etapa in "${ETAPAS[@]}"; do
   [[ ! -d "$brief_dir" ]] && continue
 
   out="docs/vistas-por-etapa/$etapa.md"
-  title_etapa=$(echo "$etapa" | sed 's/^./\U&/')
+  # POSIX-safe capitalization (compatible con BSD/macOS sed, evita \U).
+  title_etapa=$(echo "$etapa" | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
 
   {
     echo "# Vista por etapa — $title_etapa"

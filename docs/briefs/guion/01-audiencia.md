@@ -8,6 +8,9 @@ fuentes:
   - P2-meta-tutorial          # audiencias de tutorial técnico
   - P2-meta-divulgacion       # audiencias de divulgación
   - P2-meta-onboarding        # audiencias de onboarding
+  - P2-ficha-fireship         # caso audiencia dev anglo pre-entrenada
+  - P2-ficha-midudev          # caso audiencia dev hispana junior-mid
+  - P2-ficha-kurzgesagt       # caso audiencia general sin background
 admite-variantes: false
 sync: 2026-04-18
 version: 1
