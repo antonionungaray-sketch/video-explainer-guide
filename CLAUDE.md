@@ -22,7 +22,7 @@ When pilar 2 or 3 contradicts pilar 1, **flag the conflict to the user explicitl
 
 `docs/vistas-por-etapa/{guion,grabacion,edicion,publicacion}.md` are thin syntheses of the pillars for each production stage, each ending in a checklist. Skills lean on these; keep vistas and skills in sync when either changes.
 
-## Skills layout (`.claude/skills/`)
+## Skills layout (`skills/`)
 
 - `crear-entrenamiento` — orchestrator. Identifies which stage the creator is in and delegates to one of the four stage skills below.
 - `guion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Each walks a fixed checklist of critical decisions, cross-references all three pillars, and outputs a documented plan or artifact.

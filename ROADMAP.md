@@ -76,7 +76,7 @@ Subagente Claude independiente (Codex no disponible) destacó:
 
 ### Semana 2 — Guardrail anti-slop + starter de proyecto de video
 
-**Nuevo skill `.claude/skills/anti-slop-guardrail/SKILL.md`** — transversal, no stage. Se invoca antes de exportar/publicar:
+**Nuevo skill `skills/anti-slop-guardrail/SKILL.md`** — transversal, no stage. Se invoca antes de exportar/publicar:
 
 1. Lista de "no delegables" con verificación: ¿la voz en el video es tuya (no TTS)? ¿El juicio editorial de cortes críticos es tuyo? ¿Los chistes/personalidad son tuyos? ¿Las metáforas salieron de tu experiencia?
 2. Lista de "delegables" con verificación: ¿transcripción humana-revisada? ¿LUFS normalizado (ffmpeg)? ¿rough cut humano-ajustado? ¿miniatura candidata humano-seleccionada?
@@ -159,7 +159,7 @@ Orden recomendado (Approach B desglosado):
 
 1. **Día 1-2:** Correr `/actualizar-tendencias` con queries específicas para los 6-8 patrones listados. Documentar en pilar 2. Marcar conflictos con pilar 1 si aparecen.
 2. **Día 3:** Correr `/actualizar-herramientas` para afilar pilar 3 con open source concreto. Documentar versiones probadas.
-3. **Día 4-5:** Escribir `.claude/skills/anti-slop-guardrail/SKILL.md` + `docs/vistas-por-etapa/anti-slop.md` siguiendo el contrato de los otros skills/vistas.
+3. **Día 4-5:** Escribir `skills/anti-slop-guardrail/SKILL.md` + `docs/vistas-por-etapa/anti-slop.md` siguiendo el contrato de los otros skills/vistas.
 4. **Día 6:** Crear `templates/video-project/` con Makefile + README.
 5. **Día 7:** Pausa — revisar todo junto. Bump versión plugin a 0.2.0.
 6. **Semana 3:** Producir tutorial de voz→texto usando el playbook nuevo de punta a punta. Notas de fricción en tiempo real. Publicar al final de semana 3.
@@ -173,7 +173,7 @@ Orden recomendado (Approach B desglosado):
 
 Iteración 1 de revisión adversarial detectó estos puntos; varios ya fueron corregidos arriba. Quedan abiertos:
 
-- **Schema JSON anti-slop más detallado.** El schema arriba es mínimo viable; antes de v1 final, validar con un JSON Schema o Zod-style definition en `.claude/skills/anti-slop-guardrail/schema.json`.
+- **Schema JSON anti-slop más detallado.** El schema arriba es mínimo viable; antes de v1 final, validar con un JSON Schema o Zod-style definition en `skills/anti-slop-guardrail/schema.json`.
 - **Convención de nombres de archivo en el Makefile.** `INPUT ?= input.mp4` es un default; conviene que el README documente cómo renombrar y cómo estructurar `raw/`, `cuts/`, `final/`.
 - **WhisperX fallback para creadores sin GPU.** El README del template debe incluir la ruta alterna (openai-whisper CPU + sin diarización) y dejar explícito qué se pierde.
 - **Version pinning concreto en pilar 3.** "Versiones probadas" debe traducirse a números exactos (ej. `whisperx==3.1.5`, `auto-editor==24.44.0`, `ffmpeg 6.1+`) antes de cerrar v1.
