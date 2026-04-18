@@ -1,0 +1,18 @@
+{
+  "name": "training-video-toolkit",
+  "description": "Flujo de creación de material de entrenamiento audiovisual basado en tres pilares: fundamentos cognitivos, tendencias y herramientas",
+  "version": "0.1.0",
+  "author": {
+    "name": "Antonio Nungaray",
+    "email": "antonio.nungaray@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "training",
+    "educacion",
+    "audiovisual",
+    "instructional-design",
+    "skills"
+  ]
+}
