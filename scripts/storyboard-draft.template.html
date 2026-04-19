@@ -73,8 +73,12 @@
                     color: var(--muted); border-bottom: 1px solid var(--line); background: var(--bg); }
   .panel-meta-top .plano { color: var(--accent); font-weight: 600; }
   .panel-meta-top .dur { color: var(--fg); }
-  .panel-svg-wrap { position: relative; background: #0a0c10; aspect-ratio: 16/9; overflow: hidden; }
+  .panel-svg-wrap { position: relative; background: #f5efe3; aspect-ratio: 16/9; overflow: hidden;
+                    box-shadow: inset 0 0 0 1px rgba(107,93,78,0.15); }
   .panel-svg-wrap svg { width: 100%; height: 100%; display: block; }
+  /* esquina doblada sutil tipo página de libreta */
+  .panel-svg-wrap::after { content: ""; position: absolute; top: 0; right: 0; width: 14px; height: 14px;
+                           background: linear-gradient(225deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.06) 50%, transparent 50%); }
   .panel-body { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
   .panel-body input[type="text"], .panel-body textarea, .panel-body select, .panel-body input[type="checkbox"] {
     font-size: 12px;
@@ -135,15 +139,17 @@
   header button[disabled] { opacity: 0.45; cursor: not-allowed; }
   header button[disabled]:hover { filter: none; }
 
-  /* SVG glyphs */
-  .sb-silhouette-head { fill: #3a4559; }
-  .sb-silhouette-body { fill: #2a3345; }
-  .sb-screen-frame { fill: #1a2030; stroke: #3a4559; stroke-width: 1; }
-  .sb-ui-line { stroke: #4a5568; stroke-width: 1; }
-  .sb-zoom-box { fill: rgba(94,177,255,0.12); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3,2; }
-  .sb-arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
-  .sb-label { fill: var(--muted); font: 10px var(--mono, monospace); }
-  .sb-label-accent { fill: var(--accent); font: 10px var(--mono, monospace); font-weight: 600; }
+  /* SVG glyphs — paleta "libreta moleskine": papel crema, grafito cálido, acentos sutiles */
+  .sb-silhouette-head { fill: #3d3530; stroke: #2b2620; stroke-width: 1.2; }
+  .sb-silhouette-body { fill: #4a403a; stroke: #2b2620; stroke-width: 1.2; }
+  .sb-screen-frame { fill: #ece2d0; stroke: #6b5d4e; stroke-width: 1.6; }
+  .sb-ui-line { stroke: #8a7968; stroke-width: 1.3; stroke-linecap: round; }
+  .sb-zoom-box { fill: rgba(184,110,58,0.12); stroke: #b86e3a; stroke-width: 1.8; stroke-dasharray: 4,2.5; }
+  .sb-arrow { stroke: #b86e3a; stroke-width: 1.8; fill: none; marker-end: url(#arrow); stroke-linecap: round; }
+  .sb-label { fill: #4a3f35; font: 10px var(--mono, monospace); }
+  .sb-label-accent { fill: #b86e3a; font: 10px var(--mono, monospace); font-weight: 600; }
+  .sb-bullet { fill: #5c4a38; }
+  .sb-pip-frame { fill: #ece2d0; stroke: #7a8a6b; stroke-width: 1.6; }
 </style>
 </head>
 <body>
@@ -192,7 +198,7 @@
 <svg style="width:0;height:0;position:absolute" aria-hidden="true">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5eb1ff"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b86e3a"/>
     </marker>
   </defs>
 </svg>
@@ -406,67 +412,93 @@ function renderTabla() {
 
 /* ————————————— Vista cómic ————————————— */
 
-function svgForBlock(block) {
+function svgForBlock(block, idx) {
   const t = block.tipo || "camara";
   const zoom = !!block.zoomOBS;
 
   // Viewbox cinematográfico 16:9
   const W = 320, H = 180;
+  const seed = ((idx == null ? 0 : idx) * 17 + 3) % 100;
+  const fid = "hd-" + (idx == null ? "x" : idx);
   const p = [];
   p.push(`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`);
+  // Filter "handdrawn" local con seed per-viñeta (variación sutil entre cuadros)
+  p.push(`<defs>
+    <filter id="${fid}" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="${seed}"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.3"/>
+    </filter>
+  </defs>`);
+  // Fondo de papel crema (fuera del filter: plano, sin temblor)
+  p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#f5efe3"/>`);
+  // "Líneas de libreta" muy tenues como fondo
+  for (let y = 30; y < H - 20; y += 24) {
+    p.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e0d4bd" stroke-width="0.5"/>`);
+  }
+
+  // Todo el contenido dibujado va adentro del filter handdrawn
+  p.push(`<g filter="url(#${fid})">`);
 
   if (t === "camara") {
     // Silueta del creador, plano medio centrado
-    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#101522"/>`);
     p.push(`<ellipse cx="160" cy="80" rx="42" ry="48" class="sb-silhouette-head"/>`);
     p.push(`<path d="M 80 180 Q 80 120 160 120 Q 240 120 240 180 Z" class="sb-silhouette-body"/>`);
-    p.push(`<text x="10" y="170" class="sb-label">cam · full</text>`);
+    // detalle: línea del horizonte/fondo
+    p.push(`<line x1="20" y1="130" x2="300" y2="130" stroke="#c4b39a" stroke-width="1"/>`);
   } else if (t === "demo-pantalla") {
-    // Pantalla/UI
-    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" class="sb-screen-frame"/>`);
-    // barra superior simulada
-    p.push(`<rect x="22" y="20" width="40" height="4" class="sb-silhouette-body"/>`);
-    p.push(`<rect x="66" y="20" width="30" height="4" class="sb-silhouette-body"/>`);
-    // líneas de UI
+    // Pantalla tipo navegador/editor
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" class="sb-screen-frame"/>`);
+    // barra superior con 3 "botones de ventana"
+    p.push(`<circle cx="28" cy="24" r="2.5" class="sb-bullet"/>`);
+    p.push(`<circle cx="37" cy="24" r="2.5" class="sb-bullet"/>`);
+    p.push(`<circle cx="46" cy="24" r="2.5" class="sb-bullet"/>`);
+    p.push(`<line x1="56" y1="24" x2="120" y2="24" class="sb-ui-line"/>`);
+    // líneas de UI simulando texto
     for (let i = 0; i < 5; i++) {
-      const y = 40 + i * 18;
-      const w = 180 + (i % 2) * 40;
-      p.push(`<line x1="28" y1="${y}" x2="${28 + w}" y2="${y}" class="sb-ui-line"/>`);
+      const y = 46 + i * 18;
+      const w = 180 + (i % 2) * 40 - (i === 2 ? 80 : 0);
+      p.push(`<line x1="30" y1="${y}" x2="${30 + w}" y2="${y}" class="sb-ui-line"/>`);
     }
     if (zoom) {
-      // recuadro de zoom + flechas
-      p.push(`<rect x="110" y="78" width="100" height="56" class="sb-zoom-box"/>`);
-      p.push(`<line x1="210" y1="78" x2="240" y2="48" class="sb-arrow"/>`);
-      p.push(`<text x="216" y="45" class="sb-label-accent">zoom</text>`);
+      p.push(`<rect x="108" y="78" width="108" height="58" rx="3" class="sb-zoom-box"/>`);
+      p.push(`<path d="M 216 78 Q 232 60 244 46" class="sb-arrow"/>`);
     }
-    p.push(`<text x="10" y="170" class="sb-label">${zoom ? "pantalla · zoom" : "pantalla · full"}</text>`);
   } else if (t === "mixto") {
-    // Pantalla principal + PiP del creador en esquina
-    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" class="sb-screen-frame"/>`);
-    // líneas de UI
+    // Pantalla principal + PiP
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" class="sb-screen-frame"/>`);
+    p.push(`<circle cx="28" cy="24" r="2.5" class="sb-bullet"/>`);
+    p.push(`<circle cx="37" cy="24" r="2.5" class="sb-bullet"/>`);
+    p.push(`<circle cx="46" cy="24" r="2.5" class="sb-bullet"/>`);
     for (let i = 0; i < 4; i++) {
-      const y = 40 + i * 22;
-      p.push(`<line x1="28" y1="${y}" x2="${180}" y2="${y}" class="sb-ui-line"/>`);
+      const y = 50 + i * 22;
+      p.push(`<line x1="30" y1="${y}" x2="${180}" y2="${y}" class="sb-ui-line"/>`);
     }
     // PiP
-    const px = W - 86, py = H - 76;
-    p.push(`<rect x="${px}" y="${py}" width="64" height="56" rx="3" fill="#101522" stroke="#5eb1ff" stroke-width="1.5"/>`);
-    p.push(`<ellipse cx="${px + 32}" cy="${py + 22}" rx="10" ry="12" class="sb-silhouette-head"/>`);
-    p.push(`<path d="M ${px + 10} ${py + 56} Q ${px + 10} ${py + 38} ${px + 32} ${py + 38} Q ${px + 54} ${py + 38} ${px + 54} ${py + 56} Z" class="sb-silhouette-body"/>`);
-    p.push(`<text x="10" y="170" class="sb-label">mixto · screen + pip</text>`);
+    const px = W - 90, py = H - 78;
+    p.push(`<rect x="${px}" y="${py}" width="66" height="58" rx="4" class="sb-pip-frame"/>`);
+    p.push(`<ellipse cx="${px + 33}" cy="${py + 22}" rx="10" ry="12" class="sb-silhouette-head"/>`);
+    p.push(`<path d="M ${px + 11} ${py + 58} Q ${px + 11} ${py + 38} ${px + 33} ${py + 38} Q ${px + 55} ${py + 38} ${px + 55} ${py + 58} Z" class="sb-silhouette-body"/>`);
   } else if (t === "b-roll") {
-    // Inserto visual neutro
-    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" fill="#141a28" stroke="#3a4559" stroke-width="1" stroke-dasharray="4,3"/>`);
-    // patrón diagonal tenue
-    for (let x = 30; x < W - 30; x += 30) {
-      p.push(`<line x1="${x}" y1="28" x2="${x - 20}" y2="${H - 20}" stroke="#1f2738" stroke-width="1"/>`);
+    // Marco con esquinas estilo "cuadro" de b-roll
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" fill="#ece2d0" stroke="#6b5d4e" stroke-width="1.6" stroke-dasharray="5,3"/>`);
+    // patrón de puntos tenues dispersos
+    for (let y = 30; y < H - 30; y += 18) {
+      for (let x = 30; x < W - 30; x += 22) {
+        p.push(`<circle cx="${x + (y % 36 === 0 ? 11 : 0)}" cy="${y}" r="1" fill="#bfa68c"/>`);
+      }
     }
-    p.push(`<text x="${W / 2 - 20}" y="${H / 2 + 4}" class="sb-label-accent" style="font-size:14px">b-roll</text>`);
-    p.push(`<text x="10" y="170" class="sb-label">inserto visual</text>`);
+    // "play triangle" dibujado a mano
+    p.push(`<path d="M 138 72 L 138 112 L 180 92 Z" fill="#b86e3a" fill-opacity="0.55" stroke="#8a4f22" stroke-width="1.5" stroke-linejoin="round"/>`);
   }
+  p.push(`</g>`);
+
+  // Etiquetas de plano (fuera del filter, para que queden legibles)
+  const tag = t === "camara" ? "cam · full"
+            : t === "demo-pantalla" ? (zoom ? "pantalla · zoom" : "pantalla · full")
+            : t === "mixto" ? "mixto · screen + pip"
+            : "b-roll · inserto";
+  p.push(`<text x="12" y="172" class="sb-label">${tag}</text>`);
+  if (t === "demo-pantalla" && zoom) p.push(`<text x="220" y="42" class="sb-label-accent">zoom</text>`);
   p.push(`</svg>`);
   return p.join("");
 }
@@ -501,7 +533,7 @@ function panelCard(block, idx) {
 
   // SVG
   const svgWrap = el("div", { class: "panel-svg-wrap" });
-  svgWrap.innerHTML = svgForBlock(block);
+  svgWrap.innerHTML = svgForBlock(block, idx);
   card.appendChild(svgWrap);
 
   // body mínimo
