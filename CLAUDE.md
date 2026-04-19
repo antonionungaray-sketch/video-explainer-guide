@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Claude Code plugin (skills-only, no build tooling) — a **runbook** estructurado que guía la producción de video con intención pedagógica (tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general). Package: `learning-video-runbook`. Content and skills are in **Spanish**; new content (added 2026-04-19 onward) uses **Mexican Spanish** specifically. Existing content stays in its original variant unless explicitly retranslated.
+Claude Code plugin (skills-only, no build tooling) — a **runbook** estructurado que guía la producción de video con intención pedagógica (tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general). Package: `learning-video-runbook`. Content and skills are in **Spanish (Mexican variant)**; match that language and variant when writing new skill/doc content.
 
 There is no code to build, lint, or test. Changes are docs, skill markdown, and the two bash scripts in `scripts/`.
 
@@ -31,7 +31,7 @@ IDs are **stable contract**. If a section is renamed conceptually, the ID persis
 
 ### Layer 2 — Briefs (precomputed synthesis)
 
-`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 37 archivos (8+4+7+10+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
+`docs/briefs/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 43 archivos (6+8+4+7+10+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
 **Contrato estricto de cada brief:**
 - Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), `sync: YYYY-MM-DD`, `version`.
@@ -43,22 +43,22 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 
 ### Layer 3 — Skills (consume briefs)
 
-`skills/{guion,previsualizacion,grabacion,edicion,publicacion}-entrenamiento/` — una por etapa (5 etapas; previsualización es opcional, insertada entre guión y grabación). Cada skill:
-1. Carga `docs/briefs/<mi-etapa>/*.md` (glob, ~7-8 archivos).
+`skills/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}-entrenamiento/` — una por etapa (6 etapas; concepto y previsualización son opcionales — concepto va al inicio del flujo con default ON, previsualización va entre guión y grabación). Cada skill:
+1. Carga `docs/briefs/<mi-etapa>/*.md` (glob, ~6-10 archivos).
 2. Recorre las decisiones en orden alfabético = orden de flujo.
 3. Para cada decisión: lee el brief correspondiente, propone con cita trazable, flaggea conflictos del brief, espera aprobación.
 4. Para decisiones con `admite-variantes: true`, aplica el **test de determinismo upstream** (≥2 casos del brief aplicables al contexto → ofrecer variantes; un solo caso domina → proponer una sola).
 5. Produce un plan documentado con template al final.
 
 **Cantidad de decisiones que admiten variantes por etapa (baseline establecido en dry-runs):**
-- Guión 2/8, Previsualización 0/4 (deterministas por diseño), Edición 4/10, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
+- Concepto 2/6, Guión 2/8, Previsualización 0/4 (deterministas por diseño), Edición 4/10, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
 
 **Prohibido en skills:** leer pilares completos en runtime (`Read docs/pilares/...`). Si hay una pregunta fuera del scope de los briefs, usar `Grep` dirigido por ID.
 
 ## Skills layout (`skills/`)
 
-- `crear-entrenamiento` — orchestrator. Identifies stage, delegates to stage skill. Ofrece previsualización como puente opcional entre guión y grabación (recomendado, no bloqueante).
-- `guion-entrenamiento` / `previsualizacion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares. `previsualizacion-entrenamiento` produce un **Production Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD`; `grabacion-entrenamiento` y `edicion-entrenamiento` lo leen read-only, avisan si está en `draft`, y lo tratan como contrato cuando está `locked`. Cambios post-lock requieren re-invocar previsualización.
+- `crear-entrenamiento` — orchestrator. Identifies stage, delegates to stage skill. Invoca `concepto-entrenamiento` por default al inicio del flujo (saltable explícitamente). Ofrece `previsualizacion-entrenamiento` como puente opcional entre guión y grabación (recomendado, no bloqueante).
+- `concepto-entrenamiento` / `guion-entrenamiento` / `previsualizacion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares. `concepto-entrenamiento` produce un **Concept Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD` que define audiencia, objetivo medible, promesa, ángulo, formato, plataforma, tono y restricciones; `guion-entrenamiento` lo lee read-only en su Paso 0, avisa si está en `draft` y lo trata como contrato cuando está `locked`. `previsualizacion-entrenamiento` produce un **Production Brief** análogo; `grabacion-entrenamiento` y `edicion-entrenamiento` lo leen read-only con la misma disciplina. Cambios post-lock en cualquiera de los dos briefs requieren re-invocar la skill correspondiente.
 - `actualizar-tendencias` / `actualizar-herramientas` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sincronizar-briefs` si hay stale.
 - `sincronizar-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
 
@@ -73,7 +73,7 @@ Todos zero-dependency salvo el hook, que requiere `jq` para parsear stdin JSON.
 
 ## Vistas por etapa (derivadas)
 
-`docs/vistas-por-etapa/{guion,previsualizacion,grabacion,edicion,publicacion}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitás cambiar una vista, editá el brief correspondiente y regenerá.
+`docs/vistas-por-etapa/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitás cambiar una vista, editá el brief correspondiente y regenerá.
 
 ## Objective technical standards (enforced by edicion)
 

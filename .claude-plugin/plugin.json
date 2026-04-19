@@ -1,7 +1,7 @@
 {
   "name": "learning-video-runbook",
   "description": "Runbook estructurado para producir video con intención pedagógica (tutoriales, divulgación, formación, onboarding), basado en 3 pilares: fundamentos cognitivos, tendencias y herramientas",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "Antonio Nungaray",
     "email": "antonio.nungaray@gmail.com"

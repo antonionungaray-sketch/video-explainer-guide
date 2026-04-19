@@ -1,6 +1,6 @@
 ---
 name: crear-entrenamiento
-description: "Use when the user wants to produce, create, design, plan, script, record, edit, or publish video training, instructional, educational, tutorial, course, onboarding, or corporate training content. Orquestador que identifica en qué etapa está el creador y delega al skill específico (guion / grabacion / edicion / publicacion). En español."
+description: "Use when the user wants to produce, create, design, plan, script, record, edit, or publish video training, instructional, educational, tutorial, course, onboarding, or corporate training content. Orquestador que identifica en qué etapa está el creador y delega al skill específico (concepto / guion / previsualizacion / grabacion / edicion / publicacion). En español."
 ---
 
 # Crear material de entrenamiento audiovisual — orquestador
@@ -17,12 +17,13 @@ Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar
 - Pilar 2 (dinámico) — `02-tendencias-y-casos.md` — tendencias y casos actuales.
 - Pilar 3 (dinámico) — `03-herramientas.md` — herramientas vigentes.
 
-Los skills de etapa (`guion-entrenamiento`, `grabacion-entrenamiento`, `edicion-entrenamiento`, `publicacion-entrenamiento`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
+Los skills de etapa (`concepto-entrenamiento`, `guion-entrenamiento`, `previsualizacion-entrenamiento`, `grabacion-entrenamiento`, `edicion-entrenamiento`, `publicacion-entrenamiento`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
 
 ## Flujo del orquestador
 
 1. **Identificar la etapa** del ciclo de producción donde está el creador. Pregunta solo si no es claro:
-   - **Idea → Guión** — todavía no hay guión final, está conceptualizando, definiendo audiencia, estructurando.
+   - **Idea / concepto (opcional, recomendada por default)** — el usuario llega con una idea (vaga o no) y todavía no tiene Concept Brief que defina audiencia, objetivo, promesa, formato, plataforma y tono. Default ON al inicio del flujo.
+   - **Guión** — concepto definido (Concept Brief disponible o usuario afirma claridad), está por escribir o estructurar el guión.
    - **Previsualización (opcional, recomendada)** — guión cerrado, quiere validar diseño visual, pacing y shotlist de demos antes de grabar.
    - **Pre-producción y grabación** — guión listo (y opcionalmente Production Brief de previsualización), está por grabar o grabando.
    - **Edición y post** — material crudo capturado, está editando.
@@ -34,13 +35,18 @@ Los skills de etapa (`guion-entrenamiento`, `grabacion-entrenamiento`, `edicion-
    - Otros formatos son válidos pero el toolkit está optimizado para los dos anteriores.
 
 3. **Delegar al skill de etapa correspondiente**, pasando el contexto del formato:
+   - Etapa de concepto → invoca `concepto-entrenamiento`
    - Etapa de guión → invoca `guion-entrenamiento`
    - Etapa de previsualización → invoca `previsualizacion-entrenamiento`
    - Etapa de grabación → invoca `grabacion-entrenamiento`
    - Etapa de edición → invoca `edicion-entrenamiento`
    - Etapa de publicación → invoca `publicacion-entrenamiento`
 
-4. **Puente guión → grabación.** Si el usuario cerró guión y dice ir directo a grabación, ofrecé una vez la etapa intermedia: "Antes de grabar, ¿querés pasar por `previsualizacion-entrenamiento` para fijar storyboard, pacing y shotlist? Reduce riesgo de re-grabar. También podés saltarla si es re-shoot de un formato ya conocido o video muy simple." Si el usuario salta, continuar a `grabacion-entrenamiento` sin bloquear; registrar la elección en Notas de Producción del guión. **No volver a preguntar** en la misma sesión.
+4. **Default ON de concepto al inicio del flujo.** Cuando el usuario arranca un proyecto nuevo (no menciona que ya tiene guión, ni Concept Brief, ni Production Brief), invocá `concepto-entrenamiento` por default — incluso si el usuario describió la idea con cierto detalle. El skill mismo hace un diagnóstico de claridad y salta dimensiones ya cubiertas (no es redundante para usuarios con idea sólida). Dos formas de saltarlo:
+   - **Usuario pasa Concept Brief existente** (locked o draft): registrá la ruta y pasá directo a `guion-entrenamiento`, que lo consumirá.
+   - **Usuario afirma claridad explícita** ("ya tengo el concepto, vamos directo a guión"): respetá la elección, pasá a `guion-entrenamiento`. Documentá la decisión — si guión detecta huecos, puede sugerir volver acá. **No volver a preguntar** en la misma sesión.
+
+5. **Puente guión → grabación.** Si el usuario cerró guión y dice ir directo a grabación, ofrecé una vez la etapa intermedia: "Antes de grabar, ¿querés pasar por `previsualizacion-entrenamiento` para fijar storyboard, pacing y shotlist? Reduce riesgo de re-grabar. También podés saltarla si es re-shoot de un formato ya conocido o video muy simple." Si el usuario salta, continuar a `grabacion-entrenamiento` sin bloquear; registrar la elección en Notas de Producción del guión. **No volver a preguntar** en la misma sesión.
 
 ## Si el usuario quiere actualizar las capas dinámicas
 
@@ -51,5 +57,5 @@ Los skills de etapa (`guion-entrenamiento`, `grabacion-entrenamiento`, `edicion-
 
 - **No leer pilares ni briefs.** Este orquestador no consume material pedagógico. Identifica etapa + formato y delega. Si hacés `Read` de un pilar o un brief acá, estás violando el contrato.
 - **No tomar decisiones de la etapa tú mismo** — esa es función del skill específico, que consume briefs y tiene el material pedagógico cargado.
-- **Si el usuario menciona varias etapas en un mismo proyecto**, atenderlas en orden: guión → previsualización (opcional) → grabación → edición → publicación. No saltar etapas, excepto previsualización que es opcional por diseño.
+- **Si el usuario menciona varias etapas en un mismo proyecto**, atenderlas en orden: concepto (opcional, default ON) → guión → previsualización (opcional) → grabación → edición → publicación. No saltar etapas, excepto concepto y previsualización que son opcionales por diseño.
 - **Conflictos entre pilares**: cuando un skill de etapa flaggee un conflicto, no resolverlo por defecto. Presentar el conflicto al usuario, recordar que el pilar 1 (ciencia) prevalece, y dejar la decisión final al usuario.

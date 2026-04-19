@@ -27,6 +27,36 @@ del usuario fuera del scope de los briefs, usá `Grep` dirigido por ID
 (ej. `grep "P1-§6.4" docs/pilares/01-fundamentos-cognitivos.md`), no
 `Read` del archivo completo.
 
+## Paso 0 — Concept Brief (si existe)
+
+Antes de plantear la primera decisión, **chequeá si existe un Concept
+Brief** producido por `concepto-entrenamiento`. Es el contrato upstream
+que define audiencia, objetivo medible, promesa, ángulo, formato,
+plataforma, tono y restricciones.
+
+- **Si el usuario lo pasa explícitamente** (ruta o pegado): leelo,
+  resumilo en 3-5 líneas al usuario, y avisá si está `draft`.
+- **Si no lo pasa pero el orquestador lo derivó**: idem, leelo y
+  resumí.
+- **Si no hay Concept Brief**: continuá con el flujo estándar (el
+  brief 01-audiencia preguntará desde cero).
+
+**Tratamiento por estado:**
+
+- `estado: locked` — es contrato. El brief 01-audiencia confirma con
+  el usuario los datos del Concept Brief en lugar de preguntar desde
+  cero. Si el usuario quiere cambiar algo significativo, pausá el
+  flujo y sugerí re-invocar `concepto-entrenamiento` para re-lockear.
+- `estado: draft` — avisá explícitamente: "El Concept Brief está en
+  draft. Voy a usarlo como referencia pero las decisiones del guión
+  pueden divergir si surgen huecos. Para fijarlo como contrato,
+  re-invocá concepto-entrenamiento al cierre." Continuá normal.
+
+El Concept Brief informa también al brief 04-segmentacion (duración),
+07-voz-registro (registro/persona gramatical) y 08-cta (funnel) —
+confirmá con el usuario en cada uno en lugar de re-decidir desde cero
+cuando ya está cubierto upstream.
+
 ## Flujo
 
 Camina al creador por las 8 decisiones críticas **en el orden de los
