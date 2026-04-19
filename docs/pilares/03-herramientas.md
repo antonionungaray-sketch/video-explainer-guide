@@ -12,10 +12,10 @@
 
 | Sección | Última revisión |
 |---|---|
-| Global | 2026-04-17 (creación) |
+| Global | 2026-04-17 (creación) · 2026-04-18 (ampliación IA-forward) |
 | Idea → Guión | 2026-04-17 |
-| Pre-producción y grabación | 2026-04-17 |
-| Edición y post | 2026-04-17 |
+| Pre-producción y grabación | 2026-04-18 |
+| Edición y post | 2026-04-18 |
 | Publicación y medición | 2026-04-17 |
 
 ---
@@ -51,6 +51,11 @@
 ### Iluminación [P3-preprod-iluminacion]
 - **Cualquier panel LED bicolor con difusor** — el principio importa más que la marca: luz suave, frontal, balance de blancos consistente.
 
+### Teleprompter y corrección de mirada IA [P3-preprod-teleprompter]
+- **Descript — teleprompter + Eye Contact AI** — teleprompter integrado + corrección de mirada en post; el presentador puede leer guion mirando ligeramente desviado y la IA reorienta el ojo a cámara sin deformar parpadeo/expresión. *Status: estable. Verificado: 2026-04-18.*
+- **BIGVU** — mobile-first, teleprompter + Eye Contact Fix + auto-captions + Brand Kit en una sola app. Útil para grabación on-the-go sin setup de estudio. *Status: estable. Verificado: 2026-04-18.*
+- **Cuándo elegir qué.** Presencia humana en cámara + guion leído: sin estas herramientas el espectador percibe lectura subconscientemente (mirada ligeramente fuera de eje). Descript encaja si ya se edita con transcripción; BIGVU si se graba desde móvil. Si la toma es puramente captura de pantalla sin cara, este bloque no aplica.
+
 ### Cuándo elegir qué
 - Tutorial técnico de software: OBS + micrófono USB es suficiente. No requiere cámara.
 - Formación corporativa con presencia en cámara: OBS o Riverside + micrófono USB + iluminación frontal + cámara webcam decente o réflex/mirrorless con captura HDMI.
@@ -67,20 +72,25 @@
 - **Descript** — edición de video editando la transcripción de texto. Excelente para contenido hablado.
 
 ### Composición programática [P3-edicion-composicion]
-- **Remotion** — videos como código React. Ideal para variaciones masivas desde datos, lower thirds, intros dinámicos.
+- **Remotion** — videos como código React. Ideal para variaciones masivas desde datos, lower thirds, intros dinámicos. *Nota de licencia: gratuita para uso individual/personal pero requiere licencia comercial para empresas con ≥3 personas.* *Status: estable. Verificado: 2026-04-18.*
+- **Motion Canvas** — MIT, TypeScript con generator functions, scene graphs, editor en tiempo real. Diseñado para explainers animados hechos a mano al estilo 3Blue1Brown pero con tooling moderno. Alternativa libre a Remotion sin fricción de licencia. *Status: estable. Verificado: 2026-04-18.*
+- **Revideo** — MIT, fork de Motion Canvas con rendering headless + server-side + sistema de templates. Pensado para pipelines de producción automatizada (generar decenas/miles de videos desde datos). *Status: estable. Verificado: 2026-04-18.*
+- **HyperFrames (HeyGen)** — Apache 2.0, compone video vía HTML/CSS/JS y está diseñado para que agentes IA (p. ej. Claude Code) editen video con primitivas web estándar. Complementa a Remotion cuando la pipeline está orquestada por agentes más que por devs humanos. *Status: nuevo/cambia rápido. Verificado: 2026-04-18.*
 - **Manim** — animación matemática estilo 3Blue1Brown.
+- **Cuándo elegir qué.** Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas / Revideo si necesitás open-source sin ataduras o si el equipo supera 3 personas; HyperFrames si el flujo es orquestado por un agente IA; Manim solo para matemáticas formales.
 
 ### Post-procesado puntual [P3-edicion-postproc]
 - **FFmpeg** — el cuchillo suizo de procesamiento de video. Cortar, normalizar, transcoder, generar thumbnails. Imprescindible aprender mínimos comandos.
 - **Handbrake** — front-end gráfico de FFmpeg para conversiones masivas.
 
 ### Subtítulos [P3-edicion-subtitulos]
-- **Whisper (OpenAI) local o vía API** — transcripción automática multilenguaje, base de subtítulos.
+- **Whisper (OpenAI) local o vía API** — transcripción automática multilenguaje, base de subtítulos. *Status: estable. Verificado: 2026-04-18.*
+- **WhisperX** — wrapper open-source sobre Whisper con *diarization* multi-speaker y *word-level alignment*. Imprescindible cuando hay más de una voz (entrevistas, paneles, pair coding) o se necesitan subtítulos sincronizados palabra-a-palabra para captions kinetic. *Status: estable. Verificado: 2026-04-18.*
 - **Aegisub** — editor de subtítulos profesional (timing, estilo SRT/ASS).
 - **Subtitle Edit** — alternativa Windows con buena UX.
 
 ### Voiceover IA [P3-edicion-voiceover]
-- **ElevenLabs** — voces realistas, clonación de voz, multilenguaje. Tier gratuito limitado.
+- **ElevenLabs** — voces realistas, clonación de voz, multilenguaje. Tier gratuito limitado. **Dubbing Studio** (add-on): traduce y redobla audio en 32+ idiomas conservando las características de voz del hablante original. Útil para internacionalizar un training existente sin regrabar. *Status: estable. Verificado: 2026-04-18.*
 - **Coqui TTS** / **Piper** — open source, ejecución local, calidad menor pero suficiente para borradores.
 
 ### Cuándo elegir qué
