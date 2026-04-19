@@ -36,19 +36,19 @@
 
 ---
 
-## Pre-producción y grabación
+## Pre-producción y grabación [P3-preprod]
 
-### Captura de pantalla y cámara
+### Captura de pantalla y cámara [P3-preprod-captura]
 - **OBS Studio** — open source, cross-platform, scenes, encoders por hardware. Status: estable, líder de facto en captura.
 - **Loom / Riverside / Descript Recorder** — capturas rápidas, sincronización a la nube. Mejor para sesiones cortas o entrevistas remotas.
 - **Streamlabs Desktop** — fork de OBS con UI más amigable; menos flexible para casos avanzados.
 
-### Audio
+### Audio [P3-preprod-audio]
 - **Micrófono dinámico USB de gama media** (Shure MV7, Samson Q9U, Rode PodMic USB) — el upgrade técnico con mayor retorno por unidad de inversión en producción audiovisual.
 - **Audacity** — edición y limpieza de audio offline, gratuito.
 - **Krisp / NVIDIA Broadcast** — supresión de ruido en vivo (requisitos de hardware).
 
-### Iluminación
+### Iluminación [P3-preprod-iluminacion]
 - **Cualquier panel LED bicolor con difusor** — el principio importa más que la marca: luz suave, frontal, balance de blancos consistente.
 
 ### Cuándo elegir qué

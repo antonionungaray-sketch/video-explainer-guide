@@ -1,79 +1,50 @@
-# Vista por etapa — Pre-producción y grabación
+# Vista por etapa — Grabacion
 
-> Vista delgada de síntesis para la etapa de captura. El skill `grabacion-entrenamiento` consulta esta vista **y** los pilares para cada decisión.
->
-> Pilares: [01-fundamentos-cognitivos.md](../pilares/01-fundamentos-cognitivos.md) · [02-tendencias-y-casos.md](../pilares/02-tendencias-y-casos.md) · [03-herramientas.md](../pilares/03-herramientas.md)
-
-## Objetivo de la etapa
-
-Producir **material crudo de calidad suficiente** para que la etapa de edición no tenga que "rescatar" defectos. Audio limpio + video estable + iluminación consistente + escenas planificadas según el guión.
+> Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
+> de los frontmatters de `docs/briefs/grabacion/*.md`. **No editar a mano.**
+> Última regeneración: 2026-04-19T00:32:53Z
 
 ## Decisiones críticas
 
-### 1. Setup de audio
+### 01. audio
 
-**Pregunta**: ¿Qué micrófono, qué ganancia, qué tratamiento acústico?
-- **Pilar 1 §5.4**: voz cálida y prosódicamente natural supera tecnología; calidad sonora afecta directamente comprensión.
-- **Pilar 2**: audio mono limpio supera video 4K con audio mediocre.
-- **Pilar 3 — Audio**: micrófono dinámico USB de gama media es el upgrade con mayor retorno.
-- **Salida**: micro elegido + niveles de prueba (picos -6 a -3 dB, promedio ~-18 dB) + entorno con noise floor mínimo.
+- **Pregunta:** ¿Qué micrófono, qué ganancia, qué tratamiento acústico del espacio?
+- **Fuentes:** P1-§5.4 P1-§2.3-#11 P1-§2.3-#1 P2-preprod-patrones P2-preprod-antipatrones P3-preprod-audio 
+- **Brief:** [`briefs/grabacion/01-audio.md`](../briefs/grabacion/01-audio.md)
 
-### 2. Setup de video y encuadre
+### 02. video-encuadre
 
-**Pregunta**: ¿Cámara fija o móvil? ¿Qué se ve en pantalla?
-- **Pilar 1 §4.1**: el movimiento captura bottom-up; movimiento continuo agota.
-- **Pilar 2**: cámara mirando al área de demostración (no a cámara) durante explicación de pantalla.
-- **Salida**: encuadre definido por toma; planificación de cuándo mover (zoom, cambio de plano) y cuándo mantener fija.
+- **Pregunta:** ¿Face-cam, sin cara, o split? ¿Qué encuadre para la cámara y qué para la pantalla?
+- **Fuentes:** P1-§4.1 P1-§2.3-#12 P2-preprod-patrones P2-preprod-variantes P2-preprod-antipatrones P2-ficha-fireship P2-ficha-3b1b P2-ficha-kurzgesagt P2-ficha-veritasium P2-ficha-coding-train P2-ficha-theprimeagen P2-ficha-mouredev P2-ficha-midudev 
+- **Brief:** [`briefs/grabacion/02-video-encuadre.md`](../briefs/grabacion/02-video-encuadre.md)
 
-### 3. Iluminación
+### 03. iluminacion
 
-**Pregunta**: ¿Cómo iluminar al sujeto y separar del fondo?
-- **Pilar 2**: iluminación frontal suave + fondo más oscuro separa sin chroma key.
-- **Pilar 3**: cualquier panel LED bicolor con difusor sirve; el principio importa más que la marca.
-- **Salida**: setup verificado en cámara antes de empezar, balance de blancos consistente.
+- **Pregunta:** ¿Cómo iluminar al sujeto y separarlo del fondo sin chroma key?
+- **Fuentes:** P1-§3.2 P1-§3.1 P2-preprod-patrones P2-ficha-theprimeagen P2-ficha-mouredev P2-ficha-quantumfracture P2-ficha-dotcsv P2-ficha-veritasium P3-preprod-iluminacion 
+- **Brief:** [`briefs/grabacion/03-iluminacion.md`](../briefs/grabacion/03-iluminacion.md)
 
-### 4. Estructura de escenas
+### 04. escenas
 
-**Pregunta**: ¿Cuántas escenas, cuándo cambiar entre ellas?
-- **Pilar 1 §4.4**: la habituación visual es real, pero la frecuencia exacta de cortes es heurística no ley. Calibrar por audiencia.
-- **Pilar 2**: cortes con ritmo variable (rápido en intros, lento en demos técnicas).
-- **Pilar 3**: OBS Scene Management permite preparar escenas y cambiarlas en vivo.
-- **Salida**: lista de escenas preparadas (cam + screen + overlays) alineadas con el outline del guión.
+- **Pregunta:** ¿Qué escenas preparás antes de grabar, y cuándo cambiar entre ellas?
+- **Fuentes:** P1-§2.3-#6 P1-§4.4 P2-preprod-patrones P2-ficha-coding-train P2-ficha-mouredev P3-preprod-captura 
+- **Brief:** [`briefs/grabacion/04-escenas.md`](../briefs/grabacion/04-escenas.md)
 
-### 5. Captura de pantalla y gaze guidance
+### 05. captura-pantalla
 
-**Pregunta**: ¿Cómo orientas la atención del espectador hacia el área relevante?
-- **Pilar 1 §4.2**: gaze guidance funciona cuando el rostro del instructor mira al contenido, no a cámara.
-- **Pilar 1 §2.3 #2**: señalización visual (cursor, callouts) durante la captura, o agregar en post.
-- **Salida**: decisión de capturar con cursor visible / con callouts en vivo / añadir en edición.
+- **Pregunta:** ¿Cursor visible o oculto? ¿Callouts en vivo durante grabación o añadidos en edición?
+- **Fuentes:** P1-§4.2 P1-§2.3-#2 P2-preprod-patrones P3-preprod-captura P2-ficha-fireship P2-ficha-coding-train P2-ficha-mouredev 
+- **Brief:** [`briefs/grabacion/05-captura-pantalla.md`](../briefs/grabacion/05-captura-pantalla.md)
 
-### 6. Toma 1 vs múltiples tomas
+### 06. tomas
 
-**Pregunta**: ¿Grabar de corrido o por bloques?
-- **Pilar 2**: grabación por bloques permite descansos mentales y permite repetir si algo falla, sin perder tomas buenas.
-- **Salida**: estrategia explícita (toma única para autenticidad, o por bloques para limpieza).
+- **Pregunta:** ¿Grabás todo de corrido en una toma, o segmentás por bloques con pausas?
+- **Fuentes:** P1-§2.3-#6 P1-§1.3 P2-preprod-patrones P2-ficha-theprimeagen P2-ficha-mouredev P2-ficha-coding-train 
+- **Brief:** [`briefs/grabacion/06-tomas.md`](../briefs/grabacion/06-tomas.md)
 
-### 7. Material de respaldo (B-roll, screenshots, recursos)
+### 07. b-roll-plan
 
-**Pregunta**: ¿Qué materiales adicionales necesitas que no son la grabación principal?
-- **Pilar 1 §2.3 #5**: contigüidad temporal — los visuales de apoyo deben sincronizarse con la narración.
-- **Pilar 2**: B-roll funcional, no decorativo.
-- **Salida**: lista de recursos a producir o conseguir antes de editar.
+- **Pregunta:** ¿Qué material auxiliar (B-roll, screenshots, recursos) necesitás producir antes de editar?
+- **Fuentes:** P1-§2.3-#5 P1-§2.3-#4 P1-§2.3-#1 P2-preprod-patrones P2-preprod-antipatrones P2-ficha-veritasium P2-ficha-fireship P2-ficha-kurzgesagt 
+- **Brief:** [`briefs/grabacion/07-b-roll-plan.md`](../briefs/grabacion/07-b-roll-plan.md)
 
-## Checklist de salida
-
-Antes de pasar a edición:
-
-- [ ] Audio capturado limpio (sin clipping, sin ruido de fondo distrayente).
-- [ ] Video estable, encuadre consistente entre tomas relacionadas.
-- [ ] Iluminación coherente (sin saltos de balance de blancos).
-- [ ] Todas las escenas planificadas en el guión están grabadas.
-- [ ] B-roll y recursos auxiliares listados (si no producidos).
-- [ ] Backup de archivos crudos en al menos 2 ubicaciones.
-- [ ] Notas de edición para momentos a cortar, repetir, o destacar.
-
-## Recordatorios técnicos generales
-
-- **Audio antes que cualquier otra cosa**: el upgrade de mayor impacto es siempre el micrófono y el tratamiento acústico.
-- **Iluminación antes que cámara**: una cámara modesta bien iluminada supera a una cámara de gama alta mal iluminada.
-- **Codec consistente**: usar el mismo codec/contenedor en todas las tomas evita transcodings innecesarios en edición.
