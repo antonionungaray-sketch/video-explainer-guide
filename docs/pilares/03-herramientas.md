@@ -90,20 +90,20 @@
 
 ---
 
-## Publicación y medición
+## Publicación y medición [P3-publicacion]
 
-### Plataformas
+### Plataformas [P3-publicacion-plataformas]
 - **YouTube** — ecosistema más maduro para contenido formativo largo. Analytics detallados.
 - **Vimeo** — alternativa para alojamiento privado, mejor calidad de transcoding por defecto.
 - **Loom Library** — para conocimiento interno corporativo.
 - **LMS corporativos** (Synthesia, Articulate, TalentLMS, Moodle) — entornos completos de formación con tracking de progreso y evaluaciones.
 
-### Análisis y métricas
+### Análisis y métricas [P3-publicacion-analitica]
 - **YouTube Studio Analytics** — retention curves, APV, CTR, sources.
 - **TubeBuddy / VidIQ** — auditoría de SEO de video, A/B testing de thumbnails.
 - **Hotjar / FullStory** (para video embebido en sitio propio) — mapas de calor sobre interacción.
 
-### Thumbnails y arte
+### Thumbnails y arte [P3-publicacion-thumbnails]
 - **Figma / Canva** — composición rápida con plantillas.
 - **Photopea** — alternativa gratuita web a Photoshop.
 - **Generadores IA de imagen** (Midjourney, DALL·E, Imagen) — base para thumbnails creativos.

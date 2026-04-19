@@ -1,86 +1,56 @@
-# Vista por etapa — Publicación y medición
+# Vista por etapa — Publicacion
 
-> Vista delgada de síntesis para la etapa de publicación. El skill `publicacion-entrenamiento` consulta esta vista **y** los pilares para cada decisión.
->
-> Pilares: [01-fundamentos-cognitivos.md](../pilares/01-fundamentos-cognitivos.md) · [02-tendencias-y-casos.md](../pilares/02-tendencias-y-casos.md) · [03-herramientas.md](../pilares/03-herramientas.md)
-
-## Objetivo de la etapa
-
-Publicar el video con metadata que (a) lo encuentre la audiencia correcta, (b) maximice la decisión de empezar a verlo, y (c) instrumente las métricas correctas para iterar — distinguiendo métricas de plataforma (proxies) de métricas de aprendizaje real.
+> Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
+> de los frontmatters de `docs/briefs/publicacion/*.md`. **No editar a mano.**
+> Última regeneración: 2026-04-19T00:49:09Z
 
 ## Decisiones críticas
 
-### 1. Título
+### 01. titulo
 
-**Pregunta**: ¿Qué título promete la recompensa sin sobreprometerla?
-- **Pilar 1 §1.3**: la promesa del título genera la predicción dopaminérgica que el video debe cumplir.
-- **Pilar 2 — Patrones**: títulos centrados en stakes y curiosidad superan a títulos descriptivos planos.
-- **Salida**: título ≤60 caracteres (legible en thumbnail y previews), con promesa cumplible y específica.
+- **Pregunta:** ¿Qué título promete la recompensa sin sobreprometerla?
+- **Fuentes:** P1-§1.3 P1-§6.2 P2-publicacion-patrones P2-idea-guion-patrones P2-ficha-fireship P2-ficha-veritasium P2-ficha-midudev P2-ficha-3b1b P3-publicacion-analitica 
+- **Brief:** [`briefs/publicacion/01-titulo.md`](../briefs/publicacion/01-titulo.md)
 
-### 2. Thumbnail
+### 02. thumbnail
 
-**Pregunta**: ¿Qué imagen captura la decisión de hacer click sin engañar?
-- **Pilar 1 §3.2**: contraste WCAG en cualquier texto sobre la imagen.
-- **Pilar 1 §3.3**: rostros y expresiones humanas activan procesamiento social rápido (sin sobregeneralizar — funciona para muchos formatos, no todos).
-- **Pilar 2**: 2-3 palabras grandes + expresión facial es el patrón dominante.
-- **Pilar 3 — Thumbnails**: Figma, Canva, Photopea para composición.
-- **Salida**: thumbnail con jerarquía visual clara, legible a tamaño de preview, sin clickbait engañoso (genera abandono temprano y degrada la curva).
+- **Pregunta:** ¿Qué imagen captura la decisión de hacer click sin engañar?
+- **Fuentes:** P1-§3.2 P1-§3.3 P1-§1.1 P2-publicacion-patrones P2-ficha-fireship P2-ficha-3b1b P2-ficha-kurzgesagt P2-ficha-veritasium P2-ficha-midudev P3-publicacion-thumbnails P3-publicacion-analitica 
+- **Brief:** [`briefs/publicacion/02-thumbnail.md`](../briefs/publicacion/02-thumbnail.md)
 
-### 3. Descripción y capítulos
+### 03. descripcion-capitulos
 
-**Pregunta**: ¿Qué metadata acompaña al video para SEO y navegabilidad?
-- **Pilar 2 — Patrones**: capítulos marcados reducen abandono cuando el espectador busca una parte específica.
-- **Salida**: descripción con (a) primer párrafo que reafirma la promesa y entrega valor inmediato, (b) índice de capítulos con timestamps, (c) recursos enlazados, (d) keywords naturales.
+- **Pregunta:** ¿Qué metadata acompaña al video para SEO, navegabilidad y CTA?
+- **Fuentes:** P2-publicacion-patrones P2-ficha-3b1b P2-ficha-veritasium P2-ficha-kurzgesagt P3-publicacion-plataformas 
+- **Brief:** [`briefs/publicacion/03-descripcion-capitulos.md`](../briefs/publicacion/03-descripcion-capitulos.md)
 
-### 4. Tags y categoría
+### 04. tags-categoria
 
-**Pregunta**: ¿Cómo categorizar para que la plataforma muestre a la audiencia correcta?
-- **Pilar 3 — Análisis**: TubeBuddy/VidIQ ayudan a investigar tags efectivos por nicho.
-- **Salida**: tags relevantes, no spam; categoría correcta de plataforma.
+- **Pregunta:** ¿Cómo categorizar para que la plataforma muestre a la audiencia correcta?
+- **Fuentes:** P2-publicacion-patrones P2-ficha-fireship P2-ficha-theprimeagen P2-ficha-mouredev P2-ficha-midudev P2-ficha-coding-train P2-ficha-veritasium P2-ficha-3b1b P2-ficha-kurzgesagt P2-ficha-quantumfracture P3-publicacion-analitica P3-publicacion-plataformas 
+- **Brief:** [`briefs/publicacion/04-tags-categoria.md`](../briefs/publicacion/04-tags-categoria.md)
 
-### 5. Programación de publicación
+### 05. programacion
 
-**Pregunta**: ¿Cuándo publicar para maximizar alcance inicial?
-- **Salida**: hora basada en analytics propios de "cuándo está la audiencia activa". Datos genéricos de "mejor hora para publicar" son menos útiles que tu propio histórico.
+- **Pregunta:** ¿Cuándo publicar para maximizar alcance inicial?
+- **Fuentes:** P2-publicacion-patrones P3-publicacion-analitica P3-publicacion-plataformas 
+- **Brief:** [`briefs/publicacion/05-programacion.md`](../briefs/publicacion/05-programacion.md)
 
-### 6. End screens, cards y CTAs en plataforma
+### 06. end-screens-cta
 
-**Pregunta**: ¿Qué siguiente paso ofrecer?
-- **Pilar 1 §6.4**: la transferencia mejora cuando se invita a aplicar lo aprendido.
-- **Pilar 1 §8.2**: spacing — recomendar contenido relacionado (no idéntico) refuerza retención cruzada.
-- **Salida**: end screen con video relacionado y CTA específico (no solo "suscríbete").
+- **Pregunta:** ¿Qué siguiente paso ofrecer al espectador — CTA explícito o cross-funnel?
+- **Fuentes:** P1-§6.4 P1-§8.2 P2-publicacion-patrones P2-publicacion-variantes P2-publicacion-antipatrones P2-ficha-fireship P2-ficha-mouredev P2-ficha-theprimeagen P2-ficha-dotcsv 
+- **Brief:** [`briefs/publicacion/06-end-screens-cta.md`](../briefs/publicacion/06-end-screens-cta.md)
 
-### 7. Métricas a observar (proxies de plataforma)
+### 07. metricas-plataforma
 
-- **Retention curve**: caídas pronunciadas en 0-30s = hook débil; caídas en mitad = momento de aburrimiento o confusión.
-- **APV (Average Percentage Viewed)**: ≥40% es saludable para contenido formativo de >5 min.
-- **CTR (Click-Through Rate)**: 5-10% indica thumbnail+título efectivos.
-- **Re-engagement spikes**: secciones donde la curva sube son momentos de interés que se pueden replicar.
+- **Pregunta:** ¿Qué métricas de plataforma observás y cómo las interpretás?
+- **Fuentes:** P2-publicacion-metricas P2-publicacion-antipatrones P3-publicacion-analitica P3-publicacion-plataformas 
+- **Brief:** [`briefs/publicacion/07-metricas-plataforma.md`](../briefs/publicacion/07-metricas-plataforma.md)
 
-### 8. Métricas que importan de verdad (más allá de la plataforma)
+### 08. metricas-aprendizaje
 
-- **Pilar 1 §8.4**: las métricas de plataforma son proxies imperfectos.
-- Comprensión post-test (cuestionario al terminar la unidad).
-- Retención a 24h, 7d, 30d.
-- Transferencia: capacidad de aplicar en un contexto nuevo, idealmente con tarea, no test de reconocimiento.
-- **Salida**: para formación corporativa, instrumentar al menos un test diferido. Para contenido público abierto, recoger feedback cualitativo y observar repeats/saves.
+- **Pregunta:** ¿Cómo medís si la audiencia realmente aprendió, más allá de proxies de plataforma?
+- **Fuentes:** P1-§8.1 P1-§8.2 P1-§8.3 P1-§8.4 P1-§6.4 P2-publicacion-metricas-core P2-publicacion-antipatrones 
+- **Brief:** [`briefs/publicacion/08-metricas-aprendizaje.md`](../briefs/publicacion/08-metricas-aprendizaje.md)
 
-## Checklist de salida
-
-Antes de publicar:
-
-- [ ] Título ≤60 caracteres, promesa cumplible.
-- [ ] Thumbnail con jerarquía clara, sin clickbait engañoso.
-- [ ] Descripción con índice de capítulos, recursos enlazados.
-- [ ] Tags y categoría correctos.
-- [ ] End screen con CTA específico y video relacionado.
-- [ ] Subtítulos cargados (no solo automáticos).
-- [ ] Programación de publicación elegida con base en datos propios.
-- [ ] Plan de instrumentación de métricas reales de aprendizaje (al menos test post o feedback cualitativo).
-
-## Iteración después de publicar
-
-Una semana después:
-- Revisar retention curve para identificar caídas y replicar spikes en futuros videos.
-- Si APV < 35%, considerar editar (acortar intro, regenerar thumbnail) o documentar el aprendizaje para el próximo video.
-- Comparar métricas con los videos previos del mismo formato — la mejora continua viene de iteración informada.
