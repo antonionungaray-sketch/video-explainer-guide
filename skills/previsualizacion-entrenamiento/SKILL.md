@@ -130,6 +130,45 @@ Mapa bloque → escena:  B1→… · B2→… · …
 claro (`production-brief-<slug>.md`). No lo commitees al repo del
 toolkit — es artefacto del usuario, no del toolkit.
 
+## UI de iteración visual (opt-in)
+
+Después de completar el brief 01 (storyboard) y antes de cerrar el
+Production Brief, **ofrecé al usuario iterar el storyboard en una UI
+HTML local**. Es opt-in; si la rechaza, el flujo sigue como antes
+(edición puramente conversacional).
+
+**Qué es:** una página HTML autocontenida (vanilla JS, zero-dep,
+offline-first) que muestra los bloques del storyboard como tarjetas
+editables, permite arrastrar/duplicar/eliminar bloques, elegir tipo
+y transición desde selects, marcar "requiere zoom OBS", nombrar
+escenas y shortcuts, y al final exportar un bloque YAML que pegás
+de vuelta al chat.
+
+**Cómo generarla:**
+
+1. Copiá `scripts/storyboard-draft.template.html` al directorio del
+   usuario (junto al guion) como `storyboard-draft.html`.
+2. Reemplazá el placeholder `/* __STORYBOARD_DATA__ */` por un bloque
+   `<script>window.__STORYBOARD_DATA__ = { meta, blocks, conflicts }</script>`
+   con los datos actuales del storyboard (lo que ya recogiste
+   conversacionalmente).
+3. Indicá al usuario: `open <ruta>/storyboard-draft.html`.
+
+**Regla dura: el HTML es view, el markdown es model.** El Production
+Brief `.md` es la fuente de verdad. El HTML se regenera cada vez que
+se emite; nunca se commitea, nunca se versiona. Si el usuario edita
+el `.md` a mano, el HTML queda obsoleto hasta la próxima emisión.
+
+**Cómo volver:** el usuario itera, aprieta "Exportar YAML" y pega
+el bloque. Parseá el YAML, reconstruí el Production Brief en markdown
+(sección 1 storyboard + sección 4 requisitos auto-derivados), y
+respetá el `estado:` que el usuario dejó (si lockeó desde la UI,
+el YAML trae `estado: locked` + `locked-at:`).
+
+**Cuándo NO ofrecerla:** si el storyboard tiene <3 bloques (no hay
+beneficio visual), si el usuario dijo "soy rápido escribiendo" o si
+no está en un entorno con navegador (sesión 100% terminal remoto).
+
 Verifica antes de proponer el lock:
 
 - [ ] Todos los bloques del guion tienen tipo declarado

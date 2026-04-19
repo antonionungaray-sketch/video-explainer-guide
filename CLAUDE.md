@@ -67,6 +67,7 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 - `verificar-briefs.sh` — detecta drift entre briefs y pilares por rango de sección. Reporta 3 contadores: stale, IDs no encontrados (typos), IDs inline no declarados (bugs de integridad). Exit 0 por defecto (reporte). Con `--strict`, exit 1 si alguno > 0 (para hooks / CI).
 - `hook-verificar-pilares.sh` — hook `PostToolUse` (Edit/Write/MultiEdit): cuando tocás un archivo bajo `docs/pilares/`, corre `verificar-briefs.sh --strict` y avisa por stderr si hay drift. Registrado en `.claude/settings.json`. Nunca bloquea (exit 0 siempre).
 - `regenerar-vistas.sh` — emite `docs/vistas-por-etapa/<etapa>.md` desde los frontmatters de los briefs. Vistas son artefactos derivados, **no se editan a mano.**
+- `storyboard-draft.template.html` — template HTML autocontenido (vanilla JS) que `previsualizacion-entrenamiento` copia al directorio del usuario e hidrata con los datos del storyboard. El usuario itera visualmente, exporta YAML y pega de vuelta al chat. UI = view, markdown = model; el HTML se regenera cada vez y nunca se commitea.
 
 Todos zero-dependency salvo el hook, que requiere `jq` para parsear stdin JSON.
 

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Storyboard draft — learning-video-runbook</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --bg: #0f1115; --panel: #1a1d24; --line: #2a2f3a;
+    --fg: #eceef2; --muted: #8a92a6; --accent: #5eb1ff; --warn: #f2b855;
+    --ok: #64d39a; --bad: #ef6a6a; --mono: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+         color: var(--fg); background: var(--bg); }
+  header { padding: 16px 24px; border-bottom: 1px solid var(--line);
+           display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 16px; font-weight: 600; }
+  header .state { font-family: var(--mono); padding: 3px 10px; border-radius: 4px;
+                  font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  header .state.draft  { background: rgba(242,184,85,0.15); color: var(--warn); }
+  header .state.locked { background: rgba(100,211,154,0.15); color: var(--ok); }
+  header button { margin-left: auto; padding: 8px 14px; border: 1px solid var(--line);
+                  background: var(--panel); color: var(--fg); cursor: pointer;
+                  border-radius: 4px; font: inherit; }
+  header button.primary { background: var(--accent); color: #0b1220; border-color: var(--accent); font-weight: 600; }
+  header button:hover { filter: brightness(1.1); }
+  main { max-width: 980px; margin: 0 auto; padding: 24px; }
+  section { margin-bottom: 28px; }
+  section > h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+                 color: var(--muted); margin: 0 0 12px 0; font-weight: 600; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+          padding: 16px; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: 160px 1fr; gap: 10px 16px; align-items: start; }
+  label { color: var(--muted); font-size: 12px; padding-top: 6px; }
+  input, select, textarea {
+    background: var(--bg); color: var(--fg); border: 1px solid var(--line);
+    border-radius: 4px; padding: 6px 8px; font: inherit; width: 100%;
+  }
+  textarea { font-family: var(--mono); font-size: 12px; resize: vertical; min-height: 48px; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  .block-title { font-weight: 600; font-size: 15px; margin: 0 0 12px 0; display: flex; gap: 10px; align-items: center; }
+  .block-title input { font-size: 15px; font-weight: 600; max-width: 400px; }
+  .block-num { font-family: var(--mono); color: var(--accent); font-size: 13px; }
+  .row-btn { display: flex; gap: 8px; margin-top: 8px; }
+  .row-btn button { padding: 4px 10px; font-size: 12px; background: transparent; color: var(--muted);
+                    border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+  .row-btn button:hover { color: var(--fg); border-color: var(--muted); }
+  .remove { color: var(--bad) !important; }
+  #export-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+                  padding: 16px; margin-top: 20px; display: none; }
+  #export-panel.visible { display: block; }
+  #export-panel textarea { min-height: 280px; }
+  .hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .scene-list { font-family: var(--mono); font-size: 12px; background: var(--bg);
+                border: 1px solid var(--line); border-radius: 4px; padding: 10px; white-space: pre; overflow-x: auto; }
+  details { border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; margin-top: 10px; background: var(--bg); }
+  details summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+  details[open] summary { color: var(--fg); margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Storyboard draft</h1>
+  <span id="state-badge" class="state draft">draft</span>
+  <span id="title-label" class="hint"></span>
+  <button id="btn-add-block">+ Bloque</button>
+  <button id="btn-lock">Lock</button>
+  <button id="btn-export" class="primary">Exportar YAML</button>
+</header>
+
+<main>
+
+<section>
+  <h2>Metadatos</h2>
+  <div class="card">
+    <div class="grid">
+      <label>Título</label>
+      <input id="meta-title" placeholder="Ej. Introducción a pgvector">
+      <label>Duración target</label>
+      <input id="meta-target" placeholder="Ej. 8 min">
+      <label>WPM</label>
+      <input id="meta-wpm" placeholder="Ej. 160">
+      <label>Fecha producción</label>
+      <input id="meta-date" type="date">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Bloques</h2>
+  <div id="blocks"></div>
+</section>
+
+<section>
+  <h2>Requisitos de captura (auto-derivados)</h2>
+  <div class="card">
+    <div class="hint">Se consolidan desde los bloques. Revisá que nombres y shortcuts no colisionen.</div>
+    <div id="scene-preview" class="scene-list" style="margin-top: 10px;"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Conflictos flaggeados</h2>
+  <div class="card">
+    <textarea id="conflicts" placeholder="Un conflicto por línea. Ej: 'WPM 235 con storyboard denso en bloque 3, usuario acepta riesgo'."></textarea>
+  </div>
+</section>
+
+<div id="export-panel">
+  <h2 style="margin-top:0">YAML para pegar al chat</h2>
+  <div class="hint">Copiá este bloque y pegalo de vuelta a la conversación con el skill de previsualización. El skill lo parsea y escribe el Production Brief final.</div>
+  <textarea id="export-yaml" readonly></textarea>
+  <div class="row-btn"><button id="btn-copy">Copiar al portapapeles</button><button id="btn-close-export">Cerrar</button></div>
+</div>
+
+</main>
+
+<script>
+/* __STORYBOARD_DATA__ */
+const INITIAL_DATA = window.__STORYBOARD_DATA__ || {
+  meta: { title: "", target: "", wpm: "", date: "", state: "draft", lockedAt: "" },
+  blocks: [],
+  conflicts: ""
+};
+
+const TIPO_OPTS = ["camara", "demo-pantalla", "mixto", "b-roll"];
+const TRANS_OPTS = [
+  "corte seco",
+  "cross-dissolve 400ms",
+  "scene-switch (OBS, en captura)",
+  "J-cut audio",
+  "L-cut audio",
+  "match cut",
+  "fade a negro"
+];
+
+let state = structuredClone(INITIAL_DATA);
+
+function el(tag, attrs={}, ...kids) {
+  const n = document.createElement(tag);
+  for (const k in attrs) {
+    if (k === "class") n.className = attrs[k];
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), attrs[k]);
+    else n.setAttribute(k, attrs[k]);
+  }
+  for (const kid of kids.flat()) {
+    n.appendChild(typeof kid === "string" ? document.createTextNode(kid) : kid);
+  }
+  return n;
+}
+
+function renderMeta() {
+  document.getElementById("meta-title").value = state.meta.title || "";
+  document.getElementById("meta-target").value = state.meta.target || "";
+  document.getElementById("meta-wpm").value = state.meta.wpm || "";
+  document.getElementById("meta-date").value = state.meta.date || "";
+  document.getElementById("conflicts").value = state.conflicts || "";
+  document.getElementById("title-label").textContent = state.meta.title ? "— " + state.meta.title : "";
+  const badge = document.getElementById("state-badge");
+  badge.textContent = state.meta.state;
+  badge.className = "state " + state.meta.state;
+}
+
+function blockCard(block, idx) {
+  const card = el("div", { class: "card" });
+  const title = el("div", { class: "block-title" },
+    el("span", { class: "block-num" }, "B" + (idx + 1)),
+    el("input", {
+      value: block.titulo || "",
+      placeholder: "Título del bloque",
+      oninput: e => { state.blocks[idx].titulo = e.target.value; }
+    })
+  );
+  card.appendChild(title);
+
+  const grid = el("div", { class: "grid" });
+  const addRow = (lbl, input) => { grid.appendChild(el("label", {}, lbl)); grid.appendChild(input); };
+
+  const tipoSel = el("select", {
+    onchange: e => { state.blocks[idx].tipo = e.target.value; renderScenePreview(); }
+  }, ...TIPO_OPTS.map(t => el("option", { value: t }, t)));
+  tipoSel.value = block.tipo || "camara";
+  addRow("Tipo", tipoSel);
+
+  const duracion = el("input", {
+    value: block.duracion || "",
+    placeholder: "Ej. 1:20",
+    oninput: e => { state.blocks[idx].duracion = e.target.value; }
+  });
+  addRow("Duración est.", duracion);
+
+  const visual = el("textarea", {
+    placeholder: "Descripción visual densa (qué se ve, composición, ASCII si ayuda).",
+    oninput: e => { state.blocks[idx].visual = e.target.value; }
+  });
+  visual.value = block.visual || "";
+  addRow("Visual", visual);
+
+  const narracion = el("textarea", {
+    placeholder: "Literal del guion para este bloque.",
+    oninput: e => { state.blocks[idx].narracion = e.target.value; }
+  });
+  narracion.value = block.narracion || "";
+  addRow("Narración", narracion);
+
+  const transSel = el("select", {
+    onchange: e => { state.blocks[idx].transicion = e.target.value; renderScenePreview(); }
+  }, ...TRANS_OPTS.map(t => el("option", { value: t }, t)));
+  transSel.value = block.transicion || "corte seco";
+  addRow("Transición al siguiente", transSel);
+
+  const zoomWrap = el("div", {},
+    el("label", { style: "display:inline-flex;gap:6px;align-items:center;color:var(--fg);padding:0;" },
+      el("input", {
+        type: "checkbox",
+        style: "width:auto;margin-right:4px",
+        onchange: e => { state.blocks[idx].zoomOBS = e.target.checked; renderScenePreview(); }
+      }),
+      "Requiere zoom OBS (escena dedicada con crop)"
+    )
+  );
+  if (block.zoomOBS) zoomWrap.querySelector("input").checked = true;
+  addRow("Zoom OBS", zoomWrap);
+
+  const escena = el("input", {
+    value: block.escena || "",
+    placeholder: "Ej. pantalla-zoom-cli",
+    oninput: e => { state.blocks[idx].escena = e.target.value; renderScenePreview(); }
+  });
+  addRow("Nombre escena OBS", escena);
+
+  const shortcut = el("input", {
+    value: block.shortcut || "",
+    placeholder: "Ej. F2",
+    oninput: e => { state.blocks[idx].shortcut = e.target.value; renderScenePreview(); }
+  });
+  addRow("Shortcut", shortcut);
+
+  const ref = el("input", {
+    value: block.referencia || "",
+    placeholder: "Link + timestamp, o vacío.",
+    oninput: e => { state.blocks[idx].referencia = e.target.value; }
+  });
+  addRow("Referencia", ref);
+
+  const senal = el("textarea", {
+    placeholder: "Callouts, highlights, flechas previstos.",
+    oninput: e => { state.blocks[idx].senalizacion = e.target.value; }
+  });
+  senal.value = block.senalizacion || "";
+  addRow("Señalización", senal);
+
+  card.appendChild(grid);
+
+  const btns = el("div", { class: "row-btn" },
+    el("button", { onclick: () => moveBlock(idx, -1) }, "↑"),
+    el("button", { onclick: () => moveBlock(idx, 1) }, "↓"),
+    el("button", { onclick: () => duplicateBlock(idx) }, "Duplicar"),
+    el("button", { class: "remove", onclick: () => removeBlock(idx) }, "Eliminar")
+  );
+  card.appendChild(btns);
+
+  return card;
+}
+
+function renderBlocks() {
+  const host = document.getElementById("blocks");
+  host.innerHTML = "";
+  state.blocks.forEach((b, i) => host.appendChild(blockCard(b, i)));
+  renderScenePreview();
+}
+
+function renderScenePreview() {
+  const scenes = new Map();
+  const baseScenes = { "camara": "cam-full", "demo-pantalla": "pantalla-full", "mixto": "coding-pip", "b-roll": "b-roll-player" };
+  state.blocks.forEach((b, i) => {
+    const base = baseScenes[b.tipo] || "escena-base";
+    if (!scenes.has(base)) scenes.set(base, { name: base, shortcut: "", source: "derivada tipo " + (b.tipo || "?") });
+    if (b.escena) {
+      scenes.set(b.escena, { name: b.escena, shortcut: b.shortcut || "", source: "declarada B" + (i + 1) + (b.zoomOBS ? " (zoom OBS)" : "") });
+    }
+  });
+  const lines = [];
+  let n = 1;
+  for (const s of scenes.values()) {
+    const sc = s.shortcut ? `[${s.shortcut}]` : "[   ]";
+    lines.push(`  ${n}. ${s.name.padEnd(22)} ${sc.padEnd(5)} ${s.source}`);
+    n++;
+  }
+  lines.push("");
+  lines.push("Mapa bloque → escena:");
+  state.blocks.forEach((b, i) => {
+    const used = b.escena || baseScenes[b.tipo] || "?";
+    lines.push(`  B${i + 1} (${b.tipo || "?"}) → ${used}${b.transicion ? "  →  " + b.transicion : ""}`);
+  });
+  document.getElementById("scene-preview").textContent = lines.join("\n");
+}
+
+function addBlock() {
+  state.blocks.push({ titulo: "", tipo: "camara", duracion: "", visual: "", narracion: "",
+                      transicion: "corte seco", zoomOBS: false, escena: "", shortcut: "",
+                      referencia: "", senalizacion: "" });
+  renderBlocks();
+}
+function removeBlock(i) {
+  if (!confirm("¿Eliminar bloque B" + (i + 1) + "?")) return;
+  state.blocks.splice(i, 1); renderBlocks();
+}
+function duplicateBlock(i) {
+  state.blocks.splice(i + 1, 0, structuredClone(state.blocks[i])); renderBlocks();
+}
+function moveBlock(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= state.blocks.length) return;
+  const [moved] = state.blocks.splice(i, 1);
+  state.blocks.splice(j, 0, moved);
+  renderBlocks();
+}
+
+function toYAML() {
+  const m = state.meta;
+  const esc = s => String(s || "").replace(/\n/g, " ").replace(/"/g, '\\"');
+  const lines = [
+    "storyboard:",
+    `  estado: ${m.state}`,
+    `  locked-at: ${m.lockedAt || "—"}`,
+    `  titulo: "${esc(m.title)}"`,
+    `  target: "${esc(m.target)}"`,
+    `  wpm: "${esc(m.wpm)}"`,
+    `  fecha: "${esc(m.date)}"`,
+    "  bloques:"
+  ];
+  state.blocks.forEach((b, i) => {
+    lines.push(`    - n: ${i + 1}`);
+    lines.push(`      titulo: "${esc(b.titulo)}"`);
+    lines.push(`      tipo: ${b.tipo || "camara"}`);
+    lines.push(`      duracion: "${esc(b.duracion)}"`);
+    lines.push(`      visual: "${esc(b.visual)}"`);
+    lines.push(`      narracion: "${esc(b.narracion)}"`);
+    lines.push(`      transicion: "${esc(b.transicion)}"`);
+    lines.push(`      zoom_obs: ${!!b.zoomOBS}`);
+    lines.push(`      escena_obs: "${esc(b.escena)}"`);
+    lines.push(`      shortcut: "${esc(b.shortcut)}"`);
+    lines.push(`      referencia: "${esc(b.referencia)}"`);
+    lines.push(`      senalizacion: "${esc(b.senalizacion)}"`);
+  });
+  const conflicts = (state.conflicts || "").split("\n").map(s => s.trim()).filter(Boolean);
+  lines.push("  conflictos:");
+  if (conflicts.length === 0) lines.push("    []");
+  else conflicts.forEach(c => lines.push(`    - "${esc(c)}"`));
+  return lines.join("\n");
+}
+
+document.getElementById("btn-add-block").onclick = addBlock;
+document.getElementById("btn-lock").onclick = () => {
+  if (state.meta.state === "locked") {
+    if (!confirm("El brief ya está locked. ¿Volver a draft?")) return;
+    state.meta.state = "draft"; state.meta.lockedAt = "";
+  } else {
+    if (!confirm("¿Pasar a locked? Es el contrato firme para grabación.")) return;
+    state.meta.state = "locked";
+    state.meta.lockedAt = new Date().toISOString().slice(0, 10);
+  }
+  renderMeta();
+};
+document.getElementById("btn-export").onclick = () => {
+  state.meta.title = document.getElementById("meta-title").value;
+  state.meta.target = document.getElementById("meta-target").value;
+  state.meta.wpm = document.getElementById("meta-wpm").value;
+  state.meta.date = document.getElementById("meta-date").value;
+  state.conflicts = document.getElementById("conflicts").value;
+  document.getElementById("export-yaml").value = toYAML();
+  document.getElementById("export-panel").classList.add("visible");
+  document.getElementById("export-yaml").select();
+};
+document.getElementById("btn-copy").onclick = async () => {
+  const ta = document.getElementById("export-yaml");
+  ta.select();
+  try { await navigator.clipboard.writeText(ta.value); alert("Copiado."); }
+  catch { document.execCommand("copy"); alert("Copiado."); }
+};
+document.getElementById("btn-close-export").onclick = () =>
+  document.getElementById("export-panel").classList.remove("visible");
+
+["meta-title", "meta-target", "meta-wpm", "meta-date"].forEach(id => {
+  document.getElementById(id).addEventListener("input", e => {
+    const k = id.replace("meta-", "");
+    state.meta[k] = e.target.value;
+    if (k === "title") document.getElementById("title-label").textContent = e.target.value ? "— " + e.target.value : "";
+  });
+});
+document.getElementById("conflicts").addEventListener("input", e => { state.conflicts = e.target.value; });
+
+if (state.blocks.length === 0) addBlock();
+renderMeta();
+renderBlocks();
+</script>
+</body>
+</html>
