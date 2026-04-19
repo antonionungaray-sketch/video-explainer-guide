@@ -278,13 +278,17 @@ const TIPO_OPTS = ["camara", "demo-pantalla", "mixto", "b-roll"];
 // (no existen en el crudo). Catálogo canónico del brief
 // edicion/10-overlays-auxiliares. Abbr = badge corto en el chip del cómic.
 const OVERLAY_TIPOS = [
-  { v: "intro-animada",   l: "intro-animada",   abbr: "INTRO" },
-  { v: "outro-animada",   l: "outro-animada",   abbr: "OUTRO" },
-  { v: "lower-third",     l: "lower-third",     abbr: "LT"    },
-  { v: "idea-bulb",       l: "idea-bulb",       abbr: "IDEA"  },
-  { v: "callout-flecha",  l: "callout-flecha",  abbr: "CALL"  },
-  { v: "separador",       l: "separador",       abbr: "SEP"   },
-  { v: "highlight-icono", l: "highlight-icono", abbr: "ICON"  }
+  { v: "intro-animada",      l: "intro-animada",      abbr: "INTRO",  tip: "Apertura · P2 casos" },
+  { v: "outro-animada",      l: "outro-animada",      abbr: "OUTRO",  tip: "Cierre · P2 casos" },
+  { v: "lower-third",        l: "lower-third",        abbr: "LT",     tip: "Identificación · P1-§5.3" },
+  { v: "callout",            l: "callout",            abbr: "CALL",   tip: "Señalización · P1-§2.3-#2" },
+  { v: "chapter-marker",     l: "chapter-marker",     abbr: "CHAP",   tip: "Segmentación · P1-§2.3-#6 · P1-§2.3-#7" },
+  { v: "stat-callout",       l: "stat-callout",       abbr: "STAT",   tip: "Señalización numérica · P1-§2.3-#2" },
+  { v: "pull-quote",         l: "pull-quote",         abbr: "QUOTE",  tip: "Cita destacada · P1-§2.3-#2 · P1-§5.1" },
+  { v: "progress-indicator", l: "progress-indicator", abbr: "PROG",   tip: "Orientación · P1-§2.3-#6 · P1-§6.2" },
+  { v: "question-prompt",    l: "question-prompt",    abbr: "Q?",     tip: "Retrieval practice · P1-§8" },
+  { v: "answer-reveal",      l: "answer-reveal",      abbr: "A!",     tip: "Retrieval practice · P1-§8" },
+  { v: "otro",               l: "otro (descripción libre)", abbr: "OTRO", tip: "Fuera del catálogo canónico — describir función" }
 ];
 const TRANS_OPTS = [
   "corte seco",
@@ -419,7 +423,7 @@ function blockCard(block, idx) {
     const sel = el("select", {
       onchange: e => { state.blocks[idx].overlays[oi].tipo = e.target.value; renderBlocks(); }
     }, ...OVERLAY_TIPOS.map(o => el("option", { value: o.v }, o.l)));
-    sel.value = ov.tipo || "idea-bulb";
+    sel.value = ov.tipo || "callout";
     const desde = el("input", {
       value: ov.desde || "", placeholder: "0:34",
       oninput: e => { state.blocks[idx].overlays[oi].desde = e.target.value; }
@@ -668,28 +672,6 @@ function drawBroll(rc, x, y, w, h, opts) {
    principiante VEA los elementos que el editor agregará en post.
    Cada función retorna un array de nodos SVG listos para append. */
 
-function drawIdeaBulb(rc, cx, cy, size, opts) {
-  // foquito: círculo amarillo + rayitas de destello + base de filamento
-  const out = [];
-  const r = size / 2;
-  // rayitas de destello primero (quedan detrás)
-  const rays = [-70, -35, 0, 35, 70];
-  for (const deg of rays) {
-    const a = (deg - 90) * Math.PI / 180;
-    const x1 = cx + Math.cos(a) * (r + 3);
-    const y1 = cy + Math.sin(a) * (r + 3);
-    const x2 = cx + Math.cos(a) * (r + 9);
-    const y2 = cy + Math.sin(a) * (r + 9);
-    out.push(rc.line(x1, y1, x2, y2, { ...opts, ...PAL.overlayAccent }));
-  }
-  // bombilla
-  out.push(rc.circle(cx, cy, size, { ...opts, ...PAL.overlayFill }));
-  // base (rosca) debajo
-  out.push(rc.rectangle(cx - r * 0.45, cy + r * 0.75, r * 0.9, r * 0.5,
-    { ...opts, ...PAL.overlayInk }));
-  return out;
-}
-
 function drawLowerThird(rc, W, H, opts) {
   // tarjeta en tercio inferior con dos líneas (nombre + rol)
   const out = [];
@@ -705,7 +687,10 @@ function drawLowerThird(rc, W, H, opts) {
   return out;
 }
 
-function drawCalloutArrow(rc, W, H, opts) {
+// Callout: por defecto se dibuja como flecha curva desde fuera-derecha
+// hacia centro-alto. La forma concreta (flecha/caja/círculo) queda
+// libre en el prompt IA; este pictograma es solo el estandarte visual.
+function drawCallout(rc, W, H, opts) {
   // flecha que apunta desde fuera-derecha hacia el centro-alto del cuadro
   const out = [];
   const fromX = W * 0.92, fromY = H * 0.18;
@@ -747,23 +732,121 @@ function drawOutroMark(rc, W, H, opts) {
   return out;
 }
 
-function drawSeparator(rc, W, H, opts) {
-  // dos barras verticales en el centro (transición gráfica entre unidades)
-  const cx = W / 2;
-  return [
-    rc.rectangle(cx - 10, H * 0.32, 6, H * 0.36, { ...opts, ...PAL.overlayFill }),
-    rc.rectangle(cx + 4,  H * 0.32, 6, H * 0.36, { ...opts, ...PAL.overlayFill })
-  ];
+function drawChapterMarker(rc, W, H, opts) {
+  // Tarjeta grande centrada con un título subrayado; segmenta la unidad.
+  const out = [];
+  const x = W * 0.15, y = H * 0.28, w = W * 0.70, h = H * 0.44;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  // línea horizontal que simula subrayar el título
+  out.push(rc.line(x + 12, y + h * 0.50, x + w - 12, y + h * 0.50,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 1.6 }));
+  // dos líneas finas arriba y abajo (subtítulo y pie)
+  out.push(rc.line(x + 12, y + h * 0.28, x + w * 0.55, y + h * 0.28,
+    { ...opts, stroke: "#8a4f22", strokeWidth: 0.8 }));
+  out.push(rc.line(x + 12, y + h * 0.72, x + w * 0.65, y + h * 0.72,
+    { ...opts, stroke: "#8a4f22", strokeWidth: 0.8 }));
+  return out;
 }
 
-function drawHighlightIcon(rc, W, H, opts) {
-  // círculo con exclamación (ícono de "ojo acá")
-  const cx = W * 0.86, cy = H * 0.78, r = 11;
-  return [
-    rc.circle(cx, cy, r * 2, { ...opts, ...PAL.overlayFill }),
-    rc.line(cx, cy - r * 0.45, cx, cy + r * 0.22, { ...opts, ...PAL.overlayInk, strokeWidth: 2 }),
-    rc.circle(cx, cy + r * 0.55, 2.2, { ...opts, ...PAL.overlayInk })
-  ];
+function drawStatCallout(rc, W, H, opts) {
+  // Cuadro en esquina superior izquierda con un "número" esquemático.
+  const out = [];
+  const x = 10, y = 10, side = 52;
+  out.push(rc.rectangle(x, y, side, side, { ...opts, ...PAL.overlayFill }));
+  // dos barras verticales gruesas que simulan un dígito
+  out.push(rc.line(x + side * 0.30, y + side * 0.22, x + side * 0.30, y + side * 0.78,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 3 }));
+  out.push(rc.line(x + side * 0.60, y + side * 0.22, x + side * 0.60, y + side * 0.78,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 3 }));
+  // barra horizontal conectora
+  out.push(rc.line(x + side * 0.30, y + side * 0.50, x + side * 0.60, y + side * 0.50,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 2.5 }));
+  return out;
+}
+
+function drawPullQuote(rc, W, H, opts) {
+  // Caja centrada con signo de comillas y líneas de texto simuladas.
+  const out = [];
+  const x = W * 0.14, y = H * 0.22, w = W * 0.58, h = H * 0.42;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  // Comillas de apertura: dos pequeños arcos en esquina superior izquierda
+  const cx = x + 14, cy = y + 14;
+  out.push(rc.path(
+    `M ${cx} ${cy + 8} Q ${cx - 2} ${cy + 2} ${cx + 5} ${cy}`,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 2.4 }));
+  out.push(rc.path(
+    `M ${cx + 10} ${cy + 8} Q ${cx + 8} ${cy + 2} ${cx + 15} ${cy}`,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 2.4 }));
+  // Tres líneas internas simulando texto
+  const textY = [y + h * 0.38, y + h * 0.56, y + h * 0.74];
+  const textW = [w * 0.82, w * 0.76, w * 0.48];
+  for (let i = 0; i < 3; i++) {
+    out.push(rc.line(x + 14, textY[i], x + 14 + textW[i], textY[i],
+      { ...opts, stroke: "#8a4f22", strokeWidth: 1.1 }));
+  }
+  return out;
+}
+
+function drawProgressIndicator(rc, W, H, opts) {
+  // Barra segmentada (5 tramos) en borde superior: 2 rellenos, 3 vacíos.
+  const out = [];
+  const segs = 5, filled = 2, y = H * 0.04, hBar = 5;
+  const leftPad = 12, rightPad = 12, gap = 4;
+  const totalW = W - leftPad - rightPad;
+  const segW = (totalW - gap * (segs - 1)) / segs;
+  for (let i = 0; i < segs; i++) {
+    const sx = leftPad + i * (segW + gap);
+    const style = i < filled
+      ? { ...opts, ...PAL.overlayFill }
+      : { ...opts, ...PAL.overlayAccent, fill: "transparent", fillStyle: "solid" };
+    out.push(rc.rectangle(sx, y, segW, hBar, style));
+  }
+  return out;
+}
+
+function drawQuestionPrompt(rc, W, H, opts) {
+  // Caja con un signo de pregunta grande (arco + línea corta + punto).
+  const out = [];
+  const x = W * 0.55, y = H * 0.15, w = W * 0.32, h = H * 0.36;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  const cx = x + w * 0.50, topY = y + h * 0.24;
+  // Arco superior del "?" (semicírculo)
+  out.push(rc.path(
+    `M ${cx - 8} ${topY} Q ${cx - 8} ${topY - 10} ${cx} ${topY - 10} Q ${cx + 8} ${topY - 10} ${cx + 8} ${topY} Q ${cx + 8} ${topY + 4} ${cx + 2} ${topY + 10}`,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 2.4 }));
+  // Línea corta bajo el arco
+  out.push(rc.line(cx + 2, topY + 10, cx + 2, topY + 16,
+    { ...opts, ...PAL.overlayInk, strokeWidth: 2.4 }));
+  // Punto final
+  out.push(rc.circle(cx + 2, topY + 22, 3.5, { ...opts, ...PAL.overlayInk }));
+  return out;
+}
+
+function drawAnswerReveal(rc, W, H, opts) {
+  // Caja idéntica a question-prompt pero con cheque "✓".
+  const out = [];
+  const x = W * 0.55, y = H * 0.15, w = W * 0.32, h = H * 0.36;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  // Cheque: dos segmentos en V invertida
+  const ax = x + w * 0.28, ay = y + h * 0.56;
+  const bx = x + w * 0.44, by = y + h * 0.72;
+  const dx = x + w * 0.74, dy = y + h * 0.34;
+  out.push(rc.line(ax, ay, bx, by, { ...opts, ...PAL.overlayInk, strokeWidth: 3 }));
+  out.push(rc.line(bx, by, dx, dy, { ...opts, ...PAL.overlayInk, strokeWidth: 3 }));
+  return out;
+}
+
+function drawOtro(rc, W, H, opts) {
+  // Badge genérico con "OTRO" esquemático (tres puntos = forma indefinida).
+  const out = [];
+  const x = W * 0.72, y = 8, w = 60, h = 22;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  // tres círculos como elipsis
+  const dotY = y + h * 0.50;
+  for (let i = 0; i < 3; i++) {
+    out.push(rc.circle(x + 18 + i * 10, dotY, 3.2, { ...opts, ...PAL.overlayInk }));
+  }
+  return out;
 }
 
 function drawOverlayBadges(rc, W, H, overlays, baseOpts) {
@@ -771,13 +854,17 @@ function drawOverlayBadges(rc, W, H, overlays, baseOpts) {
   const out = [];
   for (const ov of overlays) {
     const t = (ov && ov.tipo) || "";
-    if (t === "idea-bulb")        out.push(...drawIdeaBulb(rc, W * 0.80, H * 0.22, 22, baseOpts));
-    else if (t === "lower-third")    out.push(...drawLowerThird(rc, W, H, baseOpts));
-    else if (t === "callout-flecha") out.push(...drawCalloutArrow(rc, W, H, baseOpts));
-    else if (t === "intro-animada")  out.push(...drawIntroStar(rc, W, H, baseOpts));
-    else if (t === "outro-animada")  out.push(...drawOutroMark(rc, W, H, baseOpts));
-    else if (t === "separador")      out.push(...drawSeparator(rc, W, H, baseOpts));
-    else if (t === "highlight-icono")out.push(...drawHighlightIcon(rc, W, H, baseOpts));
+    if (t === "intro-animada")         out.push(...drawIntroStar(rc, W, H, baseOpts));
+    else if (t === "outro-animada")    out.push(...drawOutroMark(rc, W, H, baseOpts));
+    else if (t === "lower-third")      out.push(...drawLowerThird(rc, W, H, baseOpts));
+    else if (t === "callout")          out.push(...drawCallout(rc, W, H, baseOpts));
+    else if (t === "chapter-marker")   out.push(...drawChapterMarker(rc, W, H, baseOpts));
+    else if (t === "stat-callout")     out.push(...drawStatCallout(rc, W, H, baseOpts));
+    else if (t === "pull-quote")       out.push(...drawPullQuote(rc, W, H, baseOpts));
+    else if (t === "progress-indicator") out.push(...drawProgressIndicator(rc, W, H, baseOpts));
+    else if (t === "question-prompt")  out.push(...drawQuestionPrompt(rc, W, H, baseOpts));
+    else if (t === "answer-reveal")    out.push(...drawAnswerReveal(rc, W, H, baseOpts));
+    else if (t === "otro")             out.push(...drawOtro(rc, W, H, baseOpts));
   }
   return out;
 }
@@ -1110,7 +1197,7 @@ function moveBlock(i, dir) {
 function addOverlay(blockIdx) {
   const b = state.blocks[blockIdx];
   if (!b.overlays) b.overlays = [];
-  b.overlays.push({ tipo: "idea-bulb", desde: "", hasta: "", descripcion: "" });
+  b.overlays.push({ tipo: "callout", desde: "", hasta: "", descripcion: "" });
   renderBlocks();
 }
 
