@@ -484,13 +484,10 @@ function panelCard(block, idx) {
       (chosen ? "✓ " : "") + "VARIANTE " + (block.variantLabel || "?") + " · " + block.variantGroup
     );
     vh.appendChild(lbl);
-    if (!chosen) {
-      const btn = el("button", {
-        class: "choose-btn",
-        onclick: () => chooseVariant(idx)
-      }, "✓ Elegir esta");
-      vh.appendChild(btn);
-    }
+    const btn = chosen
+      ? el("button", { class: "choose-btn", onclick: () => undoChoice(idx), title: "Deshacer elección, volver a comparar las variantes" }, "↩ Deshacer")
+      : el("button", { class: "choose-btn", onclick: () => chooseVariant(idx) }, "✓ Elegir esta");
+    vh.appendChild(btn);
     card.appendChild(vh);
   }
 
@@ -598,7 +595,8 @@ function renderDiscarded() {
     card.appendChild(el("div", { class: "title" }, b.titulo || "(sin título)"));
     card.appendChild(el("div", { class: "hint" }, (b.tipo || "—") + (b.zoomOBS ? " · zoom" : "") + " · " + (b.duracion || "—")));
     const actions = el("div", { class: "actions" },
-      el("button", { onclick: () => restoreVariant(i), title: "Hacer de esta la elegida" }, "↻ Restaurar"),
+      el("button", { onclick: () => restoreVariant(i), title: "Hacer de esta la elegida (descarta la actual)" }, "↻ Restaurar"),
+      el("button", { onclick: () => undoChoice(i), title: "Volver a comparar ambas sin elegir todavía" }, "↔ Re-comparar"),
       el("button", { class: "remove", onclick: () => purgeVariant(i), title: "Eliminar definitivo" }, "✕ Eliminar")
     );
     card.appendChild(actions);
@@ -725,6 +723,17 @@ function chooseVariant(i) {
 function restoreVariant(i) {
   // Restaurar una descartada = marcarla como chosen y des-chosen las demás del grupo.
   chooseVariant(i);
+}
+
+function undoChoice(i) {
+  // Deshace la elección: todas las variantes del grupo vuelven a chosen=null
+  // y quedan visibles lado a lado en Cómic para volver a comparar.
+  const b = state.blocks[i];
+  if (!b.variantGroup) return;
+  state.blocks.forEach(o => {
+    if (o.variantGroup === b.variantGroup) o.variantChosen = null;
+  });
+  renderBlocks();
 }
 
 function purgeVariant(i) {
