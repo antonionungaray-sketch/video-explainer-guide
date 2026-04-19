@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/guion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-18T21:55:38Z
+> Última regeneración: 2026-04-19T00:21:42Z
 
 ## Decisiones críticas
 
@@ -45,7 +45,7 @@
 ### 07. voz-registro
 
 - **Pregunta:** ¿Tono, pacing y persona narrativa?
-- **Fuentes:** P1-§2.3-#10 P1-§2.3-#11 P1-§5.4 P2-idea-guion-patrones P2-ficha-fireship P2-ficha-midudev P2-ficha-3b1b P2-ficha-kurzgesagt 
+- **Fuentes:** P1-§2.3-#10 P1-§2.3-#11 P1-§2.3-#8 P1-§5.4 P2-idea-guion-patrones P2-ficha-fireship P2-ficha-midudev P2-ficha-3b1b P2-ficha-kurzgesagt 
 - **Brief:** [`briefs/guion/07-voz-registro.md`](../briefs/guion/07-voz-registro.md)
 
 ### 08. cta

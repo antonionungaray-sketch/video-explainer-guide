@@ -57,29 +57,29 @@
 
 ---
 
-## Edición y post
+## Edición y post [P3-edicion]
 
-### Editores de video
+### Editores de video [P3-edicion-editores]
 - **DaVinci Resolve** — gratuito (versión Studio de pago), nivel profesional. Requiere GPU competente.
 - **Kdenlive** — open source, multiplataforma, trabaja bien sin GPU dedicada.
 - **Adobe Premiere Pro** — estándar industrial, suscripción mensual.
 - **CapCut Desktop** — edición rápida con plantillas, fuerte para formatos cortos verticales.
 - **Descript** — edición de video editando la transcripción de texto. Excelente para contenido hablado.
 
-### Composición programática
+### Composición programática [P3-edicion-composicion]
 - **Remotion** — videos como código React. Ideal para variaciones masivas desde datos, lower thirds, intros dinámicos.
 - **Manim** — animación matemática estilo 3Blue1Brown.
 
-### Post-procesado puntual
+### Post-procesado puntual [P3-edicion-postproc]
 - **FFmpeg** — el cuchillo suizo de procesamiento de video. Cortar, normalizar, transcoder, generar thumbnails. Imprescindible aprender mínimos comandos.
 - **Handbrake** — front-end gráfico de FFmpeg para conversiones masivas.
 
-### Subtítulos
+### Subtítulos [P3-edicion-subtitulos]
 - **Whisper (OpenAI) local o vía API** — transcripción automática multilenguaje, base de subtítulos.
 - **Aegisub** — editor de subtítulos profesional (timing, estilo SRT/ASS).
 - **Subtitle Edit** — alternativa Windows con buena UX.
 
-### Voiceover IA
+### Voiceover IA [P3-edicion-voiceover]
 - **ElevenLabs** — voces realistas, clonación de voz, multilenguaje. Tier gratuito limitado.
 - **Coqui TTS** / **Piper** — open source, ejecución local, calidad menor pero suficiente para borradores.
 
