@@ -1,7 +1,7 @@
 ---
 decision: edicion/10-overlays-auxiliares
 etapa: edicion
-pregunta: ¿Qué overlays auxiliares generás en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los producís?
+pregunta: ¿Qué overlays auxiliares generas en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los produces?
 fuentes:
   - P1-§2.3-#1                 # coherencia
   - P1-§2.3-#2                 # señalización

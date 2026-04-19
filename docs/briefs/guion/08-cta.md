@@ -18,15 +18,15 @@ version: 1
 
 **Transferencia** [P1-§6.4]: el aprendizaje se consolida cuando se aplica
 en un contexto distinto al original. Un CTA que invita a aplicar
-(construir, probar, enseñar a otro) produce mejor retención que "suscribite".
+(construir, probar, enseñar a otro) produce mejor retención que "suscríbete".
 
 **Cierre de open loop** [P1-§6.2]: la pregunta abierta del hook debe
 resolverse en el cierre. Dejarla abierta frustra (Zeigarnik inverso).
 
 ## Casos
 
-- **Fireship** [P2-ficha-fireship]: CTA = link al repo/docs + "hacé el
-  tutorial oficial" (invita a transferencia). "Suscribite" al final,
+- **Fireship** [P2-ficha-fireship]: CTA = link al repo/docs + "haz el
+  tutorial oficial" (invita a transferencia). "Suscríbete" al final,
   después del valor entregado.
 - **Veritasium** [P2-ficha-veritasium]: CTA = pregunta generativa
   ("¿cómo aplicarías esto en tu caso?") + invitación a otro video
@@ -36,7 +36,7 @@ resolverse en el cierre. Dejarla abierta frustra (Zeigarnik inverso).
 
 ## Anti-patrón
 
-**"Suscribite al inicio" sin valor entregado** [P2-idea-guion-antipatrones]:
+**"Suscríbete al inicio" sin valor entregado** [P2-idea-guion-antipatrones]:
 caída típica de retention. El CTA de suscripción al inicio, antes de
 demostrar valor, correlaciona con abandono a los 30s.
 
@@ -56,6 +56,6 @@ Ninguno.
 ## Salida esperada
 
 - Cierre del open loop del hook (una frase explícita que conecta hook↔cierre).
-- CTA específico: acción concreta ("probá X con este repo", "leé Y en el
-  link", "contame en comentarios qué harías en Z caso").
+- CTA específico: acción concreta ("prueba X con este repo", "lee Y en el
+  link", "cuéntame en comentarios qué harías en Z caso").
 - Suscripción opcional al final, después del valor — no al inicio.

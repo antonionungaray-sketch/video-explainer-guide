@@ -77,7 +77,7 @@
 - **Revideo** — MIT, fork de Motion Canvas con rendering headless + server-side + sistema de templates. Pensado para pipelines de producción automatizada (generar decenas/miles de videos desde datos). *Status: estable. Verificado: 2026-04-18.*
 - **HyperFrames (HeyGen)** — Apache 2.0, compone video vía HTML/CSS/JS y está diseñado para que agentes IA (p. ej. Claude Code) editen video con primitivas web estándar. Complementa a Remotion cuando la pipeline está orquestada por agentes más que por devs humanos. *Status: nuevo/cambia rápido. Verificado: 2026-04-18.*
 - **Manim** — animación matemática estilo 3Blue1Brown.
-- **Cuándo elegir qué.** Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas / Revideo si necesitás open-source sin ataduras o si el equipo supera 3 personas; HyperFrames si el flujo es orquestado por un agente IA; Manim solo para matemáticas formales.
+- **Cuándo elegir qué.** Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas / Revideo si necesitas open-source sin ataduras o si el equipo supera 3 personas; HyperFrames si el flujo es orquestado por un agente IA; Manim solo para matemáticas formales.
 
 ### Post-procesado puntual [P3-edicion-postproc]
 - **FFmpeg** — el cuchillo suizo de procesamiento de video. Cortar, normalizar, transcoder, generar thumbnails. Imprescindible aprender mínimos comandos.

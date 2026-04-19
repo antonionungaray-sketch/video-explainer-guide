@@ -1,7 +1,7 @@
 ---
 decision: grabacion/07-b-roll-plan
 etapa: grabacion
-pregunta: ¿Qué material auxiliar (B-roll, screenshots, recursos) necesitás producir antes de editar?
+pregunta: ¿Qué material auxiliar (B-roll, screenshots, recursos) necesitas producir antes de editar?
 fuentes:
   - P1-§2.3-#5                 # contigüidad temporal
   - P1-§2.3-#4                 # contigüidad espacial

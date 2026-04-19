@@ -20,7 +20,7 @@ YouTube Studio → Analytics → Audience → "Cuándo están los
 espectadores" [P3-publicacion-analitica].
 
 **Las primeras 24-48h determinan el momentum inicial.** Si
-publicás cuando la audiencia está dormida, el boost inicial de
+publicas cuando la audiencia está dormida, el boost inicial de
 subs se pierde; sin ese boost, el algoritmo no tiene señal fuerte
 para distribuir a audiencia similar.
 

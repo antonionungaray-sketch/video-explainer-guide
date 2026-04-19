@@ -48,14 +48,14 @@ Mantenimiento del **pilar 3 — Herramientas** del toolkit. Las herramientas tec
 
 ## Cierre — verificación de briefs
 
-Al terminar los cambios aprobados al pilar 3, ejecutá:
+Al terminar los cambios aprobados al pilar 3, ejecuta:
 
 ```bash
 bash scripts/verificar-briefs.sh
 ```
 
-Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reportá al usuario la lista y sugerí:
+Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reporta al usuario la lista y sugiere:
 
-> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 3: [lista]. Para re-sincronizarlos de forma guiada, invocá la skill `sincronizar-briefs`."
+> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 3: [lista]. Para re-sincronizarlos de forma guiada, invoca la skill `sincronizar-briefs`."
 
-Si 0 stale: reportá "briefs al día" y terminá.
+Si 0 stale: reporta "briefs al día" y termina.

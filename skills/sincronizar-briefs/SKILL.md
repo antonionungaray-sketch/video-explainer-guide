@@ -32,24 +32,24 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
    - `Total IDs inline no declarados en fuentes: N` — citas en el
      cuerpo del brief que no están en el frontmatter.
 
-2. **Si los tres contadores dan 0:** reportá al usuario "Briefs al día"
-   y terminá. No commitear nada (no hay cambios).
+2. **Si los tres contadores dan 0:** reporta al usuario "Briefs al día"
+   y termina. No commitear nada (no hay cambios).
 
 3. **Si hay warnings de typos o inline-no-declarados:** son bugs de
-   integridad, no drift real. Reportá al usuario qué briefs tienen el
-   problema y pedí permiso para arreglarlos directamente (añadir el
+   integridad, no drift real. Reporta al usuario qué briefs tienen el
+   problema y pide permiso para arreglarlos directamente (añadir el
    ID a `fuentes:` del frontmatter, o corregir el typo). **Esto NO
    es re-sync — es saneamiento del brief.**
 
 4. **Para cada brief STALE reportado:**
-   - **a.** Mostrá al usuario qué cambió en el pilar:
+   - **a.** Muestra al usuario qué cambió en el pilar:
      `git log -1 -p -L <start>,<end>:<pilar_file>` con el rango
      reportado por el script (ej. `13-27`) muestra el último commit
      que tocó esa sección con diff.
-   - **b.** Mostrá al usuario el brief actual (al menos los bloques
+   - **b.** Muestra al usuario el brief actual (al menos los bloques
      `Principio aplicable` + `Casos` + `Heurística numérica` donde
      el cambio típicamente impacta).
-   - **c.** Preguntá explícitamente:
+   - **c.** Pregunta explícitamente:
      ```
      ¿El cambio del pilar afecta este brief?
        a) Sí, editar el brief (te propongo los cambios).
@@ -57,21 +57,21 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
        c) Diferir — dejar stale por ahora, volveré después.
      ```
    - **d.** Según la respuesta:
-     - **(a) Editar:** proponé los edits concretos line-by-line a
+     - **(a) Editar:** propón los edits concretos line-by-line a
        `Principio` / `Casos` / `Heurística` / `Conflictos` afectados.
-       Esperá aprobación por cada edit. Al final, actualizá
+       Espera aprobación por cada edit. Al final, actualiza
        `sync: YYYY-MM-DD` al día actual. **Regla dura:** nunca editar
        un brief sin mostrar primero el diff propuesto.
-     - **(b) Bumpear sync:** editá solo la línea `sync:` del
+     - **(b) Bumpear sync:** edita solo la línea `sync:` del
        frontmatter. Nada más.
-     - **(c) Diferir:** saltá este brief, no tocá nada. Anotá en el
+     - **(c) Diferir:** salta este brief, no toques nada. Anota en el
        reporte final.
 
 5. **Después de procesar todos los briefs stale:**
-   - Corré de nuevo `bash scripts/verificar-briefs.sh` y verificá que
+   - Corre de nuevo `bash scripts/verificar-briefs.sh` y verifica que
      ahora los briefs procesados ya no aparecen stale (los diferidos
      seguirán apareciendo, eso es OK).
-   - Corré `bash scripts/regenerar-vistas.sh` si alguno de los briefs
+   - Corre `bash scripts/regenerar-vistas.sh` si alguno de los briefs
      editados cambió su `pregunta:` o `fuentes:` (cambios que la vista
      derivada refleja).
 
@@ -83,7 +83,7 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
    - <brief-Y>: sync bump (cambio cosmético en pilar).
    - <brief-Z>: diferido.
    ```
-   Si solo hubo saneamiento (punto 3), usá mensaje distinto:
+   Si solo hubo saneamiento (punto 3), usa mensaje distinto:
    ```
    briefs: saneamiento (IDs faltantes en frontmatter)
    ```
@@ -91,20 +91,20 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
 ## Reglas firmes
 
 - **Detección automática, sync manual.** El script detecta; el humano
-  (guiado por vos) decide. Nunca editar un brief sin mostrar el diff
+  (guiado por ti) decide. Nunca editar un brief sin mostrar el diff
   propuesto y esperar aprobación.
 
 - **No inventar contenido.** Los briefs sólo contienen lo que ya está
-  en el pilar. Si durante el re-sync descubrís información nueva que
-  debería estar en el pilar pero no está, **detenete** y sugerí al
+  en el pilar. Si durante el re-sync descubres información nueva que
+  debería estar en el pilar pero no está, **detente** y sugiere al
   usuario invocar `actualizar-tendencias` o `actualizar-herramientas`
   primero.
 
-- **Un brief por vez.** No procesés varios briefs en paralelo ni
+- **Un brief por vez.** No proceses varios briefs en paralelo ni
   batch-edit — cada uno merece su pausa de revisión humana.
 
 - **El diferir es válido.** Si el usuario no tiene tiempo o contexto
-  para decidir, aceptá "diferir" sin presionar. El brief seguirá
+  para decidir, acepta "diferir" sin presionar. El brief seguirá
   apareciendo stale hasta que vuelva.
 
 - **Regenerar vistas solo si cambió el frontmatter público**

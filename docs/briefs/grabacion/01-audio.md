@@ -37,7 +37,7 @@ que con micro de gama media bien usado.
   similares. Mejor claridad pero capturan todo — exige cuarto tratado
   con paneles absorbentes o grabar de noche. Riesgo para principiantes.
 - **Lavalier cableado/inalámbrico:** Rode Wireless GO, Sennheiser MKE.
-  Útil si grabás moviéndote o a cierta distancia del setup principal.
+  Útil si grabas moviéndote o a cierta distancia del setup principal.
   Menor retorno que dinámico USB para el uso típico sentado en el
   escritorio.
 - **Audio del atlas:** ningún creator del atlas (Fireship, Primeagen,

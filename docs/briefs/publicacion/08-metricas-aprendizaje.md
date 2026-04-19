@@ -38,7 +38,7 @@ es prueba más fuerte que test de reconocimiento.
   gap de la industria [P2-publicacion-metricas-core] — se mide con
   observación del supervisor o tareas reales embebidas.
 - **Tutorial técnico público:** feedback cualitativo generativo
-  ("contame en comentarios qué se rompió al probarlo") + stars/
+  ("cuéntame en comentarios qué se rompió al probarlo") + stars/
   forks/issues del repo linkeado como proxies de uso real. Saves
   y rewatches = proxy débil de "video útil como referencia".
 - **Divulgación pública:** lectura de comentarios distinguiendo

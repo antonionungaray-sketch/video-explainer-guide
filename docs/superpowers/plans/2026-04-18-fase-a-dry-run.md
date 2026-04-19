@@ -48,11 +48,7 @@ Fase A:
    obligatoria sobre-escribe el principio de redundancia). Refinamiento:
    checklist ampliada.
 
-4. **07-voz-registro sin WPM rioplatense.** Hueco para usuarios
-   argentino/uruguayos. Refinamiento: nota de calibración
-   (-10/-15 WPM respecto al peninsular por prosodia).
-
-5. **03-estructura no explicitaba Fireship-lineal-puro como default.**
+4. **03-estructura no explicitaba Fireship-lineal-puro como default.**
    Era implícito; decirlo directo ayuda al test de determinismo.
    Refinamiento: línea añadida al caso Fireship.
 

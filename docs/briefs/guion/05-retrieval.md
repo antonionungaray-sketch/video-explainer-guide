@@ -28,7 +28,7 @@ El costo cognitivo de generar la respuesta es el driver del efecto.
 
 - **Tutorial técnico** [P2-meta-tutorial]: retrieval implícito en forma de
   pausas donde el espectador puede probar el comando antes de ver el
-  resultado. "Pausá y probalo si querés; te espero."
+  resultado. "Pausa y pruébalo si quieres; te espero."
 - **Onboarding corporativo** [P2-meta-onboarding]: retrieval explícito vía
   quiz embebido, 1 cada 2-3 min. Plataformas LMS lo enforzan; YouTube no.
 - **Divulgación**: retrieval casi inexistente en el formato estándar.
@@ -41,7 +41,7 @@ El costo cognitivo de generar la respuesta es el driver del efecto.
 **Pregunta retórica sin pausa para respuesta.** "¿Cómo creen que funciona?
 Bueno, funciona así." No es retrieval — el cerebro no tiene tiempo de
 generar. Si hay pregunta, hay que darle tiempo (2-3s mínimo de animación
-vacía o "pausá ahora").
+vacía o "pausa ahora").
 
 ## Heurística numérica
 

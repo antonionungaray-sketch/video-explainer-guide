@@ -20,8 +20,8 @@ version: 1
 ## Principio aplicable
 
 **Transferencia** [P1-§6.4]: el aprendizaje se consolida cuando se
-aplica en contexto distinto. CTA que invita a aplicar ("probá X con
-este repo", "migrá uno de tus proyectos") supera a "suscribite".
+aplica en contexto distinto. CTA que invita a aplicar ("prueba X con
+este repo", "migra uno de tus proyectos") supera a "suscríbete".
 
 **Spacing para retención cruzada** [P1-§8.2]: recomendar contenido
 relacionado (no idéntico) refuerza la red conceptual. End screen con
@@ -63,7 +63,7 @@ de maximizar dinero.
 Sabotea antes de entregar valor.
 
 **CTA genérico sin acción específica** ("espero les haya gustado,
-suscribite"): bajo click-through a lo que sea.
+suscríbete"): bajo click-through a lo que sea.
 
 **Asumir "anti-suscríbete es regla universal"**: DotCSV prueba lo
 contrario. Matchear al canal objetivo — la cultura de la audiencia

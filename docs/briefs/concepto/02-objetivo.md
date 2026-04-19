@@ -65,7 +65,7 @@ que abandona porque ya entendió.
 - **Verbo observable obligatorio:** instalar, reproducir, identificar,
   explicar con sus palabras, decidir entre A y B, configurar, debuggear.
   Listar verbos en checklist mental antes de cerrar.
-- **Test de medibilidad:** si no podés diseñar un retrieval checkpoint
+- **Test de medibilidad:** si no puedes diseñar un retrieval checkpoint
   para verificar el objetivo [P1-§8.1], no es medible — re-formularlo.
 
 ## Conflictos conocidos

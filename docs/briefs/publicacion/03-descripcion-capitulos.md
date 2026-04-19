@@ -47,7 +47,7 @@ diferencial.
 no ayuda.
 
 **Primer párrafo con auto-promoción** ("soy X y hago videos de Y —
-si te gusta suscribite"): desperdicia el primer screen de
+si te gusta suscríbete"): desperdicia el primer screen de
 descripción.
 
 **Links rotos o enlaces que redirigen a páginas genéricas.** Los

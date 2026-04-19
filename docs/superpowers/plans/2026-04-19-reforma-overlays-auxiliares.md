@@ -83,7 +83,7 @@ Reemplazar el contenido entero de `docs/briefs/edicion/10-overlays-auxiliares.md
 ---
 decision: edicion/10-overlays-auxiliares
 etapa: edicion
-pregunta: ¿Qué overlays auxiliares generás en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los producís?
+pregunta: ¿Qué overlays auxiliares generas en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los produces?
 fuentes:
   - P1-§2.3-#1                 # coherencia
   - P1-§2.3-#2                 # señalización
@@ -866,7 +866,7 @@ data = {
             "titulo": "Cierre con CTA",
             "tipo": "camara", "encuadre": "ECU", "duracion": "0:20",
             "visual": "Primerísimo plano, mirada directa.",
-            "narracion": "Si querés ver cómo ajustar tu presupuesto familiar, dejé el link en la descripción.",
+            "narracion": "Si quieres ver cómo ajustar tu presupuesto familiar, dejé el link en la descripción.",
             "transicion": "fade a negro", "zoomOBS": False,
             "escena": "cam-full", "shortcut": "",
             "referencia": "", "senalizacion": "",
@@ -1007,8 +1007,7 @@ Verificar cada punto al cierre del plan:
 ## Notas para quien ejecute
 
 1. **El toolkit no tiene tests unitarios.** El único "test" automatizado es `scripts/verificar-briefs.sh --strict`. Validación visual del demo es inspección humana en el navegador. No inventes tests jest/pytest — no hay suite.
-2. **Idioma:** español de México. Evitar formas rioplatenses (`vos`, `querés`, `tenés`, `acá`). Usar `tú` y formas mexicanas.
-3. **rough.js está embebido** en el template (~28KB minificados). No se usa CDN. Todas las funciones `rc.xxx(...)` vienen de ese bundle.
-4. **Variantes A/B ya existen** en el template — no tocar esa lógica.
-5. **El demo `/tmp/storyboard-draft-demo.html` no se versiona** — es efímero. Solo el hidrator `/tmp/hydrate-demo.py` también es efímero.
-6. **Push a main lo hace el usuario** desde su terminal. No intentar `git push` desde sesión del asistente.
+2. **rough.js está embebido** en el template (~28KB minificados). No se usa CDN. Todas las funciones `rc.xxx(...)` vienen de ese bundle.
+3. **Variantes A/B ya existen** en el template — no tocar esa lógica.
+4. **El demo `/tmp/storyboard-draft-demo.html` no se versiona** — es efímero. Solo el hidrator `/tmp/hydrate-demo.py` también es efímero.
+5. **Push a main lo hace el usuario** desde su terminal. No intentar `git push` desde sesión del asistente.

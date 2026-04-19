@@ -681,10 +681,10 @@ de predicción dopaminérgica negativo erosiona la disposición a continuar.
   provocativa + logo animado. CCN-fit directo con el título. WPM ~235 desde
   el primer segundo.
 - **Midudev `¿Qué es Vite?`** [P2-ficha-midudev]: hook con stake de
-  productividad ("tu webpack tarda 45s, mirá esto"), muestra resultado
+  productividad ("tu webpack tarda 45s, mira esto"), muestra resultado
   antes de explicar. Hispano, WPM ~188.
 - **Veritasium** [P2-ficha-veritasium]: hook con pregunta contraintuitiva
-  ("la mayoría de gente contesta mal esto — vos también?"). Stake
+  ("la mayoría de gente contesta mal esto — ¿tú también?"). Stake
   cognitivo antes que económico.
 - **Kurzgesagt** [P2-ficha-kurzgesagt]: hook con afirmación dramática +
   animación isotype densa. WPM bajo (~150) compensado por canal visual
@@ -955,7 +955,7 @@ El costo cognitivo de generar la respuesta es el driver del efecto.
 
 - **Tutorial técnico** [P2-meta-tutorial]: retrieval implícito en forma de
   pausas donde el espectador puede probar el comando antes de ver el
-  resultado. "Pausá y probalo si querés; te espero."
+  resultado. "Pausa y pruébalo si quieres; te espero."
 - **Onboarding corporativo** [P2-meta-onboarding]: retrieval explícito vía
   quiz embebido, 1 cada 2-3 min. Plataformas LMS lo enforzan; YouTube no.
 - **Divulgación**: retrieval casi inexistente en el formato estándar. Excepto
@@ -967,7 +967,7 @@ El costo cognitivo de generar la respuesta es el driver del efecto.
 **Pregunta retórica sin pausa para respuesta.** "¿Cómo creen que funciona?
 Bueno, funciona así." No es retrieval — el cerebro no tiene tiempo de
 generar. Si hay pregunta, hay que darle tiempo (2-3s mínimo de animación
-vacía o "pausá ahora").
+vacía o "pausa ahora").
 
 ## Heurística numérica
 
@@ -1213,15 +1213,15 @@ version: 1
 
 **Transferencia** [P1-§6.4]: el aprendizaje se consolida cuando se aplica
 en un contexto distinto al original. Un CTA que invita a aplicar
-(construir, probar, enseñar a otro) produce mejor retención que "suscribite".
+(construir, probar, enseñar a otro) produce mejor retención que "suscríbete".
 
 **Cierre de open loop** [P1-§6.2]: la pregunta abierta del hook debe
 resolverse en el cierre. Dejarla abierta frustra (Zeigarnik inverso).
 
 ## Casos
 
-- **Fireship** [P2-ficha-fireship]: CTA = link al repo/docs + "hacé el
-  tutorial oficial" (invita a transferencia). "Suscribite" al final,
+- **Fireship** [P2-ficha-fireship]: CTA = link al repo/docs + "haz el
+  tutorial oficial" (invita a transferencia). "Suscríbete" al final,
   después del valor entregado.
 - **Veritasium** [P2-ficha-veritasium]: CTA = pregunta generativa
   ("¿cómo aplicarías esto en tu caso?") + invitación a otro video
@@ -1231,7 +1231,7 @@ resolverse en el cierre. Dejarla abierta frustra (Zeigarnik inverso).
 
 ## Anti-patrón
 
-**"Suscribite al inicio" sin valor entregado** [P2-idea-guion-antipatrones]:
+**"Suscríbete al inicio" sin valor entregado** [P2-idea-guion-antipatrones]:
 caída típica de retention. El CTA de suscripción al inicio, antes de
 demostrar valor, correlaciona con abandono a los 30s.
 
@@ -1251,8 +1251,8 @@ Ninguno.
 ## Salida esperada
 
 - Cierre del open loop del hook (una frase explícita que conecta hook↔cierre).
-- CTA específico: acción concreta ("probá X con este repo", "leé Y en el
-  link", "contame en comentarios qué harías en Z caso").
+- CTA específico: acción concreta ("prueba X con este repo", "lee Y en el
+  link", "cuéntame en comentarios qué harías en Z caso").
 - Suscripción opcional al final, después del valor — no al inicio.
 ```
 
@@ -1372,7 +1372,7 @@ docs/briefs/guion/*.md
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información pertinente con trazabilidad al pilar vía IDs estables
 (`[P1-§X.Y]`, `[P2-ficha-<slug>]`). Si durante el flujo surge una pregunta
-del usuario fuera del scope de los briefs, usá `Grep` dirigido por ID
+del usuario fuera del scope de los briefs, usa `Grep` dirigido por ID
 (ej. `grep "P1-§6.4" docs/pilares/01-fundamentos-cognitivos.md`), no
 `Read` del archivo completo.
 

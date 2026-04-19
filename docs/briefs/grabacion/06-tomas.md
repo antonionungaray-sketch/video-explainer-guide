@@ -1,7 +1,7 @@
 ---
 decision: grabacion/06-tomas
 etapa: grabacion
-pregunta: ¿Grabás todo de corrido en una toma, o segmentás por bloques con pausas?
+pregunta: ¿Grabas todo de corrido en una toma, o segmentas por bloques con pausas?
 fuentes:
   - P1-§2.3-#6                 # segmentación
   - P1-§1.3                    # anticipación dopaminérgica (cansancio del creador)

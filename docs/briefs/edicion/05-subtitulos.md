@@ -1,7 +1,7 @@
 ---
 decision: edicion/05-subtitulos
 etapa: edicion
-pregunta: ¿Cómo generás, revisás y formateás los subtítulos/closed captions cumpliendo estándares de velocidad y accesibilidad?
+pregunta: ¿Cómo generas, revisas y formateas los subtítulos/closed captions cumpliendo estándares de velocidad y accesibilidad?
 fuentes:
   - P1-§5.2                    # subtítulos y velocidad de lectura
   - P1-§5.3                    # posición de subtítulos

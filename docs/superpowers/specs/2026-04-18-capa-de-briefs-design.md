@@ -105,9 +105,9 @@ Lee todos los briefs de esta etapa:
 
 ~6-8 archivos, 40-80 líneas cada uno, orden alfabético = orden de flujo.
 
-NO leer pilares completos en runtime. Si durante el flujo necesitás
+NO leer pilares completos en runtime. Si durante el flujo necesitas
 consultar un pilar directamente por una pregunta del usuario fuera del
-scope de los briefs, usá Grep dirigido por ID (P1-§X.Y), no Read del
+scope de los briefs, usa Grep dirigido por ID (P1-§X.Y), no Read del
 archivo completo.
 ```
 

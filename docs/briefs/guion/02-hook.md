@@ -36,10 +36,10 @@ de predicción dopaminérgica negativo erosiona la disposición a continuar.
   provocativa + logo animado. CCN-fit directo con el título. WPM ~235 desde
   el primer segundo.
 - **Midudev `¿Qué es Vite?`** [P2-ficha-midudev]: hook con stake de
-  productividad ("tu webpack tarda 45s, mirá esto"), muestra resultado
+  productividad ("tu webpack tarda 45s, mira esto"), muestra resultado
   antes de explicar. Hispano, WPM ~188.
 - **Veritasium** [P2-ficha-veritasium]: hook con pregunta contraintuitiva
-  ("la mayoría de gente contesta mal esto — vos también?"). Stake
+  ("la mayoría de gente contesta mal esto — ¿tú también?"). Stake
   cognitivo antes que económico.
 - **Kurzgesagt** [P2-ficha-kurzgesagt]: hook con afirmación dramática +
   animación isotype densa. WPM bajo (~150) compensado por canal visual

@@ -25,7 +25,7 @@ if [[ "$STATUS" -ne 0 ]]; then
     echo ""
     echo "⚠️  drift detectado tras editar $FILE"
     echo "$OUTPUT" | grep -E "^(STALE|WARN):" || true
-    echo "→ invocá el skill 'sincronizar-briefs' para re-sincronizar los briefs afectados."
+    echo "→ invoca el skill 'sincronizar-briefs' para re-sincronizar los briefs afectados."
   } >&2
 fi
 

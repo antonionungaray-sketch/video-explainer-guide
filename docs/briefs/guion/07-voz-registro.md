@@ -41,14 +41,13 @@ en aprendizaje profundo.
   compensado con animación densa [P1-§2.3-#8].
 
 **Calibración por variante del español:** los WPM hispanos observados
-son mayormente peninsular. Para rioplatense denso restar 10-15 WPM
-respecto al peninsular por prosodia más marcada; para neutro-latam
-dejar igual.
+son mayormente peninsular. Para variantes con prosodia más marcada,
+ajustar 10-15 WPM a la baja; para neutro-latam dejar igual.
 
 ## Anti-patrón
 
 **Registro formal/corporativo en contenido personal.** "En este video
-procederemos a examinar…" degrada engagement vs "Mirá lo que podemos
+procederemos a examinar…" degrada engagement vs "Mira lo que podemos
 hacer con…". El registro formal tiene su lugar (compliance, legal), no
 en tutorial ni divulgación.
 

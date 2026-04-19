@@ -26,7 +26,7 @@ degrada inteligibilidad y aprendizaje. Si hay música, debe tener función
 
 - **YouTube y la mayoría de plataformas sociales:** target **-14 LUFS
   integrated**, true peak **≤ -1 dBTP**. YouTube normaliza al subir: si
-  subís más fuerte, baja; si subís más bajo, NO sube (pierdes loudness
+  subes más fuerte, baja; si subes más bajo, NO sube (pierdes loudness
   perceptual).
 - **Podcast (Spotify/Apple Podcasts):** target **-16 LUFS integrated**,
   true peak **≤ -1 dBTP**.
