@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/grabacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T21:25:26Z
+> Última regeneración: 2026-04-19T22:55:28Z
 
 ## Decisiones críticas
 
@@ -38,13 +38,13 @@
 
 ### 06. tomas
 
-- **Pregunta:** ¿Grabás todo de corrido en una toma, o segmentás por bloques con pausas?
+- **Pregunta:** ¿Grabas todo de corrido en una toma, o segmentas por bloques con pausas?
 - **Fuentes:** P1-§2.3-#6 P1-§1.3 P2-preprod-patrones P2-ficha-theprimeagen P2-ficha-mouredev P2-ficha-coding-train 
 - **Brief:** [`briefs/grabacion/06-tomas.md`](../briefs/grabacion/06-tomas.md)
 
 ### 07. b-roll-plan
 
-- **Pregunta:** ¿Qué material auxiliar (B-roll, screenshots, recursos) necesitás producir antes de editar?
+- **Pregunta:** ¿Qué material auxiliar (B-roll, screenshots, recursos) necesitas producir antes de editar?
 - **Fuentes:** P1-§2.3-#5 P1-§2.3-#4 P1-§2.3-#1 P2-preprod-patrones P2-preprod-antipatrones P2-ficha-veritasium P2-ficha-fireship P2-ficha-kurzgesagt 
 - **Brief:** [`briefs/grabacion/07-b-roll-plan.md`](../briefs/grabacion/07-b-roll-plan.md)
 

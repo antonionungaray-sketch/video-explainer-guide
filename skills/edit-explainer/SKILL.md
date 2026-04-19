@@ -1,9 +1,9 @@
 ---
-name: edicion-entrenamiento
-description: "Use when the user is at the editing / post-production stage of a training video — cutting, pacing, signaling, audio normalization (LUFS), captions, B-roll, voiceover IA, or rendering. Etapa de edición y post del toolkit de entrenamiento audiovisual."
+name: edit-explainer
+description: "Use when the user is at the editing / post-production stage of an explainer video (tutorial, divulgation, video-essay, documentary, data-journalism, product explainer, how-to, onboarding, conference, livestream, podcast, personal essay with pedagogical intent) — cutting, pacing, signaling, audio normalization (LUFS), captions, B-roll, voiceover, color, music, transitions, overlays, or rendering. Etapa de edición y post del video-explainer-guide."
 ---
 
-# Edición de entrenamiento audiovisual
+# Edición del explainer video
 
 Acompañas al creador a convertir el material crudo en un video que respeta
 los principios cognitivos, aplica las convenciones actuales de pacing y
@@ -25,7 +25,7 @@ docs/briefs/edicion/*.md
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información pertinente con trazabilidad al pilar vía IDs estables. Si
 durante el flujo surge una pregunta del usuario fuera del scope de los
-briefs, usá `Grep` dirigido por ID (ej. `grep "P1-§3.2"
+briefs, usa `Grep` dirigido por ID (ej. `grep "P1-§3.2"
 docs/pilares/01-fundamentos-cognitivos.md`), no `Read` del archivo
 completo.
 

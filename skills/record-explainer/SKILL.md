@@ -1,9 +1,9 @@
 ---
-name: grabacion-entrenamiento
-description: "Use when the user is at the recording / capture stage of a training video — setting up audio, video, lighting, scenes, screen capture, or planning takes. Etapa de pre-producción y grabación del toolkit de entrenamiento audiovisual."
+name: record-explainer
+description: "Use when the user is at the recording / capture stage of an explainer video (tutorial, divulgation, video-essay, documentary, data-journalism, product explainer, how-to, onboarding, conference, livestream, podcast, personal essay with pedagogical intent) — setting up audio, video, lighting, scenes, screen capture, multi-mic for podcast, live-stream infrastructure, or planning takes. Etapa de pre-producción y grabación del video-explainer-guide."
 ---
 
-# Grabación de entrenamiento audiovisual
+# Grabación del explainer video
 
 Acompañas al creador a producir material crudo de calidad suficiente
 para que la edición no tenga que rescatar defectos.
@@ -36,11 +36,11 @@ Al cargarlo, **leé el header de metadatos** (`estado:` y `locked-at:`).
   de storyboard, pacing, shotlist ni requisitos de captura. Si durante
   la grabación aparece una necesidad de cambio, se anota en **Notas
   de Producción** del plan de grabación y se avisa al usuario que
-  tiene que re-invocar `previsualizacion-entrenamiento` para re-lockear.
+  tiene que re-invocar `storyboard-explainer` para re-lockear.
 
 - **`estado: draft`**: avisar explícitamente al usuario:
   > "El Production Brief está en `draft`, no lockeado. Recomiendo
-  > cerrarlo invocando `previsualizacion-entrenamiento` antes de
+  > cerrarlo invocando `storyboard-explainer` antes de
   > grabar. ¿Preferís volver a cerrarlo o seguís adelante asumiendo
   > que el brief no es contrato?"
   No bloquear: si el usuario decide seguir, continuar con disclaimer
@@ -52,8 +52,8 @@ Al cargarlo, **leé el header de metadatos** (`estado:` y `locked-at:`).
 ### Consumo
 
 - **Tipo de bloque** del storyboard → input para `02-video-encuadre`:
-  si todos los bloques son `demo-pantalla`, auto-proponé "sin face-cam";
-  si hay `camara` y `mixto`, proponé face-cam principal o PiP.
+  si todos los bloques son `demo-pantalla`, auto-propón "sin face-cam";
+  si hay `camara` y `mixto`, propón face-cam principal o PiP.
 - **Duración estimada por bloque** → input para `06-tomas`: plan de
   bloques con duraciones objetivo y puntos de corte sugeridos.
 - **Shotlist** → input para `05-captura-pantalla`: cursor/highlight
@@ -73,7 +73,7 @@ solo lo referencia. Cambios se anotan en **Notas de Producción**.
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si durante el flujo
-surge una pregunta fuera del scope de los briefs, usá `Grep` dirigido
+surge una pregunta fuera del scope de los briefs, usa `Grep` dirigido
 por ID (ej. `grep "P3-preprod-audio"
 docs/pilares/03-herramientas.md`), no `Read` del archivo completo.
 
@@ -131,7 +131,7 @@ documentado**:
 ```
 PROYECTO: [nombre del video]
 DURACIÓN ESTIMADA: [N] min
-GUIÓN DE REFERENCIA: [link al artefacto de guion-entrenamiento]
+GUIÓN DE REFERENCIA: [link al artefacto de script-explainer]
 
 ═══ 01. AUDIO ═══
 [MICRÓFONO]: [modelo + tipo]

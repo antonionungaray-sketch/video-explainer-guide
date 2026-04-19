@@ -1,9 +1,9 @@
 ---
-name: previsualizacion-entrenamiento
-description: "Use when the user finished the script and wants to validate design, pacing, references, and demo execution order before recording — producing a Production Brief that guides the recording session. Etapa opcional recomendada entre guion y grabación del toolkit de entrenamiento audiovisual."
+name: storyboard-explainer
+description: "Use when the user finished the script of an explainer video and wants to validate design, pacing, references, and shot execution order before recording — producing a Production Brief that guides the recording session. Etapa opcional recomendada entre guión y grabación del video-explainer-guide. No aplica a modalidades donde no hay storyboard visual previo (live stream puro, podcast conversacional)."
 ---
 
-# Previsualización de entrenamiento audiovisual
+# Storyboard y previsualización del explainer video
 
 Acompañas al creador a producir un **Production Brief** — un documento
 consolidado que fija, antes de grabar, cómo se va a ver el video bloque
@@ -13,7 +13,7 @@ graban las demos.
 ## Carácter opcional
 
 Esta etapa es **recomendada pero no bloqueante**. Si el usuario viene
-desde `crear-entrenamiento` con el guion cerrado, el orquestador la
+desde `create-explainer` con el guion cerrado, el orquestador la
 ofrece; el usuario puede saltarla con consciencia explícita
 (re-shoots, formato repetido, video muy simple). Una vez invocado este
 skill, corre hasta el final — no hay lógica de bypass interna.
@@ -31,7 +31,7 @@ docs/briefs/previsualizacion/*.md
 01-storyboard-y-referencias → 02-pacing-estimado → 03-shotlist-demos
 → 04-requisitos-captura.)
 
-También **carga el guion producido por `guion-entrenamiento`**: es el
+También **carga el guion producido por `script-explainer`**: es el
 input obligatorio de esta etapa. Si no hay guion documentado, detente
 y pide al usuario volver a la etapa de guion primero.
 
@@ -252,7 +252,7 @@ Si el usuario acepta:
 - Escribir la fecha de hoy en `locked-at:` (formato `YYYY-MM-DD`).
 
 Si el usuario prefiere dejarlo `draft`:
-- Mantener el estado y avisar que `grabacion-entrenamiento` va a
+- Mantener el estado y avisar que `record-explainer` va a
   alertar sobre el draft al arrancar (no bloquea, solo avisa).
 
 **Cambios post-lock** = nueva invocación de este skill, revisión de
@@ -261,7 +261,7 @@ Misma disciplina que los briefs `sync:`.
 
 ## Consumo downstream
 
-El Production Brief es input opcional para `grabacion-entrenamiento`:
+El Production Brief es input opcional para `record-explainer`:
 - Tipo de bloque → informa a `grabacion/02-video-encuadre` (face-cam
   vs sin cara vs mixto).
 - Duración estimada por bloque → informa a `grabacion/06-tomas` (plan
@@ -278,7 +278,7 @@ Grabación NO modifica el Production Brief; solo lo lee.
 
 ## Consumo downstream — edición
 
-El Production Brief es también input para `edicion-entrenamiento`:
+El Production Brief es también input para `edit-explainer`:
 - **Transiciones declaradas por bloque (sección 1 del storyboard)**
   → fuente de verdad para `edicion/09-transiciones`. Transiciones
   marcadas como `scene-switch F2` ya están en el crudo (no son post);

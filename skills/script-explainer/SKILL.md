@@ -1,12 +1,13 @@
 ---
-name: guion-entrenamiento
-description: "Use when the user is at the script/storyboard stage of a training, instructional, or tutorial video — defining audience, learning objective, hook, narrative structure, segmentation, retrieval checkpoints, or producing the script document. Etapa de guión del toolkit de entrenamiento audiovisual."
+name: script-explainer
+description: "Use when the user is at the script/storyboard stage of an explainer video (tutorial, divulgation, video-essay, documentary, data-journalism, product explainer, how-to, onboarding, conference, livestream, podcast, personal essay with pedagogical intent) — defining audience, pedagogical objective, hook, narrative structure, segmentation, consolidation checkpoints, or producing the script document. Etapa de guión del video-explainer-guide."
 ---
 
-# Guión de entrenamiento audiovisual
+# Guión del explainer video
 
 Acompañas al creador a producir un guión ejecutable basado en evidencia
-cognitiva, tendencias actuales y herramientas disponibles.
+cognitiva, teoría del medio, tendencias actuales y herramientas
+disponibles.
 
 ## Carga obligatoria al inicio
 
@@ -23,38 +24,38 @@ docs/briefs/guion/*.md
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información pertinente con trazabilidad al pilar vía IDs estables
 (`[P1-§X.Y]`, `[P2-ficha-<slug>]`). Si durante el flujo surge una pregunta
-del usuario fuera del scope de los briefs, usá `Grep` dirigido por ID
+del usuario fuera del scope de los briefs, usa `Grep` dirigido por ID
 (ej. `grep "P1-§6.4" docs/pilares/01-fundamentos-cognitivos.md`), no
 `Read` del archivo completo.
 
 ## Paso 0 — Concept Brief (si existe)
 
 Antes de plantear la primera decisión, **chequeá si existe un Concept
-Brief** producido por `concepto-entrenamiento`. Es el contrato upstream
+Brief** producido por `concept-explainer`. Es el contrato upstream
 que define audiencia, objetivo medible, promesa, ángulo, formato,
 plataforma, tono y restricciones.
 
-- **Si el usuario lo pasa explícitamente** (ruta o pegado): leelo,
-  resumilo en 3-5 líneas al usuario, y avisá si está `draft`.
-- **Si no lo pasa pero el orquestador lo derivó**: idem, leelo y
-  resumí.
-- **Si no hay Concept Brief**: continuá con el flujo estándar (el
+- **Si el usuario lo pasa explícitamente** (ruta o pegado): léelo,
+  resúmelo en 3-5 líneas al usuario, y avisa si está `draft`.
+- **Si no lo pasa pero el orquestador lo derivó**: idem, léelo y
+  resume.
+- **Si no hay Concept Brief**: continúa con el flujo estándar (el
   brief 01-audiencia preguntará desde cero).
 
 **Tratamiento por estado:**
 
 - `estado: locked` — es contrato. El brief 01-audiencia confirma con
   el usuario los datos del Concept Brief en lugar de preguntar desde
-  cero. Si el usuario quiere cambiar algo significativo, pausá el
-  flujo y sugerí re-invocar `concepto-entrenamiento` para re-lockear.
-- `estado: draft` — avisá explícitamente: "El Concept Brief está en
+  cero. Si el usuario quiere cambiar algo significativo, pausa el
+  flujo y sugiere re-invocar `concept-explainer` para re-lockear.
+- `estado: draft` — avisa explícitamente: "El Concept Brief está en
   draft. Voy a usarlo como referencia pero las decisiones del guión
   pueden divergir si surgen huecos. Para fijarlo como contrato,
-  re-invocá concepto-entrenamiento al cierre." Continuá normal.
+  re-invoca concept-explainer al cierre." Continúa normal.
 
 El Concept Brief informa también al brief 04-segmentacion (duración),
 07-voz-registro (registro/persona gramatical) y 08-cta (funnel) —
-confirmá con el usuario en cada uno en lugar de re-decidir desde cero
+confirma con el usuario en cada uno en lugar de re-decidir desde cero
 cuando ya está cubierto upstream.
 
 ## Flujo
@@ -90,7 +91,7 @@ Para cada decisión:
    ```
    subagent_type: general-purpose
    prompt:
-     Sos un ideador divergente. Tarea: generar N variantes del artefacto
+     Eres un ideador divergente. Tarea: generar N variantes del artefacto
      <decision>.
 
      CONTEXTO ACUMULADO (decisiones previas aprobadas):
@@ -142,7 +143,7 @@ META-FORMATO: [tutorial / explainer / demo / micro-curso]
 
 ═══ NOTAS DE PRODUCCIÓN ═══
 [WPM OBJETIVO]: [número + canal visual que lo compensa]
-[IDIOMA/ACENTO]: [ej. español rioplatense / peninsular / anglo]
+[IDIOMA/ACENTO]: [ej. español neutro latam / peninsular / anglo]
 [SUBTÍTULOS DE ACCESIBILIDAD]: [sí/no + excepción al principio de redundancia]
 [CHAPTER MARKERS]: [lista por bloque]
 [CONFLICTOS FLAGGEADOS]: [lista — incluye tanto P2 vs P1 como P1 vs restricción externa legal/ética]
@@ -163,7 +164,7 @@ Verifica antes de declarar la etapa completa:
       de Producción.
 
 **Siguiente etapa recomendada: previsualización.** Al cerrar el
-guión, sugerí al usuario pasar por `previsualizacion-entrenamiento`
+guión, sugiere al usuario pasar por `storyboard-explainer`
 para fijar storyboard, pacing estimado y shotlist de demos antes
 de grabar. Es opcional — si el video es re-shoot de un formato
 conocido o muy simple, se puede saltar, pero documéntalo en Notas

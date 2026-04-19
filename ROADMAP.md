@@ -1,13 +1,51 @@
-# ROADMAP v1 — Playbook 1.0 para producción de video de entrenamiento estilo YouTube, con demo y guardrail anti-slop
+# ROADMAP v2 — Reforma del toolkit: `training-video-toolkit` → `video-explainer-guide`
 
-Source: office-hours session 2026-04-18, mirror of `~/.gstack/projects/antonionungaray-sketch-training-video-toolkit/antonio-main-design-20260418-004705.md`
+Source: diálogo de design 2026-04-19, plan file `/home/antonio/.claude/plans/desafortunadamente-este-proyecto-est-bubbly-charm.md`
 Branch: main
-Status: APPROVED
-Mode: Builder
+Status: IN PROGRESS (fase 0 cerrada, fases 1-6 pendientes)
+Mode: Reform
 
 ## Problem Statement
 
-El repo `learning-video-runbook` (antes `training-video-toolkit`) ya tiene la arquitectura correcta — orchestrator + 4 skills de etapa + 3 pilares + 4 vistas — pero funciona hoy más como *esqueleto* que como *playbook*. La meta es usarlo uno mismo y hacer que funcione para otros creadores, produciendo contenido audiovisual educativo y de divulgación atractivo para audiencias modernas de YouTube.
+El toolkit está sesgado lingüística y estructuralmente hacia un sub-género (capacitación corporativa / tutorial técnico formal), cuando su alcance real es mucho más amplio — cualquier explainer video con intención pedagógica: divulgación científica, video-ensayo, documental narrativo, periodismo analítico visual, explainer comercial, how-to, onboarding, conferencia, live stream educativo, podcast audiovisual, personal essay pedagógico. El sesgo vive en tres capas: (a) naming público (paquete, repo, skills con sufijo `-entrenamiento`), (b) framing del pilar 1 (centrado casi exclusivamente en instrucción multimedia formal — Mayer, Sweller), y (c) briefs que heredan ese framing y prescriben decisiones contaminantes para modalidades no-instruccionales (retrieval explícito, métricas de post-test, CTA de aplicación).
+
+La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad con los nombres `*-entrenamiento` (ruptura mayor, bump a 1.0.0).
+
+## Scope de la reforma (ver plan file para detalle)
+
+| Fase | Qué | Tamaño | Estado |
+|---|---|---|---|
+| 0 | Rebrand semántico superficial — nombre del paquete, repo, 7 skills, copy en README/CLAUDE/ROADMAP/configs/HTML/onboarding | 1-2 sesiones | **Cerrada 2026-04-19** (ver `CHANGELOG.md [1.0.0]`). Pendiente: renombre de carpeta local y rename del repo en GitHub (diferido; el repo vive como `training-video-toolkit` en GitHub pero el plugin ya se llama `video-explainer-guide`). |
+| 1 | Diseño formal del modelo de 4 ejes estructurales + 12 presets de modalidad | 1 sesión | Pendiente |
+| 2 | Expansión del pilar 1: agregar teoría documental (Nichols), ensayo fílmico (Rascaroli), retórica visual (Cairo, Tufte), active learning (Freeman, Mazur), manteniendo Mayer/Sweller como núcleo | 3-5 sesiones | Pendiente |
+| 3 | Expansión de pilares 2 y 3 con fichas de creators y herramientas para modalidades nuevas | 2-3 sesiones | Pendiente |
+| 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | Pendiente |
+| 5 | Adaptación de los 7 skills al Concept Brief con campo `modalidad` + ejes | 1-2 sesiones | Pendiente |
+| 6 | Verificación end-to-end, vistas regeneradas, cierre | 1 sesión | Pendiente |
+
+## Decisiones ya tomadas
+
+- **Término sombrilla:** `explainer` (jerga viva del nicho).
+- **Paquete + repo:** `video-explainer-guide` (slugs en inglés técnico; "guide" por accesibilidad sobre "runbook"/"toolkit").
+- **Skills:** verbos imperativos en inglés + sufijo `-explainer` (`create-explainer`, `concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`). Identificadores kebab-case; títulos humanos internos en español de México.
+- **Contenido:** español de México en pilares, briefs, SKILL.md prose, vistas, fichas. Slugs de briefs permanecen en español (`decision: guion/04-retrieval`) por contrato de ID estable.
+- **12 modalidades** soportadas como presets nombrados de los 4 ejes; modalidad custom posible vía declaración directa de ejes.
+- **4 ejes:** arco dominante · objetivo cognitivo · grado de edición · rol del presentador.
+
+---
+
+# ROADMAP v1 — Playbook 1.0 para producción de explainer video estilo YouTube, con demo y guardrail anti-slop (histórico)
+
+> **Nota:** lo que sigue es el ROADMAP v1 tal como se aprobó el 2026-04-18, antes de detectarse el sesgo lingüístico-estructural descrito arriba. Se conserva como referencia histórica y porque parte de su contenido (pilar 2 afilado, Makefile, guardrail anti-slop) sigue vigente y se integra a las fases de la reforma. Algunas referencias internas a `*-entrenamiento` y al nombre anterior `learning-video-runbook` / `training-video-toolkit` están actualizadas; otras quedan como eco histórico cuando el contexto lo justifica.
+
+Source: office-hours session 2026-04-18, mirror of `~/.gstack/projects/antonionungaray-sketch-training-video-toolkit/antonio-main-design-20260418-004705.md`
+Branch: main
+Status: APPROVED (superseded by v2)
+Mode: Builder
+
+## Problem Statement (v1, histórico)
+
+El repo `video-explainer-guide` (antes `learning-video-runbook`, antes `training-video-toolkit`) ya tiene la arquitectura correcta — orchestrator + 6 skills de etapa + 3 pilares + vistas — pero funciona hoy más como *esqueleto* que como *playbook*. La meta es usarlo uno mismo y hacer que funcione para otros creadores, produciendo contenido audiovisual educativo y de divulgación atractivo para audiencias modernas de YouTube.
 
 El gap no es estructura: es (a) contenido suficientemente afilado en los pilares dinámicos (2 y 3), (b) un guardrail explícito contra AI slop que preserve voz humana, y (c) una primera prueba real — un video publicado — que demuestre el flujo de punta a punta.
 
@@ -104,7 +142,7 @@ Con README del template que explica dependencias (ffmpeg, auto-editor, WhisperX)
 ### Semana 3 — Video como demo (producción + publicación)
 
 - Producir el tutorial de la herramienta de voz→texto (5-7 min, target tutorial técnico de software).
-- Orden de invocación: `/crear-entrenamiento` (orchestrator decide etapa) → `/guion-entrenamiento` → `/grabacion-entrenamiento` → `/edicion-entrenamiento` → `/anti-slop-guardrail` (gate obligatoria antes de exportar) → `/publicacion-entrenamiento`.
+- Orden de invocación: `/create-explainer` (orchestrator decide etapa) → `/script-explainer` → `/record-explainer` → `/edit-explainer` → `/anti-slop-guardrail` (gate obligatoria antes de exportar) → `/publish-explainer`.
 - `anti-slop-guardrail` emite `anti-slop-audit.json` con schema mínimo:
   ```json
   { "proyecto": "voz-a-texto-tutorial", "fecha": "2026-05-XX",
@@ -167,7 +205,7 @@ Orden recomendado (Approach B desglosado):
 
 ## The Assignment
 
-**Esta semana:** correr `/actualizar-tendencias` con un scope explícito — "tutoriales técnicos de software 2026" — y producir un draft de pilar 2 con al menos 6 patrones citados antes del domingo. No escribas código todavía. El guion del tutorial de voz→texto espera hasta que pilar 2 esté medianamente completo. Cuando tengas el draft, invoca `/crear-entrenamiento` y prueba si el orchestrator ya te direcciona bien hacia `guion-entrenamiento` con el pilar 2 actualizado. Ese primer test te va a decir más que una semana de planning.
+**Esta semana (v1, histórico):** correr `/actualizar-tendencias` con un scope explícito — "tutoriales técnicos de software 2026" — y producir un draft de pilar 2 con al menos 6 patrones citados antes del domingo. No escribas código todavía. El guion del tutorial de voz→texto espera hasta que pilar 2 esté medianamente completo. Cuando tengas el draft, invoca `/create-explainer` y prueba si el orchestrator ya te direcciona bien hacia `script-explainer` con el pilar 2 actualizado. Ese primer test te va a decir más que una semana de planning.
 
 ## Reviewer Concerns (no bloqueantes pero registrados)
 

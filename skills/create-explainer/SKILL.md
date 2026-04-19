@@ -1,11 +1,11 @@
 ---
-name: crear-entrenamiento
-description: "Use when the user wants to produce, create, design, plan, script, record, edit, or publish video training, instructional, educational, tutorial, course, onboarding, or corporate training content. Orquestador que identifica en qué etapa está el creador y delega al skill específico (concepto / guion / previsualizacion / grabacion / edicion / publicacion). En español."
+name: create-explainer
+description: "Use when the user wants to produce, create, design, plan, script, record, edit, or publish an explainer video with pedagogical intent — tutorials, divulgation, video-essay, documentary, data-journalism, product explainer, how-to, onboarding, conference, livestream, podcast audiovisual, personal essay and similar formats. Orchestrator that identifies the creator's current stage and delegates to the stage-specific skill (concept / script / storyboard / record / edit / publish). Content in Spanish."
 ---
 
-# Crear material de entrenamiento audiovisual — orquestador
+# Producir explainer video — orquestador
 
-Este skill es el punto de entrada del toolkit de creación de entrenamiento audiovisual. Su trabajo es **identificar dónde está el creador en el ciclo de producción** y delegar al skill específico de la etapa, manteniendo el contexto del formato (técnico vs corporativo).
+Este skill es el punto de entrada del `video-explainer-guide`. Su trabajo es **identificar dónde está el creador en el ciclo de producción** y delegar al skill específico de la etapa. El scope cubre cualquier video con intención pedagógica — tutoriales técnicos, divulgación científica, video-ensayo, documental narrativo, periodismo analítico visual, explainer comercial, how-to, onboarding, conferencia grabada, live stream educativo, podcast audiovisual, personal essay con intención de enseñar — pero **no cubre** vlogs, reacciones, gameplay, entretenimiento puro, videoclips musicales ni contenido donde no hay un concepto o habilidad que transferir al espectador (ver "Filtro de scope" al final).
 
 ## Arquitectura del toolkit
 
@@ -17,7 +17,7 @@ Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar
 - Pilar 2 (dinámico) — `02-tendencias-y-casos.md` — tendencias y casos actuales.
 - Pilar 3 (dinámico) — `03-herramientas.md` — herramientas vigentes.
 
-Los skills de etapa (`concepto-entrenamiento`, `guion-entrenamiento`, `previsualizacion-entrenamiento`, `grabacion-entrenamiento`, `edicion-entrenamiento`, `publicacion-entrenamiento`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
+Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
 
 ## Flujo del orquestador
 
@@ -29,24 +29,25 @@ Los skills de etapa (`concepto-entrenamiento`, `guion-entrenamiento`, `previsual
    - **Edición y post** — material crudo capturado, está editando.
    - **Publicación y medición** — video editado, está por publicar o iterando con métricas.
 
-2. **Identificar el formato** (si no es obvio):
-   - **Tutorial técnico / software** — screencasts, demos de producto, tutoriales paso a paso.
-   - **Formación corporativa / profesional** — onboarding, compliance, soft skills, contenido para LMS.
-   - Otros formatos son válidos pero el toolkit está optimizado para los dos anteriores.
+2. **Identificar la modalidad** (si no es obvia). El toolkit reconoce múltiples modalidades con intención pedagógica — algunos ejemplos:
+   - Tutorial técnico / software, divulgación científica, explainer comercial / de producto, how-to / performance, onboarding corporativo.
+   - Documental narrativo, video-ensayo, periodismo analítico visual, conferencia grabada, live stream educativo, podcast audiovisual, personal essay pedagógico.
 
-3. **Delegar al skill de etapa correspondiente**, pasando el contexto del formato:
-   - Etapa de concepto → invoca `concepto-entrenamiento`
-   - Etapa de guión → invoca `guion-entrenamiento`
-   - Etapa de previsualización → invoca `previsualizacion-entrenamiento`
-   - Etapa de grabación → invoca `grabacion-entrenamiento`
-   - Etapa de edición → invoca `edicion-entrenamiento`
-   - Etapa de publicación → invoca `publicacion-entrenamiento`
+   En esta versión del toolkit, las decisiones de las etapas siguientes se calibran por modalidad (trabajo en curso — la calibración fina por eje llegará con la reforma de briefs). Si la modalidad no calza en las categorías anteriores, pide al usuario que describa el tipo de video y registra la descripción para que las etapas siguientes la consideren.
 
-4. **Default ON de concepto al inicio del flujo.** Cuando el usuario arranca un proyecto nuevo (no menciona que ya tiene guión, ni Concept Brief, ni Production Brief), invocá `concepto-entrenamiento` por default — incluso si el usuario describió la idea con cierto detalle. El skill mismo hace un diagnóstico de claridad y salta dimensiones ya cubiertas (no es redundante para usuarios con idea sólida). Dos formas de saltarlo:
-   - **Usuario pasa Concept Brief existente** (locked o draft): registrá la ruta y pasá directo a `guion-entrenamiento`, que lo consumirá.
-   - **Usuario afirma claridad explícita** ("ya tengo el concepto, vamos directo a guión"): respetá la elección, pasá a `guion-entrenamiento`. Documentá la decisión — si guión detecta huecos, puede sugerir volver acá. **No volver a preguntar** en la misma sesión.
+3. **Delegar al skill de etapa correspondiente**, pasando el contexto de la modalidad:
+   - Etapa de concepto → invoca `concept-explainer`
+   - Etapa de guión → invoca `script-explainer`
+   - Etapa de previsualización / storyboard → invoca `storyboard-explainer`
+   - Etapa de grabación → invoca `record-explainer`
+   - Etapa de edición → invoca `edit-explainer`
+   - Etapa de publicación → invoca `publish-explainer`
 
-5. **Puente guión → grabación.** Si el usuario cerró guión y dice ir directo a grabación, ofrecé una vez la etapa intermedia: "Antes de grabar, ¿querés pasar por `previsualizacion-entrenamiento` para fijar storyboard, pacing y shotlist? Reduce riesgo de re-grabar. También podés saltarla si es re-shoot de un formato ya conocido o video muy simple." Si el usuario salta, continuar a `grabacion-entrenamiento` sin bloquear; registrar la elección en Notas de Producción del guión. **No volver a preguntar** en la misma sesión.
+4. **Default ON de concepto al inicio del flujo.** Cuando el usuario arranca un proyecto nuevo (no menciona que ya tiene guión, ni Concept Brief, ni Production Brief), invoca `concept-explainer` por default — incluso si el usuario describió la idea con cierto detalle. El skill mismo hace un diagnóstico de claridad y salta dimensiones ya cubiertas (no es redundante para usuarios con idea sólida). Dos formas de saltarlo:
+   - **Usuario pasa Concept Brief existente** (locked o draft): registra la ruta y pasa directo a `script-explainer`, que lo consumirá.
+   - **Usuario afirma claridad explícita** ("ya tengo el concepto, vamos directo a guión"): respeta la elección, pasa a `script-explainer`. Documenta la decisión — si guión detecta huecos, puede sugerir volver acá. **No volver a preguntar** en la misma sesión.
+
+5. **Puente guión → grabación.** Si el usuario cerró guión y dice ir directo a grabación, ofrece una vez la etapa intermedia: "Antes de grabar, ¿quieres pasar por `storyboard-explainer` para fijar storyboard, pacing y shotlist? Reduce riesgo de re-grabar. También puedes saltarla si es re-shoot de un formato ya conocido, un live stream, o un podcast audiovisual donde el storyboard visual no aplica." Si el usuario salta, continuar a `record-explainer` sin bloquear; registrar la elección en Notas de Producción del guión. **No volver a preguntar** en la misma sesión.
 
 ## Si el usuario quiere actualizar las capas dinámicas
 
@@ -55,7 +56,26 @@ Los skills de etapa (`concepto-entrenamiento`, `guion-entrenamiento`, `previsual
 
 ## Reglas firmes
 
-- **No leer pilares ni briefs.** Este orquestador no consume material pedagógico. Identifica etapa + formato y delega. Si hacés `Read` de un pilar o un brief acá, estás violando el contrato.
+- **No leer pilares ni briefs.** Este orquestador no consume material pedagógico. Identifica etapa + modalidad y delega. Si haces `Read` de un pilar o un brief acá, estás violando el contrato.
 - **No tomar decisiones de la etapa tú mismo** — esa es función del skill específico, que consume briefs y tiene el material pedagógico cargado.
-- **Si el usuario menciona varias etapas en un mismo proyecto**, atenderlas en orden: concepto (opcional, default ON) → guión → previsualización (opcional) → grabación → edición → publicación. No saltar etapas, excepto concepto y previsualización que son opcionales por diseño.
-- **Conflictos entre pilares**: cuando un skill de etapa flaggee un conflicto, no resolverlo por defecto. Presentar el conflicto al usuario, recordar que el pilar 1 (ciencia) prevalece, y dejar la decisión final al usuario.
+- **Si el usuario menciona varias etapas en un mismo proyecto**, atenderlas en orden: concepto (opcional, default ON) → guión → storyboard (opcional) → grabación → edición → publicación. No saltar etapas, excepto concepto y storyboard que son opcionales por diseño.
+- **Conflictos entre pilares**: cuando un skill de etapa flaggee un conflicto, no resolverlo por defecto. Presentar el conflicto al usuario, recordar que el pilar 1 (ciencia y teoría del medio) prevalece, y dejar la decisión final al usuario.
+
+## Filtro de scope
+
+Antes de delegar, verificar que el proyecto del usuario tiene **intención pedagógica** (el espectador debe aprender algo, cambiar una intuición, entender un procedimiento, decidir mejor informado, internalizar una habilidad, reestructurar una creencia con evidencia).
+
+**Casos fuera de scope — sugerir no usar este toolkit:**
+- Vlog personal o de viaje (narrativa afectiva sin concepto que transferir).
+- Reacción pura a contenido (reaction video).
+- Gameplay sin comentario didáctico.
+- Sketch cómico, stand-up, monólogo de entretenimiento.
+- Videoclip musical, live session artística.
+- ASMR, contenido de relajación.
+- Highlights deportivos sin análisis.
+- Stream conversacional abierto sin arco de aprendizaje.
+- Video-arte experimental.
+- Trailer / teaser / promo.
+- Contenido publicitario directo sin componente explicativo.
+
+Si el caso es borderline (ej. reseña que puede ser pedagógica o solo opinión; documental contemplativo vs documental didáctico; podcast que varía entre conversacional libre y conversación pedagógica), **preguntar al usuario** si hay intención de que el espectador aprenda/entienda algo específico. Si la respuesta es sí, continuar. Si no, recomendar una guía de producción general en vez de este toolkit.

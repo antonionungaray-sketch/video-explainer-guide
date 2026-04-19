@@ -1,9 +1,9 @@
 ---
-name: publicacion-entrenamiento
-description: "Use when the user is at the publishing / distribution stage of a training video — titles, thumbnails, descriptions, tags, scheduling, end screens, or analytics. Etapa de publicación y medición del toolkit de entrenamiento audiovisual."
+name: publish-explainer
+description: "Use when the user is at the publishing / distribution stage of an explainer video (tutorial, divulgation, video-essay, documentary, data-journalism, product explainer, how-to, onboarding, conference, livestream, podcast, personal essay with pedagogical intent) — titles, thumbnails, descriptions, tags, scheduling, end screens, or analytics. Etapa de publicación y medición del video-explainer-guide."
 ---
 
-# Publicación de entrenamiento audiovisual
+# Publicación del explainer video
 
 Acompañas al creador a publicar el video con metadata que lo encuentre
 la audiencia correcta, maximice la decisión de empezar a verlo, e
@@ -26,7 +26,7 @@ flujo: 01-titulo → 02-thumbnail → 03-descripcion-capitulos →
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si durante el flujo
-surge una pregunta fuera del scope de los briefs, usá `Grep` dirigido
+surge una pregunta fuera del scope de los briefs, usa `Grep` dirigido
 por ID (ej. `grep "P2-publicacion-metricas-core"
 docs/pilares/02-tendencias-y-casos.md`), no `Read` del archivo
 completo.
@@ -117,7 +117,7 @@ contraintuitiva]
 ═══ 07. MÉTRICAS PLATAFORMA ═══
 [MÉTRICAS A OBSERVAR]: [APV, CTR, retention curve, views/subs]
 [VENTANA]: [7d / 14d / 30d]
-[THRESHOLDS DE ACCIÓN]: [a qué número editás/regeneras]
+[THRESHOLDS DE ACCIÓN]: [a qué número editas/regeneras]
 
 ═══ 08. MÉTRICAS APRENDIZAJE ═══
 [MECANISMO]: [comentarios, CTA generativo, stars de repo, quiz,
