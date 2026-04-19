@@ -95,6 +95,46 @@
   .panel-actions button:hover { color: var(--fg); border-color: var(--muted); }
   .panel-actions button.remove { color: var(--bad); }
 
+  /* Variantes */
+  .comic-panel.variant { border-color: var(--warn); box-shadow: 0 0 0 1px rgba(242,184,85,0.15); }
+  .comic-panel.variant-chosen { border-color: var(--ok); box-shadow: 0 0 0 1px rgba(100,211,154,0.2); }
+  .variant-header { display: flex; justify-content: space-between; align-items: center;
+                    padding: 5px 10px; background: rgba(242,184,85,0.08); color: var(--warn);
+                    font-family: var(--mono); font-size: 10px; letter-spacing: 0.5px;
+                    text-transform: uppercase; border-bottom: 1px solid var(--line); }
+  .comic-panel.variant-chosen .variant-header { background: rgba(100,211,154,0.08); color: var(--ok); }
+  .variant-header .label { font-weight: 700; }
+  .variant-header .choose-btn { padding: 2px 8px; font-size: 10px; background: var(--warn);
+                                color: #0b1220; border: none; border-radius: 3px; cursor: pointer; font-weight: 600; }
+  .comic-panel.variant-chosen .variant-header .choose-btn { background: var(--ok); }
+  .variant-hint-discarded { padding: 5px 10px; background: var(--bg); color: var(--muted);
+                            font-size: 11px; border-top: 1px dashed var(--line); cursor: pointer;
+                            display: flex; justify-content: space-between; }
+  .variant-hint-discarded:hover { color: var(--fg); }
+
+  /* Drawer de descartadas */
+  #discarded { margin-top: 20px; }
+  #discarded summary { cursor: pointer; color: var(--warn); font-weight: 600; font-size: 13px; }
+  .discarded-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+  .discarded-card { background: var(--panel); border: 1px dashed var(--line); border-radius: 5px;
+                    padding: 10px; opacity: 0.75; }
+  .discarded-card h4 { margin: 0 0 6px 0; font-size: 12px; font-family: var(--mono); color: var(--muted); }
+  .discarded-card .title { color: var(--fg); font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .discarded-card .actions { display: flex; gap: 6px; margin-top: 8px; }
+  .discarded-card .actions button { padding: 3px 8px; font-size: 11px; }
+
+  /* Tabla — placeholder de grupo sin resolver */
+  .unresolved-placeholder { background: var(--panel); border: 1px dashed var(--warn); border-radius: 6px;
+                            padding: 16px; margin-bottom: 12px; color: var(--warn); }
+  .unresolved-placeholder strong { color: var(--fg); }
+  .tabla-variant-banner { background: rgba(94,177,255,0.08); border: 1px solid var(--accent);
+                          border-radius: 4px; padding: 6px 10px; font-size: 11px; color: var(--accent);
+                          margin-bottom: 10px; font-family: var(--mono); }
+
+  /* Botón deshabilitado */
+  header button[disabled] { opacity: 0.45; cursor: not-allowed; }
+  header button[disabled]:hover { filter: none; }
+
   /* SVG glyphs */
   .sb-silhouette-head { fill: #3a4559; }
   .sb-silhouette-body { fill: #2a3345; }
@@ -143,6 +183,10 @@
   <h2>Bloques</h2>
   <div id="blocks-comic" class="comic-grid"></div>
   <div id="blocks-tabla" style="display:none"></div>
+  <details id="discarded" style="display:none">
+    <summary>Variantes descartadas (<span id="discarded-count">0</span>)</summary>
+    <div id="discarded-grid" class="discarded-grid"></div>
+  </details>
 </section>
 
 <svg style="width:0;height:0;position:absolute" aria-hidden="true">
@@ -328,7 +372,36 @@ function blockCard(block, idx) {
 function renderTabla() {
   const host = document.getElementById("blocks-tabla");
   host.innerHTML = "";
-  state.blocks.forEach((b, i) => host.appendChild(blockCard(b, i)));
+  const seenGroups = new Set();
+  state.blocks.forEach((b, i) => {
+    if (b.variantGroup) {
+      if (seenGroups.has(b.variantGroup)) return;
+      seenGroups.add(b.variantGroup);
+      const chosenIdx = state.blocks.findIndex(o => o.variantGroup === b.variantGroup && o.variantChosen === true);
+      if (chosenIdx === -1) {
+        // grupo sin resolver → placeholder
+        const sz = groupSize(b.variantGroup);
+        const ph = el("div", { class: "unresolved-placeholder" });
+        ph.innerHTML =
+          `⚠ Grupo de variantes <strong>${b.variantGroup}</strong> con <strong>${sz}</strong> opciones sin decidir. ` +
+          `Abrí <strong>Cómic</strong> y elegí una antes de cerrar detalles técnicos.`;
+        host.appendChild(ph);
+        return;
+      }
+      // renderear la chosen con banner
+      const chosen = state.blocks[chosenIdx];
+      const otros = state.blocks.filter(o => o.variantGroup === b.variantGroup && o !== chosen).length;
+      const banner = el("div", { class: "tabla-variant-banner" },
+        `✓ Variante ${chosen.variantLabel} elegida · ${otros} alternativa${otros > 1 ? "s" : ""} descartada${otros > 1 ? "s" : ""} (abrir Cómic para cambiar)`
+      );
+      const wrap = el("div", {});
+      wrap.appendChild(banner);
+      wrap.appendChild(blockCard(chosen, chosenIdx));
+      host.appendChild(wrap);
+      return;
+    }
+    host.appendChild(blockCard(b, i));
+  });
 }
 
 /* ————————————— Vista cómic ————————————— */
@@ -399,13 +472,34 @@ function svgForBlock(block) {
 }
 
 function panelCard(block, idx) {
-  const card = el("div", { class: "comic-panel" });
+  const hasGroup = !!block.variantGroup;
+  const chosen = block.variantChosen === true;
+  const klass = "comic-panel" + (hasGroup ? (chosen ? " variant-chosen" : " variant") : "");
+  const card = el("div", { class: klass });
+
+  // Header de variante (si aplica)
+  if (hasGroup) {
+    const vh = el("div", { class: "variant-header" });
+    const lbl = el("span", { class: "label" },
+      (chosen ? "✓ " : "") + "VARIANTE " + (block.variantLabel || "?") + " · " + block.variantGroup
+    );
+    vh.appendChild(lbl);
+    if (!chosen) {
+      const btn = el("button", {
+        class: "choose-btn",
+        onclick: () => chooseVariant(idx)
+      }, "✓ Elegir esta");
+      vh.appendChild(btn);
+    }
+    card.appendChild(vh);
+  }
 
   // meta top: B# · plano · duración
   const tipoTxt = block.tipo || "—";
   const zoomTxt = block.zoomOBS ? " · zoom" : "";
+  const blockLabel = hasGroup ? (block.variantGroup) : ("B" + (idx + 1));
   const meta = el("div", { class: "panel-meta-top" });
-  meta.innerHTML = `<span class="plano">B${idx + 1} · ${tipoTxt}${zoomTxt}</span><span class="dur">${block.duracion || "—"}</span>`;
+  meta.innerHTML = `<span class="plano">${blockLabel} · ${tipoTxt}${zoomTxt}</span><span class="dur">${block.duracion || "—"}</span>`;
   card.appendChild(meta);
 
   // SVG
@@ -465,7 +559,8 @@ function panelCard(block, idx) {
   const actions = el("div", { class: "panel-actions" },
     el("button", { onclick: () => moveBlock(idx, -1), title: "Mover a la izquierda" }, "←"),
     el("button", { onclick: () => moveBlock(idx, 1), title: "Mover a la derecha" }, "→"),
-    el("button", { onclick: () => duplicateBlock(idx), title: "Duplicar" }, "⎘"),
+    el("button", { onclick: () => duplicateBlock(idx), title: "Duplicar (bloque independiente)" }, "⎘"),
+    el("button", { onclick: () => addVariant(idx), title: "Agregar variante de este bloque" }, "+ Variante"),
     el("button", { class: "remove", onclick: () => removeBlock(idx), title: "Eliminar" }, "✕")
   );
   card.appendChild(actions);
@@ -476,8 +571,39 @@ function panelCard(block, idx) {
 function renderComic() {
   const host = document.getElementById("blocks-comic");
   host.innerHTML = "";
-  state.blocks.forEach((b, i) => host.appendChild(panelCard(b, i)));
+  // Render: bloques sin grupo + variantes "vivas" (grupos sin resolver → todas visibles;
+  // grupos resueltos → solo la chosen). Las descartadas van al drawer de abajo.
+  state.blocks.forEach((b, i) => {
+    if (b.variantGroup) {
+      const anyChosen = state.blocks.some(o => o.variantGroup === b.variantGroup && o.variantChosen === true);
+      if (anyChosen && b.variantChosen !== true) return; // descartada
+    }
+    host.appendChild(panelCard(b, i));
+  });
+  renderDiscarded();
   renderScenePreview();
+  renderGateButtons();
+}
+
+function renderDiscarded() {
+  const items = discardedBlocks();
+  const drawer = document.getElementById("discarded");
+  document.getElementById("discarded-count").textContent = items.length;
+  drawer.style.display = items.length ? "" : "none";
+  const grid = document.getElementById("discarded-grid");
+  grid.innerHTML = "";
+  items.forEach(({ b, i }) => {
+    const card = el("div", { class: "discarded-card" });
+    card.appendChild(el("h4", {}, "VARIANTE " + (b.variantLabel || "?") + " · " + b.variantGroup));
+    card.appendChild(el("div", { class: "title" }, b.titulo || "(sin título)"));
+    card.appendChild(el("div", { class: "hint" }, (b.tipo || "—") + (b.zoomOBS ? " · zoom" : "") + " · " + (b.duracion || "—")));
+    const actions = el("div", { class: "actions" },
+      el("button", { onclick: () => restoreVariant(i), title: "Hacer de esta la elegida" }, "↻ Restaurar"),
+      el("button", { class: "remove", onclick: () => purgeVariant(i), title: "Eliminar definitivo" }, "✕ Eliminar")
+    );
+    card.appendChild(actions);
+    grid.appendChild(card);
+  });
 }
 
 let currentView = "comic";
@@ -499,7 +625,8 @@ function renderBlocks() {
 function renderScenePreview() {
   const scenes = new Map();
   const baseScenes = { "camara": "cam-full", "demo-pantalla": "pantalla-full", "mixto": "coding-pip", "b-roll": "b-roll-player" };
-  state.blocks.forEach((b, i) => {
+  const active = activeBlocks();
+  active.forEach((b, i) => {
     const base = baseScenes[b.tipo] || "escena-base";
     if (!scenes.has(base)) scenes.set(base, { name: base, shortcut: "", source: "derivada tipo " + (b.tipo || "?") });
     if (b.escena) {
@@ -515,25 +642,33 @@ function renderScenePreview() {
   }
   lines.push("");
   lines.push("Mapa bloque → escena:");
-  state.blocks.forEach((b, i) => {
+  active.forEach((b, i) => {
     const used = b.escena || baseScenes[b.tipo] || "?";
     lines.push(`  B${i + 1} (${b.tipo || "?"}) → ${used}${b.transicion ? "  →  " + b.transicion : ""}`);
   });
+  const unresolved = unresolvedGroups();
+  if (unresolved.length) {
+    lines.push("");
+    lines.push(`⚠ ${unresolved.length} grupo(s) de variantes sin decidir: ${unresolved.join(", ")}`);
+  }
   document.getElementById("scene-preview").textContent = lines.join("\n");
 }
 
 function addBlock() {
   state.blocks.push({ titulo: "", tipo: "camara", duracion: "", visual: "", narracion: "",
                       transicion: "corte seco", zoomOBS: false, escena: "", shortcut: "",
-                      referencia: "", senalizacion: "" });
+                      referencia: "", senalizacion: "",
+                      variantGroup: null, variantLabel: null, variantChosen: null });
   renderBlocks();
 }
 function removeBlock(i) {
   if (!confirm("¿Eliminar bloque B" + (i + 1) + "?")) return;
-  state.blocks.splice(i, 1); renderBlocks();
+  state.blocks.splice(i, 1); dissolveOrphanGroups(); renderBlocks();
 }
 function duplicateBlock(i) {
-  state.blocks.splice(i + 1, 0, structuredClone(state.blocks[i])); renderBlocks();
+  const clone = structuredClone(state.blocks[i]);
+  clone.variantGroup = null; clone.variantLabel = null; clone.variantChosen = null;
+  state.blocks.splice(i + 1, 0, clone); renderBlocks();
 }
 function moveBlock(i, dir) {
   const j = i + dir;
@@ -542,6 +677,95 @@ function moveBlock(i, dir) {
   state.blocks.splice(j, 0, moved);
   renderBlocks();
 }
+
+/* ————————————— Variantes ————————————— */
+
+function slugify(s) {
+  return String(s || "grupo").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 30) || "grupo";
+}
+
+function nextLabelFor(group) {
+  const labels = state.blocks.filter(b => b.variantGroup === group).map(b => b.variantLabel || "");
+  for (let i = 65; i < 91; i++) {
+    const l = String.fromCharCode(i);
+    if (!labels.includes(l)) return l;
+  }
+  return "?";
+}
+
+function addVariant(i) {
+  const src = state.blocks[i];
+  let group = src.variantGroup;
+  if (!group) {
+    group = slugify(src.titulo || ("bloque-" + (i + 1)));
+    // garantizar unicidad del slug
+    let base = group, n = 2;
+    while (state.blocks.some(b => b.variantGroup === group && b !== src)) { group = base + "-" + (n++); }
+    src.variantGroup = group;
+    src.variantLabel = "A";
+    src.variantChosen = null; // aún no decidido
+  }
+  const clone = structuredClone(src);
+  clone.variantLabel = nextLabelFor(group);
+  clone.variantChosen = null;
+  state.blocks.splice(i + 1, 0, clone);
+  renderBlocks();
+}
+
+function chooseVariant(i) {
+  const b = state.blocks[i];
+  if (!b.variantGroup) return;
+  state.blocks.forEach(o => {
+    if (o.variantGroup === b.variantGroup) o.variantChosen = (o === b);
+  });
+  renderBlocks();
+}
+
+function restoreVariant(i) {
+  // Restaurar una descartada = marcarla como chosen y des-chosen las demás del grupo.
+  chooseVariant(i);
+}
+
+function purgeVariant(i) {
+  if (!confirm("¿Eliminar definitivamente esta variante?")) return;
+  state.blocks.splice(i, 1);
+  dissolveOrphanGroups();
+  renderBlocks();
+}
+
+function dissolveOrphanGroups() {
+  // Si un grupo queda con un solo bloque, lo desmarca (vuelve a ser bloque normal).
+  const counts = {};
+  state.blocks.forEach(b => { if (b.variantGroup) counts[b.variantGroup] = (counts[b.variantGroup] || 0) + 1; });
+  state.blocks.forEach(b => {
+    if (b.variantGroup && counts[b.variantGroup] === 1) {
+      b.variantGroup = null; b.variantLabel = null; b.variantChosen = null;
+    }
+  });
+}
+
+function activeBlocks() {
+  // Bloques visibles en Tabla: sin grupo, o con grupo y chosen=true.
+  return state.blocks.filter(b => !b.variantGroup || b.variantChosen === true);
+}
+function discardedBlocks() {
+  return state.blocks
+    .map((b, i) => ({ b, i }))
+    .filter(({ b }) => b.variantGroup && b.variantChosen === false);
+}
+function unresolvedGroups() {
+  // Grupos donde ninguna variante tiene chosen=true.
+  const groups = {};
+  state.blocks.forEach(b => {
+    if (!b.variantGroup) return;
+    if (!groups[b.variantGroup]) groups[b.variantGroup] = { total: 0, chosen: 0 };
+    groups[b.variantGroup].total++;
+    if (b.variantChosen === true) groups[b.variantGroup].chosen++;
+  });
+  return Object.entries(groups).filter(([, v]) => v.chosen === 0).map(([g]) => g);
+}
+function groupSize(g) { return state.blocks.filter(b => b.variantGroup === g).length; }
 
 function toYAML() {
   const m = state.meta;
@@ -556,7 +780,8 @@ function toYAML() {
     `  fecha: "${esc(m.date)}"`,
     "  bloques:"
   ];
-  state.blocks.forEach((b, i) => {
+  const active = activeBlocks();
+  active.forEach((b, i) => {
     lines.push(`    - n: ${i + 1}`);
     lines.push(`      titulo: "${esc(b.titulo)}"`);
     lines.push(`      tipo: ${b.tipo || "camara"}`);
@@ -569,12 +794,36 @@ function toYAML() {
     lines.push(`      shortcut: "${esc(b.shortcut)}"`);
     lines.push(`      referencia: "${esc(b.referencia)}"`);
     lines.push(`      senalizacion: "${esc(b.senalizacion)}"`);
+    if (b.variantGroup) {
+      lines.push(`      variante_grupo: "${esc(b.variantGroup)}"`);
+      lines.push(`      variante_etiqueta: "${esc(b.variantLabel)}"`);
+    }
   });
+  const unresolved = unresolvedGroups();
+  if (unresolved.length) {
+    lines.push("  variantes_sin_resolver:");
+    unresolved.forEach(g => lines.push(`    - grupo: "${esc(g)}"  # decidir en Cómic`));
+  }
   const conflicts = (state.conflicts || "").split("\n").map(s => s.trim()).filter(Boolean);
   lines.push("  conflictos:");
   if (conflicts.length === 0) lines.push("    []");
   else conflicts.forEach(c => lines.push(`    - "${esc(c)}"`));
   return lines.join("\n");
+}
+
+function renderGateButtons() {
+  const unresolved = unresolvedGroups();
+  const lockBtn = document.getElementById("btn-lock");
+  const exportBtn = document.getElementById("btn-export");
+  if (unresolved.length) {
+    lockBtn.disabled = true;
+    lockBtn.title = `${unresolved.length} grupo(s) de variantes sin elegir: ${unresolved.join(", ")}`;
+    exportBtn.disabled = true;
+    exportBtn.title = lockBtn.title;
+  } else {
+    lockBtn.disabled = false; lockBtn.title = "";
+    exportBtn.disabled = false; exportBtn.title = "";
+  }
 }
 
 document.getElementById("btn-add-block").onclick = addBlock;

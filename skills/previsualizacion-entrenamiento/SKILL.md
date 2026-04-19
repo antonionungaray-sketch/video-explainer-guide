@@ -158,6 +158,18 @@ Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editás en una
 vista aparece en la otra. Reordenar/duplicar/eliminar bloques
 funciona en ambas.
 
+**Variantes A/B para el mismo bloque.** Botón `+ Variante` en
+cualquier viñeta del modo Cómic clona el bloque como alternativa
+(label A, B, C…) agrupada con borde dorado. La decisión **solo
+se toma en Cómic** con el botón `✓ Elegir esta`. La Tabla muestra
+únicamente la variante elegida con un banner indicador de que hay
+alternativas disponibles; si un grupo de variantes no está resuelto,
+Tabla renderea un placeholder "decidir en Cómic antes de cerrar
+detalles técnicos" y los botones `Lock` y `Exportar YAML` quedan
+deshabilitados hasta que se resuelva (gate conceptual). Las
+variantes descartadas quedan en un drawer al final, restaurables
+o eliminables.
+
 **Cómo generarla:**
 
 1. Copiá `scripts/storyboard-draft.template.html` al directorio del
