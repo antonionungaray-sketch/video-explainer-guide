@@ -16,13 +16,15 @@ Todo claim tiene un **ID estable** (`[P1-§2.3-#8]`, `[P2-ficha-fireship]`, `[P3
 
 ### Capa 2 — Briefs (síntesis precomputada)
 
-34 briefs en `docs/briefs/<etapa>/NN-slug.md`, uno por decisión crítica. Cada brief es un ensamblaje denso de 40–100 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
+36 briefs en `docs/briefs/<etapa>/NN-slug.md` (8+4+7+9+8), uno por decisión crítica. Cada brief es un ensamblaje denso de 40–100 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
 
 Los briefs son la capa que los skills consumen en runtime. **Los skills NO leen pilares completos.**
 
 ### Capa 3 — Skills (consumen briefs)
 
 Uno por etapa de producción. Cada skill carga los briefs de su etapa, camina al creador por las decisiones en orden, propone con cita trazable, flaggea conflictos, espera aprobación.
+
+**Contrato con estado (previsualización).** El Production Brief que produce `previsualizacion-entrenamiento` lleva un header `estado: draft | locked` + `locked-at: YYYY-MM-DD`. Mientras está `draft`, es iterable. Una vez `locked`, es el contrato firme que `grabacion-entrenamiento` y `edicion-entrenamiento` consumen sin re-discutir (requisitos de captura, mapa de escenas, transiciones por bloque). Cambios post-lock vuelven explícitamente a previsualización.
 
 ## Estructura
 
@@ -46,7 +48,7 @@ learning-video-runbook/
 │   │   ├── 01-fundamentos-cognitivos.md
 │   │   ├── 02-tendencias-y-casos.md
 │   │   └── 03-herramientas.md
-│   ├── briefs/<etapa>/NN-slug.md             # 34 briefs con contrato estricto
+│   ├── briefs/<etapa>/NN-slug.md             # 36 briefs con contrato estricto
 │   ├── casos-de-exito/                       # Fichas de creators por nicho
 │   └── vistas-por-etapa/                     # Índices auto-generados
 ├── scripts/

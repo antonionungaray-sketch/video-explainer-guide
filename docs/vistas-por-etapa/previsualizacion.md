@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/previsualizacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T18:13:34Z
+> Última regeneración: 2026-04-19T18:59:16Z
 
 ## Decisiones críticas
 
@@ -23,4 +23,10 @@
 - **Pregunta:** ¿En qué orden ejecutable y con qué props se graba cada demo de pantalla?
 - **Fuentes:** P1-§2.3-#5 P1-§2.3-#7 P1-§4.2 P2-ficha-fireship P2-ficha-midudev P2-ficha-coding-train 
 - **Brief:** [`briefs/previsualizacion/03-shotlist-demos.md`](../briefs/previsualizacion/03-shotlist-demos.md)
+
+### 04. requisitos-captura
+
+- **Pregunta:** ¿Qué setup de captura (escenas OBS, ángulos, b-roll, props) exige el storyboard antes de apretar REC?
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#4 P3-preprod-captura P2-preprod-patrones P2-ficha-fireship P2-ficha-midudev P2-ficha-coding-train 
+- **Brief:** [`briefs/previsualizacion/04-requisitos-captura.md`](../briefs/previsualizacion/04-requisitos-captura.md)
 

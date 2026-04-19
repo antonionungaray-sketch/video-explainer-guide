@@ -31,7 +31,7 @@ IDs are **stable contract**. If a section is renamed conceptually, the ID persis
 
 ### Layer 2 — Briefs (precomputed synthesis)
 
-`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 34 archivos (8+3+7+8+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
+`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 36 archivos (8+4+7+9+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
 **Contrato estricto de cada brief:**
 - Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), `sync: YYYY-MM-DD`, `version`.
@@ -51,14 +51,14 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 5. Produce un plan documentado con template al final.
 
 **Cantidad de decisiones que admiten variantes por etapa (baseline establecido en dry-runs):**
-- Guión 2/8, Previsualización 0/3 (deterministas por diseño), Edición 2/8, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
+- Guión 2/8, Previsualización 0/4 (deterministas por diseño), Edición 3/9, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
 
 **Prohibido en skills:** leer pilares completos en runtime (`Read docs/pilares/...`). Si hay una pregunta fuera del scope de los briefs, usar `Grep` dirigido por ID.
 
 ## Skills layout (`skills/`)
 
 - `crear-entrenamiento` — orchestrator. Identifies stage, delegates to stage skill. Ofrece previsualización como puente opcional entre guión y grabación (recomendado, no bloqueante).
-- `guion-entrenamiento` / `previsualizacion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares. `previsualizacion-entrenamiento` produce un **Production Brief** que `grabacion-entrenamiento` lee como input opcional (read-only).
+- `guion-entrenamiento` / `previsualizacion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares. `previsualizacion-entrenamiento` produce un **Production Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD`; `grabacion-entrenamiento` y `edicion-entrenamiento` lo leen read-only, avisan si está en `draft`, y lo tratan como contrato cuando está `locked`. Cambios post-lock requieren re-invocar previsualización.
 - `actualizar-tendencias` / `actualizar-herramientas` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sincronizar-briefs` si hay stale.
 - `sincronizar-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
 

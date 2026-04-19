@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/grabacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T18:13:34Z
+> Última regeneración: 2026-04-19T18:59:16Z
 
 ## Decisiones críticas
 
@@ -26,8 +26,8 @@
 
 ### 04. escenas
 
-- **Pregunta:** ¿Qué escenas preparás antes de grabar, y cuándo cambiar entre ellas?
-- **Fuentes:** P1-§2.3-#6 P1-§4.4 P2-preprod-patrones P2-ficha-coding-train P2-ficha-mouredev P3-preprod-captura 
+- **Pregunta:** ¿Qué escenas OBS preparás antes de grabar, y cuándo cambiar entre ellas?
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#6 P1-§4.4 P2-preprod-patrones P2-ficha-coding-train P2-ficha-mouredev P3-preprod-captura 
 - **Brief:** [`briefs/grabacion/04-escenas.md`](../briefs/grabacion/04-escenas.md)
 
 ### 05. captura-pantalla

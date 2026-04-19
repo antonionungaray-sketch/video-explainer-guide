@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/edicion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T18:13:34Z
+> Última regeneración: 2026-04-19T18:59:16Z
 
 ## Decisiones críticas
 
@@ -53,4 +53,10 @@
 - **Pregunta:** ¿Qué preset de export (codec, resolución, frame rate, bitrate) para la plataforma destino?
 - **Fuentes:** P2-publicacion-patrones P3-edicion-editores P3-edicion-postproc 
 - **Brief:** [`briefs/edicion/08-render.md`](../briefs/edicion/08-render.md)
+
+### 09. transiciones
+
+- **Pregunta:** ¿Qué transición aplicar entre bloques del crudo, cuándo usar corte seco, y cuándo re-grabar porque falta setup?
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#6 P1-§4.4 P2-edicion-patrones P2-edicion-antipatrones P2-ficha-fireship P2-ficha-kurzgesagt P3-edicion-editores 
+- **Brief:** [`briefs/edicion/09-transiciones.md`](../briefs/edicion/09-transiciones.md)
 

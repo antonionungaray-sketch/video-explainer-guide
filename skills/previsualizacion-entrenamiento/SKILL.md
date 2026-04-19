@@ -27,8 +27,9 @@ etapa**:
 docs/briefs/previsualizacion/*.md
 ```
 
-(3 archivos. Orden alfabético = orden de flujo:
-01-storyboard-y-referencias → 02-pacing-estimado → 03-shotlist-demos.)
+(4 archivos. Orden alfabético = orden de flujo:
+01-storyboard-y-referencias → 02-pacing-estimado → 03-shotlist-demos
+→ 04-requisitos-captura.)
 
 También **carga el guion producido por `guion-entrenamiento`**: es el
 input obligatorio de esta etapa. Si no hay guion documentado, detenete
@@ -42,7 +43,7 @@ no `Read` del archivo completo.
 
 ## Flujo
 
-Camina al creador por las 3 decisiones críticas **en el orden de los
+Camina al creador por las 4 decisiones críticas **en el orden de los
 briefs cargados**. Cada decisión usa EXCLUSIVAMENTE su brief.
 
 Para cada decisión:
@@ -52,24 +53,31 @@ Para cada decisión:
    + `Casos` del brief. Ningún brief de esta etapa admite variantes
    (`admite-variantes: false`): las decisiones son deterministas —
    tipo de bloque es categórico, pacing es cálculo, shotlist es orden
-   operacional. Si el brief lista `Conflictos conocidos` aplicables
-   al contexto, **flaggearlos explícitamente al usuario** — no
-   resolver en silencio. Pilar 1 prevalece salvo decisión informada.
+   operacional, requisitos de captura derivan del storyboard. Si el
+   brief lista `Conflictos conocidos` aplicables al contexto,
+   **flaggearlos explícitamente al usuario** — no resolver en silencio.
+   Pilar 1 prevalece salvo decisión informada.
 3. **Manejar auto-skip del brief 03:** si después del brief 01 ningún
    bloque quedó clasificado como `demo-pantalla` ni `mixto`, saltá
    el brief 03 y anotá la sección correspondiente como "N/A — video
    sin demos".
-4. **Registrar la decisión** antes de pasar a la siguiente.
+4. **Manejar auto-skip del brief 04:** si el storyboard no declara
+   ningún `zoom-pantalla`, `PiP`, `cut-away`, `cambio-de-ángulo` ni
+   `escena-alternativa`, registrá "N/A — sin requisitos especiales
+   más allá de la escena base" y pasá al cierre.
+5. **Registrar la decisión** antes de pasar a la siguiente.
 
 ## Salida — Production Brief consolidado
 
-Al terminar (2 decisiones si no hay demos, 3 si las hay), produce el
+Al terminar (entre 2 y 4 secciones según auto-skips), produce el
 documento final siguiendo esta plantilla:
 
 ```
 # Production Brief — <título del video>
 
 ## 0. Metadatos
+- estado: draft            # draft | locked
+- locked-at: —             # YYYY-MM-DD cuando pase a locked
 - Duración target: <N min>
 - Duración estimada (suma de bloques): <N min>
 - WPM usado: <personal / 150 / 180 / …>
@@ -82,7 +90,7 @@ BLOQUE 1 — <título>
   Visual: <descripción>
   Narración (del guion): <literal del guion>
   Fuera de pantalla: <…>
-  Transición al siguiente: <…>
+  Transición al siguiente: <corte seco | cross-dissolve | scene-switch F2 | …>
   Referencia: <link + timestamp, o vacío>
   Notas de señalización: <…>
 
@@ -99,7 +107,19 @@ Delta vs target: <±X%>
 <una entrada por demo siguiendo la plantilla del brief 03, o
  "N/A — video sin demos">
 
-## 4. Conflictos flaggeados
+## 4. Requisitos de captura
+Escenas OBS:
+  1. pantalla-full     (display 1)                           [F1]
+  2. pantalla-zoom-X   (display 1, crop N% sobre región Y)   [F2]
+  …
+Ángulos de cámara:  <frontal default + si aplica otros>
+B-roll:  <lista con duración y bloque destino, o N/A>
+Props / estado inicial:  <editor/terminal/navegador/otros>
+Mapa bloque → escena:  B1→… · B2→… · …
+
+(o "N/A — sin requisitos especiales más allá de la escena base")
+
+## 5. Conflictos flaggeados
 <lista de conflictos reportados durante la etapa que quedaron sin
  resolver con el usuario — ej. "WPM 235 con storyboard muy denso
  en bloque 3, usuario acepta el riesgo">
@@ -110,7 +130,7 @@ Delta vs target: <±X%>
 claro (`production-brief-<slug>.md`). No lo commitees al repo del
 toolkit — es artefacto del usuario, no del toolkit.
 
-Verifica antes de declarar la etapa completa:
+Verifica antes de proponer el lock:
 
 - [ ] Todos los bloques del guion tienen tipo declarado
       (camara / demo-pantalla / mixto / b-roll).
@@ -120,10 +140,35 @@ Verifica antes de declarar la etapa completa:
       como riesgo explícito.
 - [ ] Si hay bloques `demo-pantalla` o `mixto`, cada uno tiene
       shotlist con estado inicial + pasos + checkpoints.
-- [ ] Si NO hay demos, la sección 3 del Production Brief dice
-      explícitamente "N/A — video sin demos".
-- [ ] Cero conflictos P1 vs preferencia del usuario sin flaggear
-      en sección 4 del Production Brief.
+- [ ] Si NO hay demos, la sección 3 dice explícitamente "N/A — video
+      sin demos".
+- [ ] Sección 4 (Requisitos de captura) completa: toda escena OBS
+      referenciada en transiciones del storyboard está listada con
+      fuentes, crop y shortcut; o sección dice "N/A — sin requisitos
+      especiales".
+- [ ] Cero conflictos P1 vs preferencia del usuario sin flaggear en
+      sección 5.
+
+## Gate de lock
+
+Una vez verificado todo lo anterior, **preguntá explícitamente al
+usuario si quiere pasar el Production Brief a estado `locked`**:
+
+> "El Production Brief está completo. ¿Lo paso a `locked`? A partir
+> de ahí es el contrato para grabación — si hay cambios después, hay
+> que volver a esta etapa para re-lockear."
+
+Si el usuario acepta:
+- Cambiar `estado: draft` → `estado: locked`.
+- Escribir la fecha de hoy en `locked-at:` (formato `YYYY-MM-DD`).
+
+Si el usuario prefiere dejarlo `draft`:
+- Mantener el estado y avisar que `grabacion-entrenamiento` va a
+  alertar sobre el draft al arrancar (no bloquea, solo avisa).
+
+**Cambios post-lock** = nueva invocación de este skill, revisión de
+las decisiones afectadas, re-escribir `locked-at:` con la fecha nueva.
+Misma disciplina que los briefs `sync:`.
 
 ## Consumo downstream
 
@@ -134,10 +179,21 @@ El Production Brief es input opcional para `grabacion-entrenamiento`:
   de bloques + retomas).
 - Shotlist → informa a `grabacion/05-captura-pantalla` (cursor,
   highlights) y define props a pre-cargar antes de grabar.
+- **Requisitos de captura (sección 4)** → fuente de verdad para
+  `grabacion/04-escenas` cuando el Production Brief está `locked`:
+  escenas OBS con fuentes, crop y shortcut; mapa bloque→escena.
 - Referencias visuales → informa a `grabacion/04-escenas` (intención
   estética).
 
 Grabación NO modifica el Production Brief; solo lo lee.
+
+## Consumo downstream — edición
+
+El Production Brief es también input para `edicion-entrenamiento`:
+- **Transiciones declaradas por bloque (sección 1 del storyboard)**
+  → fuente de verdad para `edicion/09-transiciones`. Transiciones
+  marcadas como `scene-switch F2` ya están en el crudo (no son post);
+  `cross-dissolve` / `J-cut` / `corte seco` se ejecutan en edición.
 
 ## Reglas firmes
 

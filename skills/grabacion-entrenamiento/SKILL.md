@@ -25,27 +25,51 @@ docs/briefs/grabacion/*.md
 
 Preguntá al usuario si completó la etapa de previsualización y tiene un
 **Production Brief** (`production-brief-<slug>.md` o similar, junto al
-guion). Si existe, cargalo como contexto estructurante read-only:
+guion).
+
+### Verificación de estado (lock gate)
+
+Al cargarlo, **leé el header de metadatos** (`estado:` y `locked-at:`).
+
+- **`estado: locked`** (con `locked-at` presente): contrato firme.
+  Grabación lo consume como fuente de verdad sin re-discutir decisiones
+  de storyboard, pacing, shotlist ni requisitos de captura. Si durante
+  la grabación aparece una necesidad de cambio, se anota en **Notas
+  de Producción** del plan de grabación y se avisa al usuario que
+  tiene que re-invocar `previsualizacion-entrenamiento` para re-lockear.
+
+- **`estado: draft`**: avisar explícitamente al usuario:
+  > "El Production Brief está en `draft`, no lockeado. Recomiendo
+  > cerrarlo invocando `previsualizacion-entrenamiento` antes de
+  > grabar. ¿Preferís volver a cerrarlo o seguís adelante asumiendo
+  > que el brief no es contrato?"
+  No bloquear: si el usuario decide seguir, continuar con disclaimer
+  registrado en Notas de Producción.
+
+- **Sin header de estado** (artefacto antiguo pre-gate): tratarlo como
+  draft y avisar.
+
+### Consumo
 
 - **Tipo de bloque** del storyboard → input para `02-video-encuadre`:
   si todos los bloques son `demo-pantalla`, auto-proponé "sin face-cam";
   si hay `camara` y `mixto`, proponé face-cam principal o PiP.
 - **Duración estimada por bloque** → input para `06-tomas`: plan de
   bloques con duraciones objetivo y puntos de corte sugeridos.
-- **Shotlist** → input para `05-captura-pantalla`: lee cursor/highlight
-  declarado y props requeridos antes de grabar. Para
-  `04-escenas`, cada demo es una escena mapeable.
-- **Referencias visuales** → input para `04-escenas`: intención estética
-  por bloque, composición de fuentes acorde a la referencia citada.
+- **Shotlist** → input para `05-captura-pantalla`: cursor/highlight
+  declarado y props requeridos antes de grabar.
+- **Requisitos de captura (sección 4)** → fuente de verdad para
+  `04-escenas` cuando el brief está `locked`: escenas OBS con fuentes,
+  crop y shortcut; mapa bloque→escena.
+- **Referencias visuales** → input para `04-escenas` (intención
+  estética).
 
 **Cuando NO existe el Production Brief** (usuario saltó previsualización
-o es un flujo antiguo), proceder autónomamente como siempre. No bloquear
-ni insistir; el skill es funcional con o sin brief.
+o flujo antiguo), proceder autónomamente como antes. El skill es
+funcional con o sin brief.
 
 **Integración read-only.** Este skill nunca modifica el Production Brief;
-solo lo referencia. Si durante la grabación surge un cambio (nueva toma,
-nuevo orden), se anota en **Notas de Producción** de este plan, no
-edita el brief.
+solo lo referencia. Cambios se anotan en **Notas de Producción**.
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si durante el flujo
