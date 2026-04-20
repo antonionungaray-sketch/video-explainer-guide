@@ -22,6 +22,18 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 | 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | **Cerrada 2026-04-19** — 4a: los 43 briefs con `varia-por-eje:` en frontmatter + bloques Ajuste por eje (commit `8077ff5`). 4b: profundización de los 23 bloques compactos con completitud de valores, heurísticas numéricas, citas al pilar 1 expandido (§9-§12) y ejemplos (commit `9bbcbcb`). Verificación 0 drift. |
 | 5 | Adaptación de los 7 skills al Concept Brief con campo `modalidad` + ejes | 1-2 sesiones | **Cerrada 2026-04-19** — concept-explainer con paso 0.5 (preset + ejes + plataforma); los 5 skills de etapa con bloque "Lectura de ejes para routing"; create-explainer con 12 presets formales; CLAUDE.md recalibrado. Commit `cf6ece1`. |
 | 6 | Verificación end-to-end, vistas regeneradas, cierre | 1 sesión | **Cerrada 2026-04-19** — `verificar-briefs.sh --strict` exit 0 (0 stale, 0 huérfanos, 0 undeclared); vistas regeneradas; dry-run documentado en `docs/arquitectura/dry-run-fase-6.md` cubriendo tutorial-técnico, documental-narrativo, podcast-audiovisual, live-stream y filtro fuera-de-scope (vlog). Bump a 1.1.0 en `plugin.json`. |
+| 7 | Portabilidad y perfil de entorno — skill `setup-environment`, metadata estructurada en pilar 3, integración en 4 skills de etapa | 1 sesión | **Cerrada 2026-04-20** — ver detalle abajo. |
+
+## Fase 7 — Portabilidad y perfil de entorno (2026-04-20)
+
+**Estado:** completada.
+
+- Skills de mantenimiento migrados a inglés: `actualizar-herramientas` → `update-tools`, `actualizar-tendencias` → `update-trends`, `sincronizar-briefs` → `sync-briefs`.
+- Pilar 3 enriquecido con metadata estructurada por herramienta (bloque `<!-- meta: <slug> -->` con `plataformas`, `licencia`, `modo`, `hardware-min?`, `equivalentes`).
+- Skill nuevo `setup-environment` — construye perfil de entorno del usuario (global + override por proyecto) vía diálogo.
+- Integración en 4 skills de etapa (concept/record/edit/publish) con Paso 0.5 (lectura de perfil + filtrado de herramientas + fallback externo vía WebSearch).
+- `update-tools` ampliado para aceptar payload estructurado desde fallback externo.
+- Plugin versionado a 1.2.0.
 
 ## Decisiones ya tomadas
 
