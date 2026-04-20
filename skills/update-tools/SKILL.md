@@ -1,6 +1,6 @@
 ---
-name: actualizar-herramientas
-description: "Use when the user wants to refresh, update, or revisit the tools knowledge layer (pilar 3) of the video-explainer-guide. Busca releases, deprecations y alternativas nuevas, y actualiza el documento con aprobación del usuario."
+name: update-tools
+description: "Use when the user wants to refresh, update, or revisit the tools knowledge layer (pilar 3) of the video-explainer-guide. Busca releases, deprecations y alternativas nuevas, y actualiza el documento con aprobación del usuario. Also accepts structured payloads from setup-environment's external fallback to incorporate newly-discovered tools with full ficha metadata."
 ---
 
 # Actualizar herramientas (pilar 3)
