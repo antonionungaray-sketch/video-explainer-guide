@@ -207,32 +207,133 @@ Presencia humana en cámara + guion leído: sin estas herramientas el espectador
 
 ### Editores de video [P3-edicion-editores]
 - **DaVinci Resolve** — gratuito (versión Studio de pago), nivel profesional. Requiere GPU competente.
+  <!-- meta: davinci-resolve -->
+  - plataformas: [linux, mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - hardware-min: {gpu: any-discrete, ram-gb: 16}
+  - equivalentes: [kdenlive, premiere, capcut]
 - **Kdenlive** — open source, multiplataforma, trabaja bien sin GPU dedicada.
+  <!-- meta: kdenlive -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [davinci-resolve]
 - **Adobe Premiere Pro** — estándar industrial, suscripción mensual.
+  <!-- meta: premiere -->
+  - plataformas: [mac, windows]
+  - licencia: subscription
+  - modo: local
+  - equivalentes: [davinci-resolve, kdenlive]
 - **CapCut Desktop** — edición rápida con plantillas, fuerte para formatos cortos verticales.
+  <!-- meta: capcut -->
+  - plataformas: [mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - equivalentes: [davinci-resolve]
 - **Descript** — edición de video editando la transcripción de texto. Excelente para contenido hablado.
+  <!-- meta: descript-edit -->
+  - plataformas: [mac, windows]
+  - licencia: subscription
+  - modo: híbrido
+  - equivalentes: []
 
 ### Composición programática [P3-edicion-composicion]
 - **Remotion** — videos como código React. Ideal para variaciones masivas desde datos, lower thirds, intros dinámicos. *Nota de licencia: gratuita para uso individual/personal pero requiere licencia comercial para empresas con ≥3 personas.* *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: remotion -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: free-tier
+  - modo: local
+  - equivalentes: [motion-canvas, revideo]
 - **Motion Canvas** — MIT, TypeScript con generator functions, scene graphs, editor en tiempo real. Diseñado para explainers animados hechos a mano al estilo 3Blue1Brown pero con tooling moderno. Alternativa libre a Remotion sin fricción de licencia. *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: motion-canvas -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [remotion, revideo]
 - **Revideo** — MIT, fork de Motion Canvas con rendering headless + server-side + sistema de templates. Pensado para pipelines de producción automatizada (generar decenas/miles de videos desde datos). *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: revideo -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [motion-canvas, remotion]
 - **HyperFrames (HeyGen)** — Apache 2.0, compone video vía HTML/CSS/JS y está diseñado para que agentes IA (p. ej. Claude Code) editen video con primitivas web estándar. Complementa a Remotion cuando la pipeline está orquestada por agentes más que por devs humanos. *Status: nuevo/cambia rápido. Verificado: 2026-04-18.*
+  <!-- meta: hyperframes -->
+  - plataformas: [linux, mac, windows, wsl, cloud]
+  - licencia: open-source
+  - modo: híbrido
+  - equivalentes: [remotion]
 - **Manim** — animación matemática estilo 3Blue1Brown.
-- **Cuándo elegir qué.** Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas / Revideo si necesitas open-source sin ataduras o si el equipo supera 3 personas; HyperFrames si el flujo es orquestado por un agente IA; Manim solo para matemáticas formales.
+  <!-- meta: manim -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: []
+
+Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas / Revideo si necesitas open-source sin ataduras o si el equipo supera 3 personas; HyperFrames si el flujo es orquestado por un agente IA; Manim solo para matemáticas formales.
 
 ### Post-procesado puntual [P3-edicion-postproc]
 - **FFmpeg** — el cuchillo suizo de procesamiento de video. Cortar, normalizar, transcoder, generar thumbnails. Imprescindible aprender mínimos comandos.
+  <!-- meta: ffmpeg -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: []
 - **Handbrake** — front-end gráfico de FFmpeg para conversiones masivas.
+  <!-- meta: handbrake -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [ffmpeg]
 
 ### Subtítulos [P3-edicion-subtitulos]
 - **Whisper (OpenAI) local o vía API** — transcripción automática multilenguaje, base de subtítulos. *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: whisper -->
+  - plataformas: [linux, mac, windows, wsl, cloud]
+  - licencia: open-source
+  - modo: local
+  - hardware-min: {gpu: NVIDIA-CUDA-or-Metal}
+  - equivalentes: [whisperx]
 - **WhisperX** — wrapper open-source sobre Whisper con *diarization* multi-speaker y *word-level alignment*. Imprescindible cuando hay más de una voz (entrevistas, paneles, pair coding) o se necesitan subtítulos sincronizados palabra-a-palabra para captions kinetic. *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: whisperx -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - hardware-min: {gpu: NVIDIA-CUDA}
+  - equivalentes: [whisper]
 - **Aegisub** — editor de subtítulos profesional (timing, estilo SRT/ASS).
+  <!-- meta: aegisub -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [subtitle-edit]
 - **Subtitle Edit** — alternativa Windows con buena UX.
+  <!-- meta: subtitle-edit -->
+  - plataformas: [windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [aegisub]
 
 ### Voiceover IA [P3-edicion-voiceover]
 - **ElevenLabs** — voces realistas, clonación de voz, multilenguaje. Tier gratuito limitado. **Dubbing Studio** (add-on): traduce y redobla audio en 32+ idiomas conservando las características de voz del hablante original. Útil para internacionalizar un training existente sin regrabar. *Status: estable. Verificado: 2026-04-18.*
-- **Coqui TTS** / **Piper** — open source, ejecución local, calidad menor pero suficiente para borradores.
+  <!-- meta: elevenlabs -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [coqui-tts, piper]
+- **Coqui TTS** — TTS open source local.
+  <!-- meta: coqui-tts -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - hardware-min: {gpu: any-discrete}
+  - equivalentes: [piper, elevenlabs]
+- **Piper** — TTS lightweight local.
+  <!-- meta: piper -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [coqui-tts]
 
 ### Cuándo elegir qué
 - Tutorial técnico de bajo presupuesto: Kdenlive + FFmpeg + Whisper.
