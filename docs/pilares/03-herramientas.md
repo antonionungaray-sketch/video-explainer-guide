@@ -54,11 +54,49 @@ Cada bullet de herramienta lleva un bloque `<!-- meta: <slug> -->` indented deba
 
 ### Asistentes de escritura [P3-idea-guion-asistentes]
 - **Claude / GPT** — generación y refinado de guiones, brainstorm de hooks, conversión bullet→prosa hablada. *Status: estable. Verificado: 2026-04-17.*
-- **Notion / Obsidian / plain Markdown** — almacenamiento y versionado de guiones. Markdown es el formato más portátil y diff-friendly.
+  <!-- meta: claude-gpt -->
+  - plataformas: [linux, mac, windows, cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: []
+- **Notion** — almacenamiento y versionado de guiones en cloud con UI rica.
+  <!-- meta: notion -->
+  - plataformas: [linux, mac, windows, cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [obsidian, plain-markdown]
+- **Obsidian** — almacenamiento local de guiones en Markdown con graph view y plugins.
+  <!-- meta: obsidian -->
+  - plataformas: [linux, mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - equivalentes: [notion, plain-markdown]
+- **Plain Markdown** — archivos `.md` en cualquier editor. Formato más portátil y diff-friendly.
+  <!-- meta: plain-markdown -->
+  - plataformas: [linux, mac, windows, wsl]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [obsidian, notion]
 
 ### Investigación y validación [P3-idea-guion-investigacion]
-- **Perplexity / Claude con WebSearch** — investigación rápida con citaciones.
+- **Perplexity** — búsqueda web con síntesis y citaciones automáticas.
+  <!-- meta: perplexity -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [claude-websearch]
+- **Claude con WebSearch** — investigación con tool use, citaciones inline.
+  <!-- meta: claude-websearch -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [perplexity]
 - **Google Scholar** — verificar claims científicos antes de afirmar algo en un explainer.
+  <!-- meta: google-scholar -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: []
 
 ### Cuándo elegir qué
 - Para tutoriales técnicos: editor Markdown plano + asistente IA para refinar.
