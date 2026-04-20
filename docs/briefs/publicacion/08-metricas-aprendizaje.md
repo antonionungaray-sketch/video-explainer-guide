@@ -1,7 +1,7 @@
 ---
 decision: publicacion/08-metricas-aprendizaje
 etapa: publicacion
-pregunta: ¿Cómo medís si la audiencia realmente aprendió, más allá de proxies de plataforma?
+pregunta: ¿Cómo mides si la audiencia realmente aprendió, más allá de proxies de plataforma?
 fuentes:
   - P1-§8.1                    # retrieval checkpoints
   - P1-§8.2                    # espaciamiento
@@ -11,8 +11,8 @@ fuentes:
   - P2-publicacion-metricas-core
   - P2-publicacion-antipatrones
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable

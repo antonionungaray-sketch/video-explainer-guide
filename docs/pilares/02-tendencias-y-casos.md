@@ -12,14 +12,15 @@
 
 | Sección | Última revisión |
 |---|---|
-| Global | 2026-04-18 (Fase 1 atlas incorporada) |
+| Global | 2026-04-19 (Fase 1 atlas + v2 modalidades ampliadas) |
 | Idea → Guión | 2026-04-18 |
 | Pre-producción y grabación | 2026-04-18 |
 | Edición y post | 2026-04-18 |
 | Publicación y medición | 2026-04-18 |
 | Meta-formatos | 2026-04-18 |
+| Modalidades ampliadas (v2) | 2026-04-19 (fichas ligeras) |
 
-**Alcance del atlas que alimenta esta versión:** 3 nichos (tutorial técnico, divulgación, onboarding corporativo), mix anglo/hispano, 10 fichas creator + 3 clusters onboarding, 36 entries trazadas.
+**Alcance del atlas que alimenta esta versión:** 3 nichos con fichas profundas (tutorial técnico, divulgación, onboarding corporativo), mix anglo/hispano, 10 fichas creator + 3 clusters onboarding, 36 entries trazadas. **+ 7 nichos con fichas ligeras (v2, 2026-04-19)** — ver §Modalidades ampliadas al final.
 
 ---
 
@@ -241,6 +242,45 @@ Formatos contenedores con convenciones aprendidas. Cada uno con referencias al a
 - **Duración no es el eje — la cadencia relativa al contenido lo es.** Fireship (100s comprimido), MoureDev (5-6 min segmentado), 3B1B (34 min denso), ThePrimeagen (4-12 min edit-from-stream) respetan el ceiling de ~6 min de Guo et al. 2014 con estrategias distintas: compresión radical, segmentación serial, segmentación natural dentro del video largo, o edit-down.
 - **Presencia del instructor es condicional, no obligatoria.** 6 de 10 creators del atlas muestran cara; 4 no. Ambos funcionan según el contenido.
 - **Humor con función cognitiva > humor decorativo** — los creators que usan humor (Fireship, Primeagen, Coding Train, QuantumFracture) lo hacen con coherencia temática, no como ornamento.
+
+---
+
+## Modalidades ampliadas — fichas ligeras v2 [P2-modalidades-ampliadas]
+
+> **Estado:** 2026-04-19. Fase 3 de la reforma a `video-explainer-guide` agregó cobertura para las 7 modalidades que el atlas original no tocaba explícitamente: documental narrativo, video-ensayo, periodismo analítico visual, conferencia grabada, live stream educativo, podcast audiovisual educativo, personal essay pedagógico.
+>
+> **Profundidad:** estas fichas son **análisis general** del canal (sin observación VTT + WPM medido). Son suficientes para alimentar el rediseño de briefs con ajuste por eje (fase 4) y para evitar contaminar modalidades no cubiertas. La iteración empírica (VTT + WPM + quotes exactos al nivel de las 10 fichas pioneras) queda como mantenimiento continuo vía `actualizar-tendencias`.
+
+### Cobertura por modalidad [P2-modalidades-cobertura]
+
+Cada modalidad del arquitectura ([docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md#3-las-12-modalidades-como-presets)) mapea a una ficha del atlas:
+
+| Modalidad | Ficha principal del atlas | Fichas ejemplares |
+|---|---|---|
+| Instruccional / formativa | `tutoriales-tecnicos.md` (v1 profunda) | Fireship, ThePrimeagen, MoureDev, Midudev, The Coding Train |
+| Divulgativa | `divulgacion-corta.md` (v1 profunda) | 3Blue1Brown, Veritasium, Kurzgesagt, DotCSV, QuantumFracture |
+| Explainer comercial / producto | (pendiente ficha explícita — patrones inferidos desde divulgación) | — |
+| How-to / performance | (pendiente ficha explícita — patrones inferidos desde tutorial técnico) | — |
+| Onboarding | `onboarding-corporativo.md` (v1 profunda) | Mike Meyers / Total Seminars, Platzi, Crehana |
+| Documental narrativo pedagógico | `documental-narrativo.md` (v2 ligera) | Adam Curtis, Asianometry |
+| Video-ensayo | `video-ensayo.md` (v2 ligera) | Nerdwriter, Contrapoints |
+| Periodismo analítico visual | `periodismo-visual.md` (v2 ligera) | Johnny Harris, Vox Atlas |
+| Conferencia / charla grabada | `conferencia-grabada.md` (v2 ligera) | Simon Sinek, Brené Brown |
+| Live stream educativo | `live-stream-educativo.md` (v2 ligera) | Casey Muratori, Tsoding (+ ThePrimeagen modo live ref cruzada) |
+| Podcast audiovisual educativo | `podcast-audiovisual.md` (v2 ligera) | Lex Fridman, Huberman Lab |
+| Personal essay pedagógico | `personal-essay.md` (v2 ligera) | Ali Abdaal, Matt D'Avella |
+
+**Cobertura:** 10 de 12 modalidades con ficha explícita. Explainer comercial y how-to quedan para ronda siguiente de fichaje (el patrón actual los aproxima suficientemente desde divulgación + tutorial).
+
+### Patrones transversales v2 (a confirmar empíricamente) [P2-modalidades-patrones-v2]
+
+Observaciones no-verificadas empíricamente pero inferidas del análisis general de las 14 fichas ligeras — candidatas a validación en ronda empírica siguiente:
+
+- **`grado-edicion: zero` (live stream) invalida >50% de las decisiones de post-producción.** El formato live no admite pacing editado, overlays auxiliares programáticos ni retrieval explícito planeado. Su equivalente: "peer instruction via chat" — el streamer pregunta y lee respuestas en vivo. Ver pilar 1 §12.2.
+- **Podcast audiovisual invierte la ingeniería YouTube estándar.** Hook 0-3s no aplica (2-5h de duración); APV como métrica es engañoso (escucha en background es común); capítulos en descripción son crítico. El canal visual es complemento del audio, no primario.
+- **Video-ensayo y personal essay convergen en rol (`narrador-1a-persona`) pero divergen en arco.** Ensayo = argumentativo (Nerdwriter, Contrapoints); personal essay = narrativo + apreciativo (D'Avella, Abdaal). La distinción del brief de estructura (`guion/03-estructura`) debe reconocer esto.
+- **Documental narrativo y conferencia grabada son los únicos dos presets con `rol: narrador-omnisciente` o `experto-neutral` sin edit heavy que compense.** La carga cognitiva la lleva el speaker (conferencia) o el archivo + voice-over (documental) — diferente estrategia compensatoria del canal visual.
+- **El "formato largo" (>30 min) aparece en 4 modalidades distintas** (documental narrativo, video-ensayo Contrapoints, podcast, ciertos personal essays). Los principios de engagement por segundo no escalan linealmente a este tamaño. Pilar 1 §2.4 (Guo et al. ≤6min) aplica a instrucción formal; el formato largo se sostiene por otros mecanismos (narrativa, conversación, intimidad autoral) — el pilar 1 expandido (§9-§12) cubre el por qué.
 
 ---
 
