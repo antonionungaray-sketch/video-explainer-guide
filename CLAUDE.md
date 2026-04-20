@@ -23,8 +23,8 @@ The toolkit uses a **3-layer knowledge architecture** que reemplazó el flujo an
 `docs/pilares/{01-fundamentos-cognitivos, 02-tendencias-y-casos, 03-herramientas}.md` — split by rate of change. Every claim traces to a pillar section via a stable ID (e.g. `[P1-§2.3-#8]`, `[P2-ficha-fireship]`, `[P3-edicion-postproc]`). Never invent advice que bypasses the pillars.
 
 - **Pilar 1 — fundamentos cognitivos y teoría del medio (stable).** Núcleo: peer-reviewed cognitive science (Mayer, Sweller, Paivio, Bjork, Roediger, Cepeda) — principles of multimedia learning, CLT, dual coding, retrieval/spacing, attention. Expansión en curso (fase 2) hacia teoría del cine documental (Nichols, Renov), ensayo fílmico (Rascaroli), retórica visual y periodismo de datos (Cairo, Tufte), active learning en conferencia (Freeman et al., Mazur). Cambia 1–2× por año. **Wins all conflicts** salvo override explícito del usuario.
-- **Pilar 2 — tendencias y casos (dynamic).** Current platform trends, patterns que funcionan, anti-patterns. Refreshed every 4–8 weeks via the `actualizar-tendencias` skill. Fichas de creators viven en `docs/casos-de-exito/{tutoriales-tecnicos, divulgacion-corta, onboarding-corporativo, ...}.md`. Expansión en curso (fase 3) hacia documental narrativo, video-ensayo, periodismo visual, conferencia, live stream, podcast audiovisual, personal essay.
-- **Pilar 3 — herramientas (dynamic).** Current tools, releases, deprecations. Refreshed every 2–4 weeks via `actualizar-herramientas`. Hardware-agnostic. Expansión en curso (fase 3) hacia live-stream setup, podcast multi-mic, workflow de documental, periodismo de datos.
+- **Pilar 2 — tendencias y casos (dynamic).** Current platform trends, patterns que funcionan, anti-patterns. Refreshed every 4–8 weeks via the `update-trends` skill. Fichas de creators viven en `docs/casos-de-exito/{tutoriales-tecnicos, divulgacion-corta, onboarding-corporativo, ...}.md`. Expansión en curso (fase 3) hacia documental narrativo, video-ensayo, periodismo visual, conferencia, live stream, podcast audiovisual, personal essay.
+- **Pilar 3 — herramientas (dynamic).** Current tools, releases, deprecations. Refreshed every 2–4 weeks via `update-tools`. Hardware-agnostic. Expansión en curso (fase 3) hacia live-stream setup, podcast multi-mic, workflow de documental, periodismo de datos.
 
 Cuando pilar 2 o 3 contradice pilar 1, **flag the conflict to the user explicitly**; do not silently apply the trend.
 
@@ -69,8 +69,8 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 
 - `create-explainer` — orchestrator. Identifica etapa y delega al skill de etapa. Invoca `concept-explainer` por default al inicio del flujo (saltable explícitamente). Ofrece `storyboard-explainer` como puente opcional entre guión y grabación (recomendado, no bloqueante). También filtra fuera-de-scope (vlog, reacción, gameplay, entretenimiento, etc.).
 - `concept-explainer` / `script-explainer` / `storyboard-explainer` / `record-explainer` / `edit-explainer` / `publish-explainer` — one per production stage. Consumen briefs, no pilares. `concept-explainer` produce un **Concept Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD` que define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones; `script-explainer` lo lee read-only en su Paso 0, avisa si está en `draft` y lo trata como contrato cuando está `locked`. `storyboard-explainer` produce un **Production Brief** análogo; `record-explainer` y `edit-explainer` lo leen read-only con la misma disciplina. Cambios post-lock en cualquiera de los dos briefs requieren re-invocar la skill correspondiente.
-- `actualizar-tendencias` / `actualizar-herramientas` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sincronizar-briefs` si hay stale.
-- `sincronizar-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
+- `update-trends` / `update-tools` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sync-briefs` si hay stale.
+- `sync-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
 
 ## Scripts (`scripts/`)
 
@@ -109,7 +109,7 @@ Un vlog, una reacción, un gameplay sin análisis, un videoclip musical, un sket
 ## Working on this repo
 
 - **Edit un brief:** cambio va en `docs/briefs/<etapa>/NN-*.md`. Si cambias `fuentes:` o `pregunta:`, correr `bash scripts/regenerar-vistas.sh` después.
-- **Edit un pilar:** el hook `PostToolUse` corre `verificar-briefs.sh --strict` automáticamente y avisa si hay drift. Si el aviso aparece, invocar `sincronizar-briefs`.
+- **Edit un pilar:** el hook `PostToolUse` corre `verificar-briefs.sh --strict` automáticamente y avisa si hay drift. Si el aviso aparece, invocar `sync-briefs`.
 - **Nuevo creator para pilar 2:** ficha va en `docs/casos-de-exito/<nicho>.md` con header `## <Nombre> [P2-ficha-<slug>]`. Slug es contrato estable.
 - **Nuevo brief:** usar plantilla de 6 bloques (+ "Ajuste por eje" cuando fase 4 aterrice), ≥5 citas con IDs estables, frontmatter completo. Longitud 40-100 líneas. Agregar al `docs/briefs/<etapa>/` con prefijo NN-.
 - **Plugin packaging:** los briefs y scripts van en el paquete distribuible. Las vistas se regeneran en el repo del usuario si corre el script (opcional).
