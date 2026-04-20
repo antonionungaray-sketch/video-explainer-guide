@@ -346,19 +346,81 @@ Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas
 
 ### Plataformas [P3-publicacion-plataformas]
 - **YouTube** — ecosistema más maduro para contenido formativo largo. Analytics detallados.
+  <!-- meta: youtube -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [vimeo]
 - **Vimeo** — alternativa para alojamiento privado, mejor calidad de transcoding por defecto.
+  <!-- meta: vimeo -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [youtube]
 - **Loom Library** — para conocimiento interno corporativo.
+  <!-- meta: loom-library -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: []
 - **LMS corporativos** (Synthesia, Articulate, TalentLMS, Moodle) — entornos completos de formación con tracking de progreso y evaluaciones.
+  <!-- meta: lms-corporativos -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: []
 
 ### Análisis y métricas [P3-publicacion-analitica]
 - **YouTube Studio Analytics** — retention curves, APV, CTR, sources.
-- **TubeBuddy / VidIQ** — auditoría de SEO de video, A/B testing de thumbnails.
+  <!-- meta: youtube-studio-analytics -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: []
+- **TubeBuddy** — auditoría de SEO de video, A/B testing de thumbnails.
+  <!-- meta: tubebuddy -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [vidiq]
+- **VidIQ** — análogo a TubeBuddy.
+  <!-- meta: vidiq -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [tubebuddy]
 - **Hotjar / FullStory** (para video embebido en sitio propio) — mapas de calor sobre interacción.
+  <!-- meta: hotjar-fullstory -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: []
 
 ### Thumbnails y arte [P3-publicacion-thumbnails]
-- **Figma / Canva** — composición rápida con plantillas.
+- **Figma** — composición rápida con plantillas y colaboración en cloud.
+  <!-- meta: figma -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [canva, photopea]
+- **Canva** — composición rápida con plantillas.
+  <!-- meta: canva -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [figma, photopea]
 - **Photopea** — alternativa gratuita web a Photoshop.
+  <!-- meta: photopea -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [figma, canva]
 - **Generadores IA de imagen** (Midjourney, DALL·E, Imagen) — base para thumbnails creativos.
+  <!-- meta: generadores-ia-imagen -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: []
 
 ### Cuándo elegir qué
 - Contenido público abierto: YouTube + TubeBuddy.
