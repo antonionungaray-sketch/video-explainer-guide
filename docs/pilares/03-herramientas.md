@@ -21,6 +21,35 @@
 
 ---
 
+## Formato de metadata por herramienta
+
+Cada bullet de herramienta lleva un bloque `<!-- meta: <slug> -->` indented debajo con los siguientes campos. El slug es un identificador kebab-case único dentro de la sección (ej. `davinci-resolve` bajo `[P3-edicion-editores]`). Los skills de etapa usan estos campos para filtrar recomendaciones según el perfil de entorno del usuario (ver skill `setup-environment`).
+
+**Campos obligatorios:**
+- `plataformas: [linux, mac, windows, wsl, cloud]` — lista de plataformas soportadas (`cloud` para SaaS puros).
+- `licencia: open-source | free-tier | paid | subscription` — modelo de licencia.
+- `modo: local | cloud | híbrido` — dónde se ejecuta el trabajo real.
+
+**Campos opcionales:**
+- `hardware-min:` — sólo cuando la herramienta tiene requisitos restrictivos. Ej: `{gpu: any-discrete, ram-gb: 16}`.
+- `equivalentes:` — lista de slugs (de esta misma sección u otras) que pueden sustituir a esta herramienta en plataformas donde no corre. Ej: `[premiere, kdenlive]`.
+
+**Ejemplo:**
+
+```markdown
+- **DaVinci Resolve** — gratuito (versión Studio de pago), nivel profesional. Requiere GPU competente.
+  <!-- meta: davinci-resolve -->
+  - plataformas: [linux, mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - hardware-min: {gpu: any-discrete, ram-gb: 16}
+  - equivalentes: [premiere, kdenlive, capcut]
+```
+
+**Validación:** `bash scripts/validar-metadata-pilar3.sh` reporta errores si falta metadata o tiene campos malformados.
+
+---
+
 ## Idea → Guión [P3-idea-guion]
 
 ### Asistentes de escritura [P3-idea-guion-asistentes]
