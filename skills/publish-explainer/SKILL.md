@@ -31,6 +31,33 @@ por ID (ej. `grep "P2-publicacion-metricas-core"
 docs/pilares/02-tendencias-y-casos.md`), no `Read` del archivo
 completo.
 
+## Lectura de ejes para routing
+
+El Concept Brief contiene sección **0.5 Modalidad y ejes** con `preset`,
+los 5 `ejes` y `plataforma`. Referencia:
+`docs/arquitectura/modalidades-y-ejes.md`.
+
+**Cada decisión del flujo** se resuelve así:
+1. Leer el brief correspondiente.
+2. Revisar `varia-por-eje:` en su frontmatter.
+3. Si es `[]`: aplicar tal cual.
+4. Si es `[ejeX, ...]`: ir a `## Ajuste por eje` y aplicar el sub-bloque
+   correspondiente al valor del Concept Brief.
+
+**Notas específicas para publicación:**
+- **`plataforma` es el eje dominante** en esta etapa — 6 de 8 briefs
+  varían por `plataforma`. Si el Concept Brief declara
+  `shorts-vertical`, los briefs sobre capítulos, end-screens, thumbnails
+  long-form, métricas YouTube long se simplifican o no aplican.
+- `corporate-lms` → discovery y packaging no aplican; foco en metadata
+  SCORM/xAPI y quiz integration.
+- `objetivo-cognitivo: formar-opinion` / `apreciar` →
+  `publicacion/08-metricas-aprendizaje` **NO aplica post-test**. Medir
+  resonancia (shares, comentarios reflexivos). Ver [P1-§10.4].
+
+Si el Concept Brief no tiene sección 0.5, pregunta al usuario los 5
+ejes + plataforma antes de continuar.
+
 ## Flujo
 
 Camina al creador por las 8 decisiones críticas **en el orden de los

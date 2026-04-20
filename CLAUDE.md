@@ -39,13 +39,15 @@ IDs are **stable contract**. Si una sección se renombra conceptualmente, el ID 
 
 `docs/briefs/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 43 archivos (6+8+4+7+10+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
-**Contrato estricto de cada brief (estado actual, será ampliado en fase 4 con ajuste-por-eje):**
-- Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), `sync: YYYY-MM-DD`, `version`.
-- 6 bloques fijos en el cuerpo: `Principio aplicable` · `Casos` · `Anti-patrón` · `Heurística numérica` · `Conflictos conocidos` · `Salida esperada`.
+**Contrato estricto de cada brief (post fase 4):**
+- Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), **`varia-por-eje: [lista]`**, `sync: YYYY-MM-DD`, `version`.
+- Cuerpo con bloques fijos: `Principio aplicable` · `Casos` · `Anti-patrón` · `Heurística numérica` · **`Ajuste por eje`** (solo si `varia-por-eje` no es `[]`) · `Conflictos conocidos` · `Salida esperada`.
 - ≥5 citas inline a IDs. Cada ID citado inline debe estar declarado en `fuentes:`.
-- 40-100 líneas.
+- 40-150 líneas (más en briefs priority con bloques Ajuste por eje detallados).
 
-En fase 4 del plan de reforma, cada brief gana un bloque **"Ajuste por eje"** que calibra la decisión según los 4 ejes estructurales (arco dominante, objetivo cognitivo, grado de edición, rol del presentador) cuando la respuesta varía por modalidad. Los briefs universales (loudness, contraste, CPS subtítulos) se marcan con `universal: true`.
+**`varia-por-eje:`** lista los 5 ejes estructurales (arco-dominante, objetivo-cognitivo, grado-edicion, grado-guion, rol-presentador) + `plataforma` cuando la decisión varía. `[]` = universal (loudness, contraste, CPS, codec/bitrate universales). El bloque `Ajuste por eje` tiene sub-bloques `### Por \`ejeX\`` con un bullet por cada valor posible del eje. Las skills de etapa leen la sección 0.5 del Concept Brief (modalidad + ejes + plataforma) para resolver qué sub-bloque aplicar en cada brief.
+
+Arquitectura de modalidades y ejes formalmente en [`docs/arquitectura/modalidades-y-ejes.md`](docs/arquitectura/modalidades-y-ejes.md) — 12 presets nombrados + 5 ejes + atributo de plataforma.
 
 Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pilares completos.**
 
@@ -58,8 +60,8 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 4. Para decisiones con `admite-variantes: true`, aplica el **test de determinismo upstream** (≥2 casos del brief aplicables al contexto → ofrecer variantes; un solo caso domina → proponer una sola).
 5. Produce un plan documentado con template al final.
 
-**Cantidad de decisiones que admiten variantes por etapa (baseline establecido en dry-runs; se recalibra en fase 5):**
-- Concepto 2/6, Guión 2/8, Storyboard 0/4 (deterministas por diseño), Edición 4/10, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
+**Cantidad de decisiones que admiten variantes por etapa (recalibrado 2026-04-19 tras fase 4):**
+- Concepto 2/6, Guión 5/8, Storyboard 0/4 (deterministas por diseño), Grabación 3/7, Edición 5/10, Publicación 4/8. El resto son estándares, derivados, o principios deterministas. Los briefs con `admite-variantes: true` suelen coincidir con los que declaran `varia-por-eje:` no vacío (la variación depende de la modalidad/ejes); los universales (`varia-por-eje: []`) son casi siempre `admite-variantes: false`.
 
 **Prohibido en skills:** leer pilares completos en runtime (`Read docs/pilares/...`). Si hay una pregunta fuera del scope de los briefs, usar `Grep` dirigido por ID.
 

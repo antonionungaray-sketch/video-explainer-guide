@@ -58,6 +58,33 @@ El Concept Brief informa también al brief 04-segmentacion (duración),
 confirma con el usuario en cada uno en lugar de re-decidir desde cero
 cuando ya está cubierto upstream.
 
+## Paso 0.5 — Lectura de ejes para routing
+
+El Concept Brief contiene una sección **0.5 Modalidad y ejes** con:
+- `preset`: modalidad nombrada (o `custom`)
+- `ejes`: los 5 valores explícitos (arco-dominante, objetivo-cognitivo,
+  grado-edicion, grado-guion, rol-presentador)
+- `plataforma`: atributo independiente
+
+**Cada decisión del flujo** se resuelve así:
+
+1. Leer el brief correspondiente.
+2. Revisar `varia-por-eje:` en su frontmatter.
+3. Si es `[]`: aplicar el brief tal cual (universal).
+4. Si es `[ejeX, ejeY, ...]`: ir a la sección `## Ajuste por eje` del
+   brief, tomar cada sub-bloque `### Por \`ejeX\`` y usar el bullet del
+   valor de `ejeX` en el Concept Brief. Aplicar todos los ejes listados.
+
+Si el Concept Brief **no tiene** sección 0.5 (versión anterior a la
+reforma), pregunta al usuario los 5 ejes + plataforma antes de
+continuar. Sin ejes no hay routing coherente. Referencia:
+`docs/arquitectura/modalidades-y-ejes.md`.
+
+**Flag de inconsistencia:** si los ejes contradicen una decisión
+previa del Concept Brief (ej. `arco-dominante: performativo` pero
+objetivo declarado es `formar-opinion`), advierte al usuario — el
+Concept Brief debe regresarse a `concept-explainer` para re-lockear.
+
 ## Flujo
 
 Camina al creador por las 8 decisiones críticas **en el orden de los

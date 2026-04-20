@@ -41,6 +41,31 @@ fuera del scope de los briefs, usa `Grep` dirigido por ID
 (ej. `grep "P1-§2.3-#5" docs/pilares/01-fundamentos-cognitivos.md`),
 no `Read` del archivo completo.
 
+## Lectura de ejes para routing
+
+El Concept Brief contiene una sección **0.5 Modalidad y ejes** con
+`preset`, los 5 `ejes` (arco-dominante, objetivo-cognitivo,
+grado-edicion, grado-guion, rol-presentador) y `plataforma`. Referencia:
+`docs/arquitectura/modalidades-y-ejes.md`.
+
+**Cada decisión del flujo** se resuelve así:
+1. Leer el brief correspondiente.
+2. Revisar `varia-por-eje:` en su frontmatter.
+3. Si es `[]`: aplicar el brief tal cual.
+4. Si es `[ejeX, ejeY, ...]`: ir a la sección `## Ajuste por eje` del
+   brief y aplicar el sub-bloque correspondiente al valor del Concept
+   Brief.
+
+**Nota específica para storyboard:** si `grado-edicion: zero` o
+`grado-guion: improvisado`, **varios briefs de esta etapa no aplican**
+(storyboard formal no existe en live stream). El skill debería
+detectarlo temprano y sugerir saltar a `record-explainer` directamente
+— el "storyboard" del live stream es el layout de escenas OBS, no un
+artefacto de previsualización.
+
+Si el Concept Brief no tiene sección 0.5 (versión anterior), pregunta
+al usuario los 5 ejes antes de continuar.
+
 ## Flujo
 
 Camina al creador por las 4 decisiones críticas **en el orden de los

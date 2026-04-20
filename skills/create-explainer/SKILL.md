@@ -29,11 +29,14 @@ Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explai
    - **Edición y post** — material crudo capturado, está editando.
    - **Publicación y medición** — video editado, está por publicar o iterando con métricas.
 
-2. **Identificar la modalidad** (si no es obvia). El toolkit reconoce múltiples modalidades con intención pedagógica — algunos ejemplos:
-   - Tutorial técnico / software, divulgación científica, explainer comercial / de producto, how-to / performance, onboarding corporativo.
-   - Documental narrativo, video-ensayo, periodismo analítico visual, conferencia grabada, live stream educativo, podcast audiovisual, personal essay pedagógico.
+2. **Identificar la modalidad** (si no es obvia). El toolkit declara **12 presets de modalidad + 5 ejes estructurales + atributo plataforma** formalmente en `docs/arquitectura/modalidades-y-ejes.md`. Los 12 presets:
+   - *Instruccional:* `instruccional` · `how-to` · `onboarding` · `explainer-comercial`
+   - *Divulgativa:* `divulgativa`
+   - *Narrativa autoral:* `documental-narrativo-pedagogico` · `video-ensayo` · `personal-essay-pedagogico`
+   - *Investigación + evidencia:* `periodismo-analitico-visual`
+   - *En vivo / conversación:* `conferencia-grabada` · `live-stream-educativo` · `podcast-audiovisual-educativo`
 
-   En esta versión del toolkit, las decisiones de las etapas siguientes se calibran por modalidad (trabajo en curso — la calibración fina por eje llegará con la reforma de briefs). Si la modalidad no calza en las categorías anteriores, pide al usuario que describa el tipo de video y registra la descripción para que las etapas siguientes la consideren.
+   La elección formal del preset + declaración de los 5 ejes y la plataforma ocurre en `concept-explainer` (paso 0.5). El orquestador solo identifica tentativamente el preset para delegar al skill correcto. Si la modalidad no calza en las categorías anteriores, el creador elige `custom` en `concept-explainer` y declara los 5 ejes directamente.
 
 3. **Delegar al skill de etapa correspondiente**, pasando el contexto de la modalidad:
    - Etapa de concepto → invoca `concept-explainer`

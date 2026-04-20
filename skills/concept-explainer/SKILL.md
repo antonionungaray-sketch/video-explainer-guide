@@ -32,17 +32,23 @@ bypass interna.
 
 ## Carga obligatoria al inicio
 
-Antes de proponer cualquier decisión, **lee todos los briefs de esta
-etapa**:
+Antes de proponer cualquier decisión, **lee los briefs de esta etapa y
+el documento de arquitectura de modalidades**:
 
 ```
 docs/briefs/concepto/*.md
+docs/arquitectura/modalidades-y-ejes.md
 ```
 
-(6 archivos. Orden alfabético = orden de flujo:
+(6 briefs. Orden alfabético = orden de flujo:
 01-audiencia → 02-objetivo → 03-promesa-y-angulo →
 04-formato-y-duracion → 05-plataforma-y-distribucion →
 06-tono-y-restricciones.)
+
+El documento de arquitectura describe los **12 presets de modalidad** y
+los **5 ejes estructurales** (arco-dominante, objetivo-cognitivo,
+grado-edicion, grado-guion, rol-presentador). Los consumes en el paso
+0.5 del flujo.
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables (`[P1-§X.Y]`,
@@ -77,6 +83,51 @@ Devolvé al usuario un **mini-resumen explícito** antes de abrir nada:
 
 Esto da al usuario control y evita preguntar por dimensiones ya
 resueltas.
+
+## Paso 0.5 — Modalidad + ejes
+
+Antes de entrar a las 6 decisiones del flujo, el Concept Brief declara
+**qué tipo de video es** en términos de la arquitectura de modalidades
+(ver `docs/arquitectura/modalidades-y-ejes.md`).
+
+**Flujo:**
+
+1. **Presenta los 12 presets** con una descripción de una línea cada uno
+   + ejemplos arquetípicos. Agrupar por familia:
+   - *Instruccional:* `instruccional` · `how-to` · `onboarding` · `explainer-comercial`
+   - *Divulgativa:* `divulgativa`
+   - *Narrativa autoral:* `documental-narrativo-pedagogico` · `video-ensayo` · `personal-essay-pedagogico`
+   - *Investigación + evidencia:* `periodismo-analitico-visual`
+   - *En vivo / conversación:* `conferencia-grabada` · `live-stream-educativo` · `podcast-audiovisual-educativo`
+
+2. **Pregunta al usuario cuál preset se parece más al video que quiere
+   producir.** Ofrece también "ninguno / custom".
+
+3. **Si eligió preset:** muestra los ejes default del preset (tabla en
+   el doc de arquitectura §3.1) y pregunta por cada eje "¿mantener o
+   cambiar?". Registra los cambios en `divergencias:`. Si las
+   divergencias suman 3 o más, sugiere explícitamente pasar a
+   `preset: custom`.
+
+4. **Si eligió custom:** pregunta los 5 ejes uno por uno con los valores
+   posibles (ver doc §2). Preset queda como `custom`.
+
+5. **Pregunta `plataforma:`** (default `long-form-horizontal`). Valores:
+   `long-form-horizontal` · `shorts-vertical` · `podcast-audio-primario`
+   · `live-with-vod` · `corporate-lms`. La plataforma es un atributo
+   separado de la modalidad — se compone con cualquier preset.
+
+El resultado es un bloque estructurado con `preset`, `ejes` (5 valores
+explícitos) y opcional `divergencias` (cuando algún eje difiere del
+default del preset). Este bloque aparece en la sección 0 del Concept
+Brief como contrato de routing para briefs downstream (cada brief de
+fase 4+ tiene `varia-por-eje: [lista]` y las skills de etapa resuelven
+el sub-bloque "Ajuste por eje" según estos valores).
+
+**Consistencia:** si los ejes declarados contradicen el preset elegido
+(ej. `preset: podcast-audiovisual` pero `grado-edicion: heavy`),
+advierte y pide confirmación — puede ser legítimo (podcast con heavy
+post) o un error.
 
 ## Flujo
 
@@ -155,6 +206,24 @@ esta plantilla:
 - version: 1
 - creado: <YYYY-MM-DD>
 
+## 0.5 Modalidad y ejes
+```yaml
+modalidad:
+  preset: <uno de los 12 presets | custom>
+  ejes:
+    arco-dominante: <expositivo | narrativo | argumentativo | performativo | conversacional>
+    objetivo-cognitivo: <adquirir-habilidad | corregir-intuicion | decidir-informado | orientarse | formar-opinion | apreciar>
+    grado-edicion: <heavy | medium | light | zero>
+    grado-guion: <guionado | semi-guionado | improvisado>
+    rol-presentador: <experto-neutral | narrador-1a-persona | narrador-omnisciente | investigador | demostrador | conversador | anfitrion-de-experto>
+  divergencias:           # opcional, solo cuando algún eje difiere del default del preset
+    - eje: <nombre-del-eje>
+      default: <valor default del preset>
+      elegido: <valor elegido>
+      razon: "<por qué diverge>"
+plataforma: <long-form-horizontal | shorts-vertical | podcast-audio-primario | live-with-vod | corporate-lms>
+```
+
 ## 1. Audiencia
 [perfil con nivel previo explícito y eje cultural si importa]
 
@@ -218,6 +287,7 @@ Misma disciplina que el Production Brief de previsualización.
 
 ## Verificación antes de proponer el lock
 
+- [ ] **Modalidad + ejes + plataforma declarados** (sección 0.5) — preset nombrado o `custom`; los 5 ejes con valor explícito; `plataforma` obligatoria.
 - [ ] Audiencia con nivel previo explícito.
 - [ ] Objetivo con verbo observable y medible.
 - [ ] Promesa formulable en ≤15 palabras + ángulo distintivo + CCN Fit

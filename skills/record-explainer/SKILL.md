@@ -77,6 +77,31 @@ surge una pregunta fuera del scope de los briefs, usa `Grep` dirigido
 por ID (ej. `grep "P3-preprod-audio"
 docs/pilares/03-herramientas.md`), no `Read` del archivo completo.
 
+## Lectura de ejes para routing
+
+El Concept Brief contiene sección **0.5 Modalidad y ejes** con `preset`,
+los 5 `ejes` y `plataforma`. Referencia:
+`docs/arquitectura/modalidades-y-ejes.md`.
+
+**Cada decisión del flujo** se resuelve así:
+1. Leer el brief correspondiente.
+2. Revisar `varia-por-eje:` en su frontmatter.
+3. Si es `[]`: aplicar el brief tal cual.
+4. Si es `[ejeX, ...]`: ir a `## Ajuste por eje` del brief y aplicar el
+   sub-bloque correspondiente al valor del Concept Brief.
+
+**Notas específicas para grabación:**
+- `grado-edicion: zero` (live stream) colapsa varias decisiones — el
+  setup OBS + escenas + Stream Deck son la "grabación" en vivo. Sin
+  multi-take ni reshoots. Ver [P3-modalidades-live].
+- `rol-presentador: narrador-omnisciente` → no hay cara en cámara;
+  iluminación y encuadre no aplican. Grabación = voice-over post.
+- `rol: conversador` / `anfitrion-de-experto` → multi-mic + multi-cam
+  simétrico. Ver [P3-modalidades-podcast].
+
+Si el Concept Brief no tiene sección 0.5, pregunta al usuario los 5
+ejes antes de continuar.
+
 ## Flujo
 
 Camina al creador por las 7 decisiones críticas **en el orden de los

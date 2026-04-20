@@ -29,6 +29,34 @@ briefs, usa `Grep` dirigido por ID (ej. `grep "P1-§3.2"
 docs/pilares/01-fundamentos-cognitivos.md`), no `Read` del archivo
 completo.
 
+## Lectura de ejes para routing
+
+El Concept Brief contiene sección **0.5 Modalidad y ejes** con `preset`,
+los 5 `ejes` y `plataforma`. Referencia:
+`docs/arquitectura/modalidades-y-ejes.md`.
+
+**Cada decisión del flujo** se resuelve así:
+1. Leer el brief correspondiente.
+2. Revisar `varia-por-eje:` en su frontmatter.
+3. Si es `[]` (universales: 03-audio-loudness, 04-texto-pantalla,
+   09-transiciones): aplicar tal cual.
+4. Si es `[ejeX, ...]`: ir a `## Ajuste por eje` del brief y aplicar el
+   sub-bloque correspondiente al valor del Concept Brief.
+
+**Notas específicas para edición:**
+- `grado-edicion: zero` (live stream) → **toda la fase de edición no
+  aplica**. Si el Concept Brief declara `zero`, este skill no debería
+  invocarse; sugerir saltar a `publish-explainer` con el VOD crudo (si
+  aplica re-publicación) o cerrar.
+- `grado-edicion: light` (TED, conferencia) → muchos briefs (pacing,
+  señalización, voiceover, overlays) se simplifican o no aplican.
+  Skill se limita a cortes multi-cámara + audio cleanup + render.
+- Los estándares objetivos (LUFS, WCAG, CPS) son universales y
+  **no-negociables** sin justificación pilar-backed.
+
+Si el Concept Brief no tiene sección 0.5, pregunta al usuario los 5
+ejes antes de continuar.
+
 ## Flujo
 
 Camina al creador por las 10 decisiones críticas **en el orden de los
