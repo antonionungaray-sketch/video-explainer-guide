@@ -2,6 +2,33 @@
 
 Todas las versiones relevantes de este proyecto se registran acá. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
 
+## [1.2.0] — 2026-04-20
+
+**Fase 7 — Portabilidad y perfil de entorno.** El plugin ahora es portable entre OS vía perfil de entorno persistente que los skills de etapa leen para filtrar recomendaciones de herramientas.
+
+### Added
+
+- **Skill `setup-environment`** — construye y actualiza el perfil de entorno del usuario (OS, preferencias, hardware, restricciones, herramientas ya elegidas) en `~/.claude/video-explainer/profile.md`. Re-invocable. Soporta override por proyecto (`.video-explainer/profile.md`).
+- **Paso 0.5 en 4 skills de etapa** (`concept-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) — lectura del perfil de entorno al inicio de cada skill para filtrar recomendaciones de herramientas según OS, licencia y hardware; fallback a WebSearch si la herramienta óptima no está en Pilar 3.
+- **Metadata estructurada en Pilar 3** — cada bullet de herramienta en `docs/pilares/03-herramientas.md` tiene un bloque `<!-- meta: <slug> -->` con campos `plataformas`, `licencia`, `modo`, `hardware-min?`, `equivalentes`.
+- **Script `scripts/validar-metadata-pilar3.sh`** — valida integridad de los bloques `<!-- meta -->` en Pilar 3 (campos obligatorios, valores permitidos, duplicados).
+- **`update-tools` acepta payload estructurado** desde el fallback externo de los skills de etapa para incorporar herramientas nuevas al catálogo con ficha completa.
+
+### Changed
+
+- Skills de mantenimiento renombrados a inglés (ruptura menor): `actualizar-herramientas` → `update-tools`, `actualizar-tendencias` → `update-trends`, `sincronizar-briefs` → `sync-briefs`. Los nombres anteriores no son compatibles.
+- `create-explainer` sugiere invocar `setup-environment` en la primera instalación (si no existe el perfil).
+- `CLAUDE.md` documenta la arquitectura del perfil de entorno y el nuevo skill.
+- `ROADMAP.md` registra la fase 7 como cerrada.
+
+### Technical notes
+
+- Bump de versión 1.1.0 → 1.2.0.
+
+## [1.1.0] — 2026-04-19 (sin entrada de changelog separada)
+
+Ver historial de commits. Fases 1-6 cerradas; bump desde 1.0.0 registrado en la fase 6.
+
 ## [1.0.0] — 2026-04-19
 
 **Rebrand mayor — ruptura de compatibilidad.** El paquete cambia de nombre y expande su alcance declarado al espectro completo de video con intención pedagógica. Cerramos la **fase 0 del plan de reforma** (`/home/antonio/.claude/plans/desafortunadamente-este-proyecto-est-bubbly-charm.md`). Las fases 1-6 quedan pendientes.
