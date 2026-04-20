@@ -19,6 +19,16 @@ Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar
 
 Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
 
+## Paso pre-flujo (opcional, recomendado en primera instalación): configurar entorno
+
+Si el usuario nunca ha invocado `setup-environment` en esta máquina, sugerir:
+
+> "¿Es tu primera vez usando el plugin en esta máquina? Puedo invocar `setup-environment` antes de entrar al flujo — construye un perfil de tu OS, preferencias y hardware, que los skills de etapa usan para adaptar recomendaciones de herramientas a tu entorno. Tarda 3-5 minutos. ¿Lo hacemos?"
+
+Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir con el flujo normal — los skills de etapa funcionarán sin perfil (con recomendaciones generales).
+
+**Señal de "primera vez":** `~/.claude/video-explainer/profile.md` no existe.
+
 ## Flujo del orquestador
 
 1. **Identificar la etapa** del ciclo de producción donde está el creador. Pregunta solo si no es claro:
