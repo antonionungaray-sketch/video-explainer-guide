@@ -3,7 +3,7 @@
 #
 # Cuando se edita/escribe un archivo bajo docs/pilares/, corre
 # verificar-briefs.sh --strict y, si hay drift, lo reporta por stderr
-# con sugerencia de invocar sincronizar-briefs.
+# con sugerencia de invocar sync-briefs.
 #
 # Siempre exit 0: el hook avisa, no bloquea.
 
@@ -41,7 +41,7 @@ if [[ "$STATUS" -ne 0 ]]; then
     echo ""
     echo "⚠️  drift detectado tras editar $FILE"
     echo "$OUTPUT" | grep -E "^(STALE|WARN):" || true
-    echo "→ invoca el skill 'sincronizar-briefs' para re-sincronizar los briefs afectados."
+    echo "→ invoca el skill 'sync-briefs' para re-sincronizar los briefs afectados."
   } >&2
 fi
 
