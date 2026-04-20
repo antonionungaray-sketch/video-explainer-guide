@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-midudev          # caso audiencia dev hispana junior-mid
   - P2-ficha-kurzgesagt       # caso audiencia general sin background
 admite-variantes: false
+varia-por-eje: [objetivo-cognitivo]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -63,6 +64,17 @@ en concepto produce hooks que no encajan con nadie.
 - **Edad y idioma como ejes silenciosos:** registro hispano junior
   tolera anglicismos (`deploy`, `commit`); divulgación general no
   [P2-meta-divulgacion].
+
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** audiencia definida por "¿quién va a ejecutar qué tarea?" Nivel previo = familiaridad con el dominio procedimental (stack, herramienta, método).
+- **`corregir-intuicion`:** audiencia definida por "¿quién sostiene la intuición errónea?" Nivel previo = exposición al fenómeno pero sin modelo correcto. Pilar 1 §6.1 (cambio conceptual).
+- **`decidir-informado`:** audiencia definida por rol decisor ("¿quién compra / adopta / autoriza?"). Nivel previo = conocimiento del problema de negocio pero no de las alternativas.
+- **`orientarse`:** audiencia definida por "¿quién entra al dominio por primera vez?" Nivel previo típicamente bajo; pre-entrenamiento extensivo.
+- **`formar-opinion`:** audiencia definida por exposición al debate ("¿quién ya discute X?"). Nivel previo = opiniones parciales formadas.
+- **`apreciar`:** audiencia definida por sensibilidad estética previa ("¿quién ya sigue este género / autor / dominio?"). Nivel previo = sensibilidad, no conocimiento técnico.
 
 ## Conflictos conocidos
 

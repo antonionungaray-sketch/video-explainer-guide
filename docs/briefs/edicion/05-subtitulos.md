@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-dotcsv            # open captions hispano
   - P2-ficha-quantumfracture   # open captions + closed
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -67,6 +68,16 @@ legibilidad.
   el viewer necesita tiempo para registrarlo), máximo ~7s por cue.
 - **Posición:** tercio inferior centrado; fondo translúcido negro 60-70%
   opacidad o contorno de 2-3px.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`shorts-vertical`:** subtítulos **obligatorios siempre** (consumo silencioso default). Burned-in + closed recomendado.
+- **`long-form-horizontal`:** burned-in opcional; closed captions obligatorias por accesibilidad.
+- **`podcast-audio-primario`:** closed captions para la versión video secundaria; no aplican subs burned-in.
+- **`live-with-vod`:** subs en vivo via auto-caption (YouTube/Twitch) + closed captions editadas en el VOD re-upload.
+- **`corporate-lms`:** closed captions + transcript obligatorios por accesibilidad corporativa (WCAG + SCORM).
 
 ## Conflictos conocidos
 

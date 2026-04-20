@@ -15,8 +15,9 @@ fuentes:
   - P3-publicacion-thumbnails  # Figma / Canva / Photopea
   - P3-publicacion-analitica   # TubeBuddy / VidIQ A/B test
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -82,6 +83,16 @@ performance).
 - **Herramientas** [P3-publicacion-thumbnails]: Figma, Canva,
   Photopea (web gratis alternativa a Photoshop), generadores IA
   (Midjourney, DALL-E) para bases.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** thumbnail 16:9 con texto grande + imagen central. A/B test vía TubeBuddy/VidIQ.
+- **`shorts-vertical`:** thumbnail 9:16; el primer frame del video importa más que el thumbnail.
+- **`podcast-audio-primario`:** thumbnail de episodio + foto del invitado (formato Spotify/Apple).
+- **`live-with-vod`:** thumbnail live genérico; el VOD post necesita thumbnail custom.
+- **`corporate-lms`:** sin thumbnail discovery — icon o number de módulo suficiente.
 
 ## Conflictos conocidos
 

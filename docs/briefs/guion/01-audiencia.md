@@ -11,9 +11,11 @@ fuentes:
   - P2-ficha-fireship         # caso audiencia dev anglo pre-entrenada
   - P2-ficha-midudev          # caso audiencia dev hispana junior-mid
   - P2-ficha-kurzgesagt       # caso audiencia general sin background
+  - P1-§6.1                   # misconception (ajuste por objetivo-cognitivo)
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [objetivo-cognitivo]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -54,6 +56,19 @@ por ambos extremos.
 - **Pre-entrenamiento:** si >20% del audio inicial explica términos, es
   señal de que la audiencia definida no coincide con la audiencia real
   del contenido.
+
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+Ver detalle completo en [concepto/01-audiencia](../concepto/01-audiencia.md#ajuste-por-eje). Resumen aplicado a fase de guión:
+
+- **`adquirir-habilidad`:** nivel previo = familiaridad procedimental. El guión asume stack y vocabulario.
+- **`corregir-intuicion`:** nivel previo = intuición errónea existente. El guión la enuncia antes de desafiarla [P1-§6.1].
+- **`decidir-informado`:** nivel previo = contexto del problema. El guión asume el marco y enuncia criterios.
+- **`orientarse`:** nivel previo bajo. Pre-entrenamiento extenso en el guión (60-90s antes del argumento).
+- **`formar-opinion`:** nivel previo = exposición al debate. El guión asume las posiciones en juego.
+- **`apreciar`:** nivel previo = sensibilidad estética. El guión no explica qué es el objeto; invita a ver.
 
 ## Conflictos conocidos
 

@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-3b1b              # títulos pregunta matemática
   - P3-publicacion-analitica   # TubeBuddy / VidIQ A/B
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante, objetivo-cognitivo, plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -65,6 +66,32 @@ mobile y cards. La promesa se corta antes de entregarse.
   >12 difícil de escanear.
 - **Números específicos aumentan CTR** (ej. "7 minutos", "100 segundos",
   "3 comandos"): dan especificidad + promesa acotada.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`expositivo`:** título = afirmación o pregunta provocativa ("X in 100 Seconds", "Why Y doesn't work").
+- **`narrativo`:** título = promesa de historia ("How Z happened", "The real story behind W").
+- **`argumentativo`:** título = tesis o giro ("Why everyone is wrong about X", "The case for Y"). Abre open loop argumentativo.
+- **`performativo`:** título = promesa procedimental ("Build X in N minutes", "How to do Y").
+- **`conversacional`:** título = invitado + tema ("Elon Musk: AI, Twitter, and the Future").
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** título utilitario con tiempo/alcance.
+- **`corregir-intuicion`:** título contraintuitivo explícito ("You've been doing X wrong").
+- **`decidir-informado`:** título comparativo ("X vs Y: which should you use?").
+- **`orientarse`:** título de mapeo ("The landscape of X", "Everything about Y").
+- **`formar-opinion`:** título-tesis; admite polémica controlada.
+- **`apreciar`:** título evocativo/poético; sin utility pitch.
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** 40-70 chars, título + packaging completos.
+- **`shorts-vertical`:** título corto, ≤40 chars, hook implícito.
+- **`podcast-audio-primario`:** "Name of guest: topic" formato estándar (Lex Fridman).
+- **`corporate-lms`:** título descriptivo formal ("Módulo N: X"), sin packaging marketing.
 
 ## Conflictos conocidos
 

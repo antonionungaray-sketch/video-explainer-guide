@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-fireship          # screenshots + memes
   - P2-ficha-kurzgesagt        # animación pre-producida por equipo
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion, arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -69,6 +70,23 @@ a resolución nativa o superior.
   H.264 para capturas animadas; SVG para diagramas editables.
 - **Nomenclatura:** `<bloque>-<slug>.<ext>` (ej. `03-diagrama-arquitectura.png`)
   para ubicar rápido en edición.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy`:** B-roll abundante y planeado (Veritasium, Kurzgesagt). Shotlist paralelo al script.
+- **`medium`:** B-roll estratégico — inserts para momentos clave.
+- **`light`:** B-roll mínimo o inexistente (TED).
+- **`zero`:** **no aplica** — no hay B-roll en live stream.
+
+### Por `arco-dominante`
+
+- **`performativo`:** B-roll = screenshots de contexto + closeups del hardware/código. Funcional, no decorativo.
+- **`narrativo`:** B-roll narrativo (archivo, recreación, establecedoras). Gran porcentaje del video.
+- **`argumentativo`:** B-roll de evidencia (clips citados, documentos, referencias) — ver pilar 1 §10.3 y §11.3.
+- **`expositivo`:** B-roll ilustrativo (diagramas, animaciones de concepto).
+- **`conversacional`:** B-roll raro (graphics insert ocasional en podcast con inserts, Huberman).
 
 ## Conflictos conocidos
 

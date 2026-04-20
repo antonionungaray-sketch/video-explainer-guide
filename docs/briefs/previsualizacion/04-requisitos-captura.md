@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-coding-train
   - P3-edicion-composicion     # overlays auxiliares previstos
 admite-variantes: false
+varia-por-eje: [rol-presentador, grado-edicion]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -70,6 +71,23 @@ Pausa visible + ruido de mouse, framing al azar, violan coherencia
 - **3-5 escenas** cubre tutorial técnico o divulgación estándar.
 - **Shortcuts numpad (1-9) o F-keys dedicadas;** evitar combos con
   modificador para cambio rápido en vivo.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **`demostrador`:** captura pantalla + face-cam PiP + mic dedicado. Setup tutorial.
+- **`experto-neutral` / `narrador-omnisciente`:** face-cam estudio o sin cara (animación/b-roll). Sin captura de pantalla dominante.
+- **`narrador-1a-persona`:** face-cam cuidada + B-roll autoral. Estudio o on-location.
+- **`investigador`:** face-cam on-location + capturas de fuentes/documentos en pantalla + archivo.
+- **`conversador` / `anfitrion-de-experto`:** multi-cámara (una por persona) + audio multi-mic. No pantalla.
+
+### Por `grado-edicion`
+
+- **`heavy`:** captura sobredimensionada — múltiples ángulos, B-roll, cobertura redundante. El editor selecciona.
+- **`medium`:** captura alineada al shotlist; poca redundancia.
+- **`light`:** una toma multi-cámara que cubre el performance; sin reshoots.
+- **`zero`:** captura = setup OBS en vivo; escenas pre-configuradas; alertas, chat overlay.
 
 ## Conflictos conocidos
 

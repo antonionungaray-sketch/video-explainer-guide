@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-theprimeagen      # cross-funnel multichannel
   - P2-ficha-dotcsv            # CTA explícito (excepción hispana)
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [objetivo-cognitivo, plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -83,6 +84,25 @@ conceptual [P1-§8.2].
   screen). Más rompe el cierre narrativo.
 - **1 acción específica como CTA primario**, no 3 opciones — fatiga
   de decisión reduce probabilidad de cada una.
+
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** CTA de aplicación + siguiente módulo/repo. Convergencia con [guion/08-cta].
+- **`corregir-intuicion`:** CTA = contenido relacionado que refuerce el modelo corregido.
+- **`decidir-informado`:** CTA = comparativa extendida, matriz de decisión, siguiente evaluación.
+- **`orientarse`:** CTA = profundizar — newsletter, siguiente video en serie, link a recurso maestro.
+- **`formar-opinion`:** CTA retórico — "reflexiona", "comparte", "discute". NO pitch comercial directo.
+- **`apreciar`:** end-screen sobrio; link a obra relacionada o al autor. Sin pitch.
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** end-screen YouTube con 2 elementos (video relacionado + subscribe). CTA verbal al cierre ≤15s.
+- **`shorts-vertical`:** no existe end-screen formal; CTA implícito vía follow.
+- **`podcast-audio-primario`:** cross-promo otro episodio + newsletter en descripción.
+- **`live-with-vod`:** live sin end-screen; VOD re-upload admite el formato estándar.
+- **`corporate-lms`:** end-screen = "completar quiz" o "pasar al siguiente módulo". No CTAs externos.
 
 ## Conflictos conocidos
 

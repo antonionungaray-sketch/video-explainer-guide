@@ -11,9 +11,11 @@ fuentes:
   - P2-ficha-veritasium         # ángulo contraintuitivo + demo física
   - P2-ficha-3b1b               # ángulo anecdótico → concepto duro
   - P2-ficha-fireship           # ángulo compresión radical
+  - P1-§6.1                     # misconception / open loop epistémico
 admite-variantes: true
+varia-por-eje: [arco-dominante, objetivo-cognitivo]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -77,6 +79,25 @@ evitan este patrón.
   [P2-idea-guion-patrones].
 - **Ángulo distintivo:** poder responder "vs ¿qué video existente?
   ¿qué hace este distinto?" en una frase.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`expositivo`:** promesa = acceso a conocimiento organizado ("entenderás X"). Ángulo distintivo = compresión, densidad o pre-entrenamiento específico.
+- **`narrativo`:** promesa = viaje a través de una historia ("descubrirás cómo Z llegó a ser"). Ángulo = apertura narrativa + cierre con revelación. Open loop temporal, no conceptual.
+- **`argumentativo`:** promesa = reframing o posición sostenible ("te mostraré por qué Y"). Ángulo = tesis distintiva. El CCN-fit se afina: viewer Core ya tiene opinión parcial, New recibe introducción al debate.
+- **`performativo`:** promesa = capacidad nueva ("podrás hacer X al final"). Ángulo = atajo, herramienta, flujo distintivo.
+- **`conversacional`:** promesa = acceso a expertise viva ("escucharás a Z hablar sobre W"). El ángulo lo lleva el invitado, no el anfitrión. CCN-fit atípico: Core sigue al anfitrión, Casual vino por el invitado.
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** promesa utilitaria verificable. Cumplida o no.
+- **`corregir-intuicion`:** promesa de sorpresa epistémica ("lo que creías sobre X está mal"). Open loop fuerte con el hook [P1-§6.1]. Kurzgesagt y Veritasium viven aquí.
+- **`decidir-informado`:** promesa de evaluación comparativa clara. Modelo: "deberías elegir X si Y, Z si W".
+- **`orientarse`:** promesa de mapa mental ("entenderás el landscape de X"). Johnny Harris y Vox Atlas.
+- **`formar-opinion`:** promesa retórica ("te mostraré por qué deberías pensar Y"). Nerdwriter, Contrapoints. NO cumplible como "acción observable"; cumplimiento = resonancia, no ejecución.
+- **`apreciar`:** promesa sensorial/estética ("te enseñaré a ver X así"). Matt D'Avella, ciertos ensayos. Cumplimiento = cambio en percepción del objeto.
 
 ## Conflictos conocidos
 

@@ -14,8 +14,9 @@ fuentes:
   - P2-ficha-kurzgesagt        # animación-driven sin cortes de cámara
   - P2-ficha-veritasium        # cortes editoriales cinematográficos
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion, arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -65,6 +66,22 @@ densa o retrieval checkpoint).
 - **Divulgación documental:** 4-8 cortes/min (rango Veritasium).
 - **Regla de pulgar:** WPM alto tolera (y necesita) más cortes; WPM bajo
   compensa con canal visual denso → menos cortes duros, más animación.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy`:** pacing diseñado al detalle — 10-15 cortes/min formato denso (Fireship), o animación-rhythm continuo (Kurzgesagt, 3B1B). El editor controla todo.
+- **`medium`:** pacing con cortes rítmicos menos densos; mantener takes largos cuando el contenido lo pide.
+- **`light`:** pacing decidido por el speaker. Cortes multi-cámara únicamente; no recomposición rítmica. TED, podcast.
+- **`zero`:** **no aplica** — pacing = tiempo real de la sesión. Sin control editorial.
+
+### Por `arco-dominante`
+
+- **`performativo`:** pacing atado al procedimiento real — sostén la toma mientras dura el comando/acción; corta al terminar.
+- **`narrativo` / `argumentativo`:** pacing dramatúrgico — pausas para efecto, aceleración en clímax.
+- **`expositivo`:** pacing informativo uniforme con pausas en transiciones conceptuales.
+- **`conversacional`:** pacing = ritmo natural del diálogo; cortes mínimos para evitar cross-talk.
 
 ## Conflictos conocidos
 

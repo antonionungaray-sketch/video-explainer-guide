@@ -9,9 +9,11 @@ fuentes:
   - P2-ficha-fireship
   - P2-ficha-veritasium
   - P2-ficha-midudev
-admite-variantes: false
-sync: 2026-04-18
-version: 1
+  - P1-§10.4                   # consolidación retórica (formar-opinion / apreciar)
+admite-variantes: true
+varia-por-eje: [objetivo-cognitivo, plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -49,9 +51,28 @@ invita a nada. Correlaciona con click-through rate bajo.
 - **1 acción específica.** No 3 opciones — reduce la probabilidad de cada
   una por fatiga de decisión.
 
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** CTA de aplicación ("prueba esto ahora en tu stack", "link al repo"). Verificable.
+- **`corregir-intuicion`:** CTA de reflexión ("¿qué otra intuición tuya podría estar errada?") + link a contenido relacionado.
+- **`decidir-informado`:** CTA decisor ("¿qué elegirías para tu caso? cuéntame") + link a comparativa extendida.
+- **`orientarse`:** CTA de profundización ("si te interesó, mira X"), newsletter, siguiente episodio.
+- **`formar-opinion`:** CTA **retórico**, no utilitario — "déjame tus reflexiones", "comparte con alguien que defiende Y". NO cierre didáctico.
+- **`apreciar`:** CTA implícito — invitación a volver a ver el objeto con la densidad acumulada. Sin pitch.
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** CTA explícito al cierre, ≤15s, 1 acción específica.
+- **`shorts-vertical`:** CTA implícito (follow/profile); NO pitch extenso — rompe el loop del short.
+- **`podcast-audio-primario`:** CTA en sponsor reads + mención al newsletter/link en descripción.
+- **`live-with-vod`:** CTA emergente en vivo ("follow on Twitch"); re-upload VOD admite CTA editado.
+- **`corporate-lms`:** CTA = completar quiz / pasar al siguiente módulo. Sin "suscríbete".
+
 ## Conflictos conocidos
 
-Ninguno.
+Forzar CTA utilitario en modalidades `formar-opinion`/`apreciar` rompe el pacto retórico. Ver [P1-§10.4] y `guion/05-retrieval` Ajuste por eje.
 
 ## Salida esperada
 

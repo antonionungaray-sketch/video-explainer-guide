@@ -19,8 +19,9 @@ fuentes:
   - P2-ficha-3b1b
   - P3-edicion-composicion
 admite-variantes: true
+varia-por-eje: [grado-edicion]
 sync: 2026-04-19
-version: 2
+version: 3
 ---
 
 ## Principio aplicable
@@ -72,6 +73,15 @@ fuera del tercio inferior o tapando el rostro viola [P1-§5.3].
 - **Densidad:** 2-4/min en tutorial técnico denso; ≤1/min en
   divulgación narrada con b-roll denso [P2-edicion-patrones].
 - **Paleta:** 2-3 colores consistentes con señalización [P1-§2.3-#1].
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy`:** catálogo completo de overlays disponible (lower-third, callout, chapter-marker, stat-callout, pull-quote, progress-indicator, question-prompt/answer-reveal, idea-bulb, separador). Uso denso pero funcional.
+- **`medium`:** subset — lower-third + chapter-marker + ocasional callout. Evitar overlays decorativos.
+- **`light`:** overlays mínimos — lower-third + chapter-marker.
+- **`zero`:** overlays en vivo vía OBS (browser sources, chat overlay, alerts). No post-hoc.
 
 ## Conflictos conocidos
 

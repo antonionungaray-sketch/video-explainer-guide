@@ -1,15 +1,16 @@
 ---
 decision: publicacion/07-metricas-plataforma
 etapa: publicacion
-pregunta: ¿Qué métricas de plataforma observás y cómo las interpretás?
+pregunta: ¿Qué métricas de plataforma observas y cómo las interpretas?
 fuentes:
   - P2-publicacion-metricas
   - P2-publicacion-antipatrones
   - P3-publicacion-analitica
   - P3-publicacion-plataformas
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -81,6 +82,16 @@ iterar decisiones de packaging; 30+ días para iterar formato.
   intro, mejorar hook) o documentar aprendizaje para el siguiente.
 - **Re-engagement spike con delta >15%:** ese momento es oro —
   identificar qué pasó ahí y replicar el patrón.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** retention curve, APV, CTR, sources, watch time. YouTube Studio.
+- **`shorts-vertical`:** view-rate 70-90% benchmark, swipe-away rate, re-watches.
+- **`podcast-audio-primario`:** play-through rate, drop-off por capítulo (Spotify Analytics), listens totales.
+- **`live-with-vod`:** viewers concurrentes, avg session, chat activity (Twitch); VOD metrics aparte.
+- **`corporate-lms`:** completion rate (70% visto = "complete" en LinkedIn Learning), quiz scores, time-to-complete. NO comparables con YouTube.
 
 ## Conflictos conocidos
 

@@ -11,8 +11,9 @@ fuentes:
   - P2-ficha-mouredev          # escenas para live-coding hispano
   - P3-preprod-captura         # OBS Scene Management
 admite-variantes: false
+varia-por-eje: [grado-guion, grado-edicion]
 sync: 2026-04-19
-version: 2
+version: 3
 ---
 
 ## Principio aplicable
@@ -77,6 +78,20 @@ por CPU/GPU saturada. Mantener ≤4 fuentes activas simultáneas
 - **Fuentes por escena:** ≤4 activas.
 - **Tiempo de cambio (transición):** 0.3-1s. Corte duro (0s) para
   estilo Fireship-denso.
+
+## Ajuste por eje
+
+### Por `grado-guion`
+
+- **`guionado`:** escenas OBS planeadas 1:1 con el script (escena A para bloque 1, etc.); transiciones pre-programadas.
+- **`semi-guionado`:** escenas por tipo de segmento (code, talking head, Q&A); cambios manuales según presentador.
+- **`improvisado`:** escenas OBS con transiciones vía Stream Deck — el presentador las invoca en tiempo real (live stream). Layout de chat/alerts crítico.
+
+### Por `grado-edicion`
+
+- **`heavy`:** grabación multi-toma por escena; edit selecciona. Fewer escenas, más toma.
+- **`medium` / `light`:** grabación con menos reshoots; confiar en el performance.
+- **`zero`:** la "grabación" es el stream — las escenas son herramienta de ejecución, no de corrección.
 
 ## Conflictos conocidos
 

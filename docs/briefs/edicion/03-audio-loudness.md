@@ -8,8 +8,9 @@ fuentes:
   - P3-edicion-postproc        # FFmpeg para normalización
   - P3-edicion-editores        # DaVinci/Audacity integran medidores LUFS
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: []
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable

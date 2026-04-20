@@ -10,8 +10,9 @@ fuentes:
   - P2-ficha-midudev
   - P2-ficha-coding-train
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -70,6 +71,16 @@ todo. Checkpoint a 0:45 = re-grabar solo 45s.
   si falla.
 - **Estado inicial:** 3-5 ítems (archivo abierto, datos, UI en tab X).
   Si >10, la demo es demasiado compleja — simplificar.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`performativo`:** shotlist denso, 1 toma por paso procedimental; este es el caso de uso primario del brief.
+- **`expositivo`:** shotlist por concepto visual (diagramas, animaciones). Cada concepto = 1 visual bien planeado.
+- **`narrativo`:** shotlist por escena narrativa; más dramatúrgico que procedimental.
+- **`argumentativo`:** shotlist por evidencia visual (clips citados, referencias). Cada pieza de evidencia = 1 toma.
+- **`conversacional`:** **no aplica** shotlist convencional — el setup de cámaras lo cubre `grabacion/02-video-encuadre`.
 
 ## Conflictos conocidos
 

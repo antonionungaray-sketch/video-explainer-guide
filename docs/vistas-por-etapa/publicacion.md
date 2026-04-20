@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/publicacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T22:55:28Z
+> Última regeneración: 2026-04-20T01:12:10Z
 
 ## Decisiones críticas
 
@@ -44,13 +44,13 @@
 
 ### 07. metricas-plataforma
 
-- **Pregunta:** ¿Qué métricas de plataforma observás y cómo las interpretás?
+- **Pregunta:** ¿Qué métricas de plataforma observas y cómo las interpretas?
 - **Fuentes:** P2-publicacion-metricas P2-publicacion-antipatrones P3-publicacion-analitica P3-publicacion-plataformas 
 - **Brief:** [`briefs/publicacion/07-metricas-plataforma.md`](../briefs/publicacion/07-metricas-plataforma.md)
 
 ### 08. metricas-aprendizaje
 
-- **Pregunta:** ¿Cómo medís si la audiencia realmente aprendió, más allá de proxies de plataforma?
+- **Pregunta:** ¿Cómo mides si la audiencia realmente aprendió, más allá de proxies de plataforma?
 - **Fuentes:** P1-§8.1 P1-§8.2 P1-§8.3 P1-§8.4 P1-§6.4 P2-publicacion-metricas-core P2-publicacion-antipatrones 
 - **Brief:** [`briefs/publicacion/08-metricas-aprendizaje.md`](../briefs/publicacion/08-metricas-aprendizaje.md)
 

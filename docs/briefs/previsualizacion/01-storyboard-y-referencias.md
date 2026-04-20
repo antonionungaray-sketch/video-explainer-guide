@@ -14,8 +14,9 @@ fuentes:
   - P2-ficha-3b1b
   - P2-ficha-kurzgesagt
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion, grado-guion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -74,6 +75,20 @@ combinación cromática contra WCAG 2.2 AA [P1-§3.2]: 4.5:1 cuerpo,
   declarar fuente dominante.
 - **Esfuerzo objetivo:** video 8 min, 5 bloques → ~15-25 min llenando
   este brief. Más es sobre-ingeniería.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy` / `medium`:** storyboard detallado por bloque con encuadre, duración, overlays previstos. Normal.
+- **`light`:** storyboard mínimo — cobertura multi-cámara + ángulos; el ritmo lo decide el speaker. TED, conferencia.
+- **`zero`:** **no aplica** storyboard formal. Prep = escenas OBS + alertas + chat layout. En live stream el equivalente es `docs/briefs/grabacion/05-captura-pantalla` + layout.
+
+### Por `grado-guion`
+
+- **`guionado`:** storyboard 1:1 con el guión; cada frase tiene su visual asociado.
+- **`semi-guionado`:** storyboard por secciones/bloques, no por frase.
+- **`improvisado`:** **no aplica** — no hay guión para storyboardear.
 
 ## Conflictos conocidos
 

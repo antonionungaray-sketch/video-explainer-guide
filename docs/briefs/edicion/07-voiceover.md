@@ -7,9 +7,10 @@ fuentes:
   - P1-§2.3-#11                # voz humana cálida
   - P1-§2.3-#10                # personalización
   - P3-edicion-voiceover       # ElevenLabs / Coqui / Piper
-admite-variantes: false
-sync: 2026-04-18
-version: 1
+admite-variantes: true
+varia-por-eje: [rol-presentador, grado-edicion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -64,6 +65,24 @@ es obligatoria.
   intro/outro tipo "bienvenidos a este video", disclaimers legales.
 - **Ratio TTS en video completo:** si >20% es TTS, considerar regrabar
   o usar voz clonada en todo.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **`narrador-omnisciente`:** voice-over post-grabación es el modo nativo. Nichols §9.2 — voice-of-god documental. Tono distante-autoritativo.
+- **`narrador-1a-persona`:** voice-over autoral con tono íntimo. Nerdwriter, Matt D'Avella. Pilar 1 §10.2.
+- **`investigador`:** voice-over + fragmentos en cámara. Johnny Harris.
+- **`experto-neutral`:** voice-over complementa a face-cam o reemplaza (Fireship, Veritasium híbrido).
+- **`demostrador`:** voice-over típicamente NO aplica — la voz es en vivo durante la demo.
+- **`conversador` / `anfitrion-de-experto`:** **no aplica** voice-over post. El audio es el diálogo grabado.
+
+### Por `grado-edicion`
+
+- **`heavy`:** voice-over diseñado frase-a-frase al script, re-grabado si necesario.
+- **`medium`:** voice-over limpio pero sin obsesión por re-grabaciones.
+- **`light`:** **no aplica** — el audio es el take en vivo.
+- **`zero`:** **no aplica** — live stream no admite voice-over post.
 
 ## Conflictos conocidos
 

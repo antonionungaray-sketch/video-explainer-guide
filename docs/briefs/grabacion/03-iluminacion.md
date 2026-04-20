@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-veritasium        # face-cam on-location
   - P3-preprod-iluminacion     # panel LED bicolor con difusor
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [rol-presentador]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -78,6 +79,13 @@ sola familia de color temperatura.
   a 1-1.5m del sujeto con difusor.
 - **Intensidad relativa:** key:fill ≈ 2:1 para sensación natural.
   3:1 para dramático.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **Con cara en cámara (`experto-neutral`, `demostrador`, `narrador-1a-persona`, `investigador`, `conversador`, `anfitrion-de-experto`):** panel LED bicolor con difusor frontal + key/fill + separación de fondo. Aplica este brief tal cual.
+- **Sin cara (`narrador-omnisciente` o modalidades animadas puras):** no aplica iluminación de sujeto; la decisión se traslada al diseño de animación o archivo.
 
 ## Conflictos conocidos
 

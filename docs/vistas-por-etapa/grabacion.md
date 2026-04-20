@@ -2,14 +2,14 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/grabacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T22:55:28Z
+> Última regeneración: 2026-04-20T01:12:10Z
 
 ## Decisiones críticas
 
 ### 01. audio
 
 - **Pregunta:** ¿Qué micrófono, qué ganancia, qué tratamiento acústico del espacio?
-- **Fuentes:** P1-§5.4 P1-§2.3-#11 P1-§2.3-#1 P2-preprod-patrones P2-preprod-antipatrones P3-preprod-audio 
+- **Fuentes:** P1-§5.4 P1-§2.3-#11 P1-§2.3-#1 P2-preprod-patrones P2-preprod-antipatrones P3-preprod-audio P3-modalidades-podcast 
 - **Brief:** [`briefs/grabacion/01-audio.md`](../briefs/grabacion/01-audio.md)
 
 ### 02. video-encuadre

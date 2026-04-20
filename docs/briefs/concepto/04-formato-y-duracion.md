@@ -14,8 +14,9 @@ fuentes:
   - P2-ficha-midudev            # mid-form 5-15 min
   - P2-ficha-kurzgesagt         # long 9-13 min con WPM bajo
 admite-variantes: true
+varia-por-eje: [grado-edicion, plataforma]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -77,6 +78,23 @@ re-edit por plataforma — el formato es plataforma-específico.
 - **Divulgación general:** 8-15 min, 16:9, WPM 150-180 compensado por canal visual [P2-meta-divulgacion].
 - **Onboarding microlearning:** 5-10 min, 16:9, WPM 160-180, un objetivo por módulo [P2-meta-onboarding].
 - **Vertical (Shorts/Reels):** ≤90s, 9:16, silencioso por default.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy`:** la duración la decide el editor. Rango típico 8-30 min en long-form editado, 5-12 min en explainer comprimido, ≤2 min en Shorts.
+- **`medium`:** 8-20 min (how-to, Ali Abdaal, Matt D'Avella).
+- **`light`:** la duración la decide el speaker o la conversación — 18 min TED, 1-5h podcast, 30-90 min conferencia académica.
+- **`zero`:** la duración es la sesión en vivo — 1-6h típico en live stream educativo; las piezas re-publicadas son edit-down (mute a `medium`).
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** 5-60 min, 16:9, audio asumido activo.
+- **`shorts-vertical`:** ≤90s, 9:16, silencioso por default + subtítulos obligatorios. Hook <1s.
+- **`podcast-audio-primario`:** 30 min-5h; el video es accesorio; metadata (capítulos) crítica.
+- **`live-with-vod`:** 1-6h live + edit-down opcional a 5-30 min para VOD long-form.
+- **`corporate-lms`:** 5-15 min por módulo (microlearning); SCORM compliance; tracking.
 
 ## Conflictos conocidos
 

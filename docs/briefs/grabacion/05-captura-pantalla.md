@@ -11,8 +11,9 @@ fuentes:
   - P2-ficha-coding-train      # cursor visible live-coding
   - P2-ficha-mouredev          # cursor + ocasional callout post
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -72,6 +73,14 @@ trabajo global.
   pérdida de contexto.
 - **Duración de zoom:** sostener mientras se explica la zona (~3-8s);
   volver a la vista completa después.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`performativo`:** captura de pantalla es el canal visual dominante. Cursor visible obligatorio; callouts en vivo o en edición según `grado-edicion`.
+- **`expositivo` con componente procedural:** captura accesoria sobre face-cam; cursor ligeramente resaltado.
+- **`narrativo` / `argumentativo` / `conversacional`:** **no aplica** captura de pantalla como elemento estructural (excepción: screenshot específico mostrado como evidencia).
 
 ## Conflictos conocidos
 

@@ -9,8 +9,9 @@ fuentes:
   - P2-meta-divulgacion
   - P2-meta-onboarding
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion, grado-guion, arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -47,6 +48,28 @@ serie de 4-5 partes.
 - **Onboarding:** microlearning ≤5 min por unidad, serie para temas grandes.
 - **Regla de pulgar:** si el video pasa de 10 min, la segmentación debe ser
   VISUALMENTE marcada (título de bloque, cambio de fondo, chapter marker).
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy` / `medium`:** segmentación explícita con chapter markers, transiciones visibles, títulos en pantalla. Bloques 2-5 min.
+- **`light`:** segmentación natural (TED tiene su propia cadencia; podcast tiene capítulos en descripción marcados post-hoc).
+- **`zero`:** segmentación emergente — el speaker la produce en vivo. Capítulos sólo existen si se re-edita para VOD.
+
+### Por `grado-guion`
+
+- **`guionado`:** bloques definidos a priori, nombrados en el outline.
+- **`semi-guionado`:** bloques temáticos flexibles; el presentador decide transiciones.
+- **`improvisado`:** no hay segmentación a priori; la edición (si hay) la compone post-hoc.
+
+### Por `arco-dominante`
+
+- **`performativo`:** segmentación por pasos procedimentales (setup, step 1, step 2...).
+- **`narrativo`:** por actos (setup, complication, resolution).
+- **`argumentativo`:** por movimientos argumentativos (thesis, evidence, counter, synthesis).
+- **`expositivo`:** por sub-temas.
+- **`conversacional`:** por tópicos emergentes del diálogo.
 
 ## Conflictos conocidos
 

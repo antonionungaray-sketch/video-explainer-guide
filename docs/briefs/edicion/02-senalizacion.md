@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-coding-train      # highlight sobre código relevante
   - P2-ficha-3b1b              # color + movimiento sobre término nuevo
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -64,6 +65,15 @@ debe ser transiente (aparece, marca, desaparece).
 - **Colores de acento:** máximo 2-3 consistentes a lo largo del video
   (ej. amarillo = destacado positivo, rojo = error/crítico). Más
   colores = canal visual saturado.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy`:** señalización planeada y densa (highlights animados, zoom dinámico, callouts sincronizados con voz).
+- **`medium`:** señalización puntual en momentos clave; sin densidad de overlays.
+- **`light`:** señalización mínima — solo lower thirds y ocasional chapter marker. TED, podcast.
+- **`zero`:** señalización en vivo vía escenas OBS (zoom escena, highlight desktop); no post-hoc.
 
 ## Conflictos conocidos
 

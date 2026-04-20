@@ -11,9 +11,12 @@ fuentes:
   - P2-ficha-mouredev            # tono cercano hispano
   - P2-ficha-midudev             # registro casual técnico
   - P2-ficha-mike-meyers         # registro instructor-certificación
+  - P1-§9.2                      # voz documental (narrador-omnisciente)
+  - P1-§11.3                     # investigación visible (rol investigador)
 admite-variantes: false
+varia-por-eje: [rol-presentador, arco-dominante]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -73,6 +76,26 @@ AA), descubrirlo en edición fuerza re-design o degrada accesibilidad.
 - **Registro:** segunda persona singular hispana ("tú" o "vos") o
   plural ("vosotros") según mercado destino — definir acá, no en
   guión.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **`experto-neutral`:** registro profesoral o corporativo, 2a/3a persona indistinta, autoridad vía competencia. Tono estable, sin inflexiones personales.
+- **`narrador-1a-persona`:** registro íntimo-autoral, "yo pienso / descubrí / propongo". Admite pausas, dudas, digresiones funcionales. Nerdwriter, Contrapoints, Matt D'Avella.
+- **`narrador-omnisciente`:** registro impersonal formal, 3a persona, voice-of-god documental. Sin inflexiones personales; control prosódico alto [P1-§9.2].
+- **`investigador`:** registro semi-autoral — aparece "yo descubrí X" pero dominante es exposición. Dudas mostradas como parte del método [P1-§11.3].
+- **`demostrador`:** registro cercano, 2a persona, imperfecto ("vamos a ver", "me equivoqué acá"). Modela metacognición y errores honestos [P2-ficha-mouredev].
+- **`conversador`:** tono emergente del diálogo; no se prescribe. Pilar 1 §9.2 sobre voice of encounter.
+- **`anfitrion-de-experto`:** registro de introducción formal + humildad curiosa. Lex Fridman, Huberman con invitado.
+
+### Por `arco-dominante`
+
+- **`expositivo`:** registro claro, 2a persona inclusiva, lenguaje conversacional [P1-§2.3-#10].
+- **`narrativo`:** registro evocador, tiempo narrativo, ritmo pausado para construir escena.
+- **`argumentativo`:** registro retórico, 1a persona autoral, admite inflexiones emocionales controladas.
+- **`performativo`:** registro operativo, imperativo conversacional ("ahora abrimos", "vemos que"), pausa-para-probar integrada al fraseo.
+- **`conversacional`:** registro natural de diálogo; no prescribible.
 
 ## Conflictos conocidos
 

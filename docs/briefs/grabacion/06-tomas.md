@@ -10,8 +10,9 @@ fuentes:
   - P2-ficha-mouredev          # stream largo → edit down
   - P2-ficha-coding-train      # one-take live-coding
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-guion, grado-edicion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -67,6 +68,21 @@ sostiene el esfuerzo; sin eso, se abandona.
   retomas).
 - **Stream → edit down:** ratio 20-30x (reportado Primeagen,
   MoureDev).
+
+## Ajuste por eje
+
+### Por `grado-guion`
+
+- **`guionado`:** tomas segmentadas por bloque; múltiples takes por frase compleja. Normal en Nerdwriter, Kurzgesagt.
+- **`semi-guionado`:** tomas por bloque con fraseo flexible; pocos takes.
+- **`improvisado`:** una sola toma continua (live stream) o grabación larga con pocos cuts (podcast, conferencia).
+
+### Por `grado-edicion`
+
+- **`heavy`:** multi-take normalizado; captura overshoot. Edit selecciona.
+- **`medium`:** takes limpios por bloque.
+- **`light`:** 1 take maestra; problemas se aceptan o se pasa.
+- **`zero`:** stream continuo.
 
 ## Conflictos conocidos
 

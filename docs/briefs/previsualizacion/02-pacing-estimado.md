@@ -13,8 +13,9 @@ fuentes:
   - P2-ficha-midudev
   - P2-ficha-kurzgesagt
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -73,6 +74,14 @@ sostiene visualmente, el pacing no es viable. Evaluar juntos.
 - **WPM <150 + bloque `camara` sin variación** → flag de riesgo.
 - **Tolerancia delta vs target:** ±15%. Más allá, ajustar guion o
   bajar WPM target.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy` / `medium`:** pacing estimado por bloque calibrado en edición; márgenes de 10-20% por bloque.
+- **`light`:** pacing = duración real del speaker ensayado (TED 18 min); el margen lo da la práctica previa, no el editor.
+- **`zero`:** **no aplica** estimación a priori. El pacing es el tiempo real del live; se observa post-hoc.
 
 ## Conflictos conocidos
 

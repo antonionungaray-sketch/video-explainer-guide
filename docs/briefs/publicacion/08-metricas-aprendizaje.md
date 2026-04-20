@@ -10,9 +10,10 @@ fuentes:
   - P1-§6.4                    # transferencia
   - P2-publicacion-metricas-core
   - P2-publicacion-antipatrones
-admite-variantes: false
+admite-variantes: true
+varia-por-eje: [objetivo-cognitivo, plataforma]
 sync: 2026-04-19
-version: 2
+version: 3
 ---
 
 ## Principio aplicable
@@ -81,6 +82,25 @@ pierde calidad.
 - **Transferencia:** al menos 1 señal cualitativa (comentario
   sofisticado, fork de repo, aplicación explícita) por cada 1000
   views como piso indicativo en contenido técnico.
+
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** post-test procedimental ("¿pudiste ejecutar X?"), code review del viewer, demos compartidos.
+- **`corregir-intuicion`:** pregunta de predicción pre/post, explicación libre del mecanismo, transferencia a caso nuevo.
+- **`decidir-informado`:** self-report de criterios de decisión aplicados, matriz de decisión reusable.
+- **`orientarse`:** mapa mental reproducido por el viewer; capacidad de ubicar nuevos items en el landscape.
+- **`formar-opinion`:** **NO aplica post-test.** Medir: resonancia (shares, comentarios reflexivos, cambio declarado de posición). Pilar 1 §10.4.
+- **`apreciar`:** **NO aplica post-test.** Medir: sensibilidad declarada al volver a ver el objeto, comentarios con nueva perspectiva.
+
+### Por `plataforma`
+
+- **`corporate-lms`:** quiz scores + completion = métrica estándar. Posible integración con on-the-job assessment.
+- **`long-form-horizontal`:** métricas de aprendizaje fuera del alcance de YouTube Analytics — instrumentar aparte (formulario, newsletter, comunidad).
+- **`shorts-vertical`:** métricas de aprendizaje no medibles en la plataforma; solo comentarios cualitativos.
+- **`podcast-audio-primario`:** métricas de cambio de hábito declaradas vía encuesta o newsletter.
+- **`live-with-vod`:** métricas de aprendizaje en vivo vía interacción chat; post-hoc limitado.
 
 ## Conflictos conocidos
 

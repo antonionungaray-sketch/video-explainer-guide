@@ -16,8 +16,9 @@ fuentes:
   - P3-publicacion-analitica   # TubeBuddy / VidIQ
   - P3-publicacion-plataformas # categorías YouTube / Vimeo / LMS
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -71,6 +72,15 @@ suma; puede restar si la señal es inconsistente con el contenido.
 - **Combinación de granularidad:** mezcla de tags amplios
   ("programming", "tutorial") + específicos ("bun install", "bun
   runtime") + long-tail ("how to install bun for node developers").
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** tags YouTube (8-15, mix anglo+español), categoría oficial ("Education", "Science & Technology", "Howto & Style").
+- **`shorts-vertical`:** hashtags #shorts + tema (5-10); menos peso que long-form.
+- **`podcast-audio-primario`:** categorías Spotify/Apple Podcasts ("Technology", "Science", "Education"). Sin tags equivalentes.
+- **`corporate-lms`:** taxonomía interna del LMS (curso / módulo / nivel / departamento). Sin algoritmo de discovery.
 
 ## Conflictos conocidos
 

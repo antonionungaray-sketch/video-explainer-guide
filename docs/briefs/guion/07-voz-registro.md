@@ -12,9 +12,13 @@ fuentes:
   - P2-ficha-midudev
   - P2-ficha-3b1b
   - P2-ficha-kurzgesagt
-admite-variantes: false
-sync: 2026-04-18
-version: 1
+  - P1-§9.2                    # voz documental (narrador-omnisciente)
+  - P1-§10.2                   # voz autoral ensayo (narrador-1a-persona)
+  - P2-ficha-mouredev          # registro cercano hispano
+admite-variantes: true
+varia-por-eje: [rol-presentador, arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -59,6 +63,26 @@ en tutorial ni divulgación.
 - **Divulgación con animación densa:** 140-165 WPM (compensación Mayer).
 - **Onboarding corporativo formativo:** 130-160 WPM, más pausas por
   retrieval.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **`experto-neutral`:** 2a persona, registro cercano-profesional, WPM 150-200. Fireship, Veritasium.
+- **`narrador-1a-persona`:** 1a persona autoral, registro íntimo-reflexivo, WPM 140-180 con pausas marcadas. Nerdwriter, Contrapoints [P1-§10.2].
+- **`narrador-omnisciente`:** 3a persona impersonal, tono distante-autoritativo, WPM 130-170. Kurzgesagt largos, Curtis [P1-§9.2].
+- **`investigador`:** 1a persona con matiz periodístico, WPM 160-190, admite dudas explícitas. Johnny Harris.
+- **`demostrador`:** 2a persona imperativa-cercana, WPM 160-220, admite errores honestos ("se me cayó esto, vamos a ver") [P2-ficha-mouredev].
+- **`conversador`:** registro de diálogo natural, WPM variable (no prescribible); emerge de la conversación.
+- **`anfitrion-de-experto`:** registro de entrevistador respetuoso, WPM 140-170 para dar espacio al invitado. Lex Fridman.
+
+### Por `arco-dominante`
+
+- **`expositivo`:** tono claro, lenguaje directo, pocas inflexiones.
+- **`narrativo`:** tono evocador, pausas dramáticas, tiempo narrativo.
+- **`argumentativo`:** tono retórico, admite escalada emocional controlada al culminar la tesis.
+- **`performativo`:** tono operativo-imperativo ("ahora abrimos X"), pausa-para-probar integrada.
+- **`conversacional`:** no prescribible — emerge del diálogo.
 
 ## Conflictos conocidos
 

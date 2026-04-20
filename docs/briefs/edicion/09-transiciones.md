@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-kurzgesagt
   - P3-edicion-editores
 admite-variantes: true
+varia-por-eje: []
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable

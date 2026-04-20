@@ -7,8 +7,9 @@ fuentes:
   - P3-edicion-editores        # DaVinci/Premiere/Kdenlive presets
   - P3-edicion-postproc        # FFmpeg para control fino
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -61,6 +62,16 @@ Siempre export CFR (constant frame rate) explícito, verificable con
 - **Frame rate:** coincidir con el del timeline original (no convertir
   30→60 ni viceversa excepto razón explícita).
 - **Bitrate 1080p 30fps:** 8-12 Mbps.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** 1920×1080 o 3840×2160 16:9, H.264/H.265, bitrate según duración y calidad.
+- **`shorts-vertical`:** 1080×1920 9:16, H.264, subtítulos burned-in.
+- **`podcast-audio-primario`:** render audio primario a -16 LUFS (WAV/FLAC); video acompañante en 1920×1080.
+- **`live-with-vod`:** live en stream-ready (RTMP encoder OBS); VOD re-render a long-form.
+- **`corporate-lms`:** render SCORM-compliant o MP4 con metadata para tracking; burned-in subs y transcript attach.
 
 ## Conflictos conocidos
 

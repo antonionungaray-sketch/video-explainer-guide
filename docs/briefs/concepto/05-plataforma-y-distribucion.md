@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-mike-meyers          # caso LMS / Udemy / cert
   - P2-ficha-plataformas-hispanas # caso Platzi/Crehana
 admite-variantes: false
+varia-por-eje: [plataforma]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -79,6 +80,18 @@ conversión y arriesga autoridad.
 - **Si plataforma primaria es vertical (Shorts/Reels/TikTok):**
   cross-edit horizontal raramente vale la pena por esfuerzo;
   considerar el formato vertical como destino, no como derivado.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+El brief mismo define este eje. Resumen de implicaciones por valor:
+
+- **`long-form-horizontal`:** YouTube/Vimeo 16:9, audio default activo, CTA explícito al cierre, thumbnails + capítulos. Packaging completo.
+- **`shorts-vertical`:** 9:16, silencioso default, subtítulos obligatorios, CTA implícito (follow/profile), ciclo rápido. Capítulos no aplican.
+- **`podcast-audio-primario`:** Spotify/Apple/Overcast primario + YouTube secundario. Capítulos en descripción críticos. Loudness podcast (-16 LUFS). Thumbnails de episodio + feed RSS.
+- **`live-with-vod`:** Twitch/YouTube Live primario + VOD posterior. Doble ciclo de distribución; metadata post-hoc.
+- **`corporate-lms`:** sin discovery — audiencia captiva. Packaging = metadata SCORM + quiz. Completion tracked a nivel LMS, no plataforma YT.
 
 ## Conflictos conocidos
 

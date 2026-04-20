@@ -6,14 +6,18 @@ fuentes:
   - P1-§6.4                   # transferencia, sin diseño explícito es débil
   - P1-§8.1                   # retrieval checkpoints — definir qué se debe poder recuperar
   - P1-§8.4                   # métricas que importan vs proxies de plataforma
+  - P1-§2.3-#7                # pre-entrenamiento (ejes orientarse)
+  - P1-§6.1                   # cambio conceptual (ejes corregir-intuicion)
+  - P1-§10.4                  # consolidación retórica (ejes formar-opinion/apreciar)
   - P2-meta-tutorial          # objetivos típicos de tutorial técnico
   - P2-meta-divulgacion       # objetivos típicos de divulgación
   - P2-meta-onboarding        # objetivos cuasi-binarios (cert, compliance)
   - P2-ficha-mike-meyers      # caso objetivo cert prep
   - P2-ficha-fireship         # caso objetivo "refrescarse rápido"
 admite-variantes: false
+varia-por-eje: [objetivo-cognitivo]
 sync: 2026-04-19
-version: 1
+version: 2
 ---
 
 ## Principio aplicable
@@ -67,6 +71,19 @@ que abandona porque ya entendió.
   Listar verbos en checklist mental antes de cerrar.
 - **Test de medibilidad:** si no puedes diseñar un retrieval checkpoint
   para verificar el objetivo [P1-§8.1], no es medible — re-formularlo.
+
+## Ajuste por eje
+
+### Por `objetivo-cognitivo`
+
+El propio eje. El valor elegido determina el verbo observable del objetivo y las métricas de efecto que aplicarán (ver `publicacion/08-metricas-aprendizaje`).
+
+- **`adquirir-habilidad`:** verbo ejecutable — "clonar repo", "instalar X", "desplegar Y", "reproducir el experimento". Verificable con post-test procedimental o demo del viewer. Retrieval explícito aplica [P1-§8.1].
+- **`corregir-intuicion`:** verbo de modelo mental — "explicar por qué Z ocurre", "predecir el resultado cuando...". Verificable con pregunta de predicción o explicación libre. Misconception handling obligatorio [P1-§6.1].
+- **`decidir-informado`:** verbo decisor — "elegir entre A y B", "evaluar si X aplica a mi caso", "identificar criterios para decidir". Verificable vía matriz de decisión aplicable.
+- **`orientarse`:** verbo de mapeo — "nombrar los actores del dominio", "reconocer el landscape", "identificar subtemas". Verificable con esquema mental reproducible. Pre-entrenamiento extensivo [P1-§2.3-#7].
+- **`formar-opinion`:** verbo de toma de posición — "argumentar por qué X", "posicionarse frente a Y". Verificable con texto o discusión generado por el viewer. Consolidación retórica, NO retrieval formal [P1-§10.4].
+- **`apreciar`:** verbo estético — "reconocer la calidad de", "distinguir patrones en", "sensibilizarse a". Verificable con tarea de distinción aplicada. Pilar 1 §10.4 — la consolidación es implícita.
 
 ## Conflictos conocidos
 

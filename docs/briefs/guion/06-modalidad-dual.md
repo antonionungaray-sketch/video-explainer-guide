@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-3b1b              # caso ecuaciones en pantalla + narración
   - P2-ficha-fireship          # caso snippets + narración complementaria
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: []
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable

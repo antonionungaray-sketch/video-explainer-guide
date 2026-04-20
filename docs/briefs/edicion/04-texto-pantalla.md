@@ -12,8 +12,9 @@ fuentes:
   - P2-ficha-fireship          # text labels ≠ narración
   - P2-ficha-kurzgesagt        # labels sobre elementos visuales
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: []
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable

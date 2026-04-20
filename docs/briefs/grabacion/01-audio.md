@@ -9,9 +9,11 @@ fuentes:
   - P2-preprod-patrones        # audio mono limpio >> video 4K con audio malo
   - P2-preprod-antipatrones    # música de fondo sobre voz
   - P3-preprod-audio           # micro dinámico USB de gama media
+  - P3-modalidades-podcast     # setup multi-mic para podcast
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [rol-presentador]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -69,6 +71,14 @@ ponerse cerca del micro (5-20cm) — mitigaciones de $0 con impacto real.
   ventilador de PC, tráfico).
 - **Sample rate:** 48 kHz, 24-bit para producción; 16-bit suficiente
   para podcasting.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **Un presentador (`experto-neutral`, `narrador-1a-persona`, `demostrador`, `narrador-omnisciente`):** 1 micrófono dinámico USB de gama media sobre voz; LUFS target -14 / -16 según plataforma.
+- **Dos o más (`conversador`, `anfitrion-de-experto`):** multi-mic (1 por persona) + consola tipo Rodecaster Pro II o interfaz multi-canal; grabación multitrack para editar cada voz independiente. Ver [P3-modalidades-podcast].
+- **`investigador` on-location:** lavalier o shotgun + recorder portátil (Zoom H6). Ambiente controlable menos que en estudio; priorizar claridad sobre "quality".
 
 ## Conflictos conocidos
 

@@ -9,8 +9,9 @@ fuentes:
   - P2-ficha-kurzgesagt        # capítulos + fuentes
   - P3-publicacion-plataformas
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [grado-edicion, plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -71,6 +72,21 @@ común: asumir que el hook no cuenta como capítulo.
   de "read more".
 - **Descripción total:** 300-800 palabras típicamente; más si hay
   lista extensa de recursos/fuentes.
+
+## Ajuste por eje
+
+### Por `grado-edicion`
+
+- **`heavy` / `medium`:** capítulos planeados en la edición; timestamps exactos.
+- **`light`:** capítulos marcados post-hoc desde la estructura temática (TED, conferencia).
+- **`zero`:** capítulos generados post-stream desde el chat/highlights; poco confiables sin trabajo editorial explícito.
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** capítulos en descripción obligatorios para videos ≥8 min (YouTube los reconoce como segments).
+- **`shorts-vertical`:** no aplican capítulos — formato demasiado corto.
+- **`podcast-audio-primario`:** capítulos **críticos** (Spotify/Apple muestran timestamps + títulos).
+- **`live-with-vod`:** capítulos añadidos al re-upload; live no los soporta.
 
 ## Conflictos conocidos
 

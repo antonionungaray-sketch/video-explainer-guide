@@ -13,9 +13,11 @@ fuentes:
   - P2-ficha-midudev
   - P2-ficha-veritasium
   - P2-ficha-kurzgesagt
+  - P1-§6.1                     # misconception/cambio conceptual
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante, objetivo-cognitivo, plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -60,6 +62,33 @@ entries 16-21).
   resultado prometido por el título (CCN-fit).
 - **Densidad de palabras:** 25-45 palabras en tutoriales técnicos (WPM
   alto); 15-25 en divulgación con animación densa.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`expositivo`:** hook = pregunta provocativa o afirmación wow-scale que el video cumple. Fireship, Veritasium, Kurzgesagt.
+- **`narrativo`:** hook = imagen/escena concreta en media res que abre el mundo de la historia. Adam Curtis, Kurzgesagt largos.
+- **`argumentativo`:** hook = objeto cultural + observación personal inesperada. No declara la tesis; la insinúa. Nerdwriter, Contrapoints.
+- **`performativo`:** hook = estado inicial + goal concreto ("hoy vamos a X"). Tutorial técnico, how-to, live stream.
+- **`conversacional`:** hook = intro escrita del anfitrión presentando al invitado en 1-2 min (la única parte guionada del formato). Lex Fridman.
+
+### Por `objetivo-cognitivo`
+
+- **`adquirir-habilidad`:** stake utilitario — "podrás hacer X al final", "ahorrarás Y tiempo".
+- **`corregir-intuicion`:** stake epistémico — contraste con la intuición errónea explícito. "Probably you think X; actually Y." [P1-§6.1].
+- **`decidir-informado`:** stake comparativo — "¿deberías adoptar X o Y?". Invita a decidir durante el video.
+- **`orientarse`:** stake de mapeo — "este dominio funciona así, te lo mostraré". Johnny Harris típico.
+- **`formar-opinion`:** stake retórico — afirmación polémica o giro de marco. No cumplible como "aprenderás X"; el cumplimiento es resonancia.
+- **`apreciar`:** stake sensorial/estético — imagen o momento que el video expande en significado.
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** hook ≤15s con stake verbal + confirmación visual.
+- **`shorts-vertical`:** hook <1s — el primer frame YA carga stake visual. Sin intro posible. Subtitulado obligatorio.
+- **`podcast-audio-primario`:** no aplica el hook visual; la intro escrita del anfitrión es el hook audio. 1-2 min aceptable.
+- **`live-with-vod`:** hook emerge orgánicamente; no prescribible. En el re-upload VOD, edit-down agrega hook post-hoc.
+- **`corporate-lms`:** audiencia captiva — el hook es menos crítico; reemplaza por setup claro del objetivo del módulo.
 
 ## Conflictos conocidos
 

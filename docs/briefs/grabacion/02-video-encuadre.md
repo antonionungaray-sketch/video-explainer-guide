@@ -17,8 +17,9 @@ fuentes:
   - P2-ficha-mouredev          # face-cam PiP + editor
   - P2-ficha-midudev           # face-cam PiP + navegador
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [rol-presentador, arco-dominante]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -74,6 +75,23 @@ corporativo de los 90.
 - **Screencast dominante:** 70-100% del frame. Si PiP, 15-25%.
 - **Resolución de captura:** 1920×1080 mínimo para el canal principal;
   cam dedicada ≥ 1080p 30fps o superior.
+
+## Ajuste por eje
+
+### Por `rol-presentador`
+
+- **`experto-neutral`:** face-cam estudio centrada, o sin cara con canal visual compensatorio denso (Fireship, Kurzgesagt).
+- **`demostrador`:** face-cam PiP + pantalla principal (MoureDev, Midudev) o face-cam over terminal (ThePrimeagen).
+- **`narrador-1a-persona`:** face-cam cuidada con presencia visual, o voz-over sin cara (Nerdwriter es sin cara).
+- **`narrador-omnisciente`:** sin cara (voz fuera de campo). Kurzgesagt largos, Curtis.
+- **`investigador`:** face-cam on-location + cutaway a archivo/documentos (Johnny Harris).
+- **`conversador` / `anfitrion-de-experto`:** multi-cámara (1 por persona) + 2-shot opcional. Lex Fridman, Huberman.
+
+### Por `arco-dominante`
+
+- **`performativo`:** pantalla dominante + face-cam accesoria.
+- **`conversacional`:** face-cam de cada hablante; sin pantalla.
+- **Otros:** face-cam y B-roll según preferencia de rol.
 
 ## Conflictos conocidos
 

@@ -7,8 +7,9 @@ fuentes:
   - P3-publicacion-analitica   # YouTube Studio Analytics
   - P3-publicacion-plataformas # YouTube / LMS scheduling
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [plataforma]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -70,6 +71,16 @@ editando.
 - **Primeras 48h:** ventana crítica [P2-publicacion-patrones].
   Promoción activa (redes propias, comunidad) en ese rango
   multiplica por 1.5-3x el alcance final.
+
+## Ajuste por eje
+
+### Por `plataforma`
+
+- **`long-form-horizontal`:** horario según audiencia primaria (YouTube Studio sugiere). Schedule con 24-48h antelación.
+- **`shorts-vertical`:** publicación frecuente (diaria o varias veces/semana); el algoritmo premia consistencia.
+- **`podcast-audio-primario`:** episodio semanal típicamente; mismo día y hora sostiene hábito de escucha.
+- **`live-with-vod`:** programación anunciada con antelación para construir audiencia live; VOD re-upload horas/días después.
+- **`corporate-lms`:** sin "horario de publicación" discovery — el curso se "lanza" y queda disponible permanentemente.
 
 ## Conflictos conocidos
 

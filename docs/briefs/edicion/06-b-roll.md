@@ -9,9 +9,11 @@ fuentes:
   - P2-edicion-patrones
   - P2-ficha-veritasium        # B-roll científico alineado con narración
   - P2-ficha-kurzgesagt        # animación alineada frase-a-frase
+  - P1-§10.3                   # estructura argumentativa del ensayo (B-roll evidencia)
 admite-variantes: false
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante, grado-edicion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -62,6 +64,22 @@ Rompe contigüidad temporal.
   Más es desincronía.
 - **Duración por inserto:** 2-8s típicamente. Menos es flash sin
   procesar; más requiere que la narración acompañe ese B-roll.
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`performativo`:** B-roll = screenshots + closeups funcionales. Nunca decorativo.
+- **`narrativo`:** B-roll = archivo, establecedoras, recreación (puede ser gran % del video).
+- **`argumentativo`:** B-roll = evidencia visible citada ([P1-§10.3], §11.3).
+- **`expositivo`:** B-roll = diagramas, animaciones de concepto.
+- **`conversacional`:** B-roll mínimo o nulo; graphics insert ocasional (Huberman).
+
+### Por `grado-edicion`
+
+- **`heavy`:** B-roll denso, coordinado a nivel frase-imagen.
+- **`medium`:** B-roll estratégico.
+- **`light` / `zero`:** B-roll mínimo o inexistente.
 
 ## Conflictos conocidos
 

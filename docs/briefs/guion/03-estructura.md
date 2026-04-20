@@ -10,9 +10,12 @@ fuentes:
   - P2-ficha-3b1b
   - P2-ficha-veritasium
   - P2-ficha-fireship
+  - P1-§9.1                    # modos documentales (arco narrativo)
+  - P1-§10.3                   # estructura argumentativa del ensayo
 admite-variantes: true
-sync: 2026-04-18
-version: 1
+varia-por-eje: [arco-dominante, grado-guion]
+sync: 2026-04-19
+version: 2
 ---
 
 ## Principio aplicable
@@ -58,6 +61,22 @@ principal bien gestionado que 3 mal.
   todos cerrados.
 - **Confusión productiva:** aplicable cuando ≥30% de la audiencia tiene
   el misconception. Si nadie lo tiene, omitir (pierde tiempo).
+
+## Ajuste por eje
+
+### Por `arco-dominante`
+
+- **`expositivo`:** estructura lineal tema → sub-temas → integración, o problema → solución. Open loop simple. Fireship, Veritasium corto.
+- **`narrativo`:** arco temporal (3 o 5 actos): setup → complicación → resolución. Open loop = qué pasa al final. Documental narrativo, personal essay, Kurzgesagt largos [P1-§9.1].
+- **`argumentativo`:** tesis emergente → evidencia acumulativa → contra-objeción → síntesis abierta. NO declarar tesis al inicio. Nerdwriter, Contrapoints [P1-§10.3].
+- **`performativo`:** procedimiento por pasos — setup → paso 1 → paso 2 → ... → resultado. Segmentación atada al procedimiento real. Tutoriales, how-to.
+- **`conversacional`:** sin estructura guionada. Capítulos marcados post-hoc según temas que emergieron. Podcast, live stream.
+
+### Por `grado-guion`
+
+- **`guionado`:** estructura fijada en el outline. 3-5 bloques nombrados, transiciones escritas, open loops controlados.
+- **`semi-guionado`:** outline con bloques; transiciones improvisadas por el presentador; open loops en outline pero sin fraseo exacto.
+- **`improvisado`:** no hay estructura a priori — emerge del flujo. Capítulos se marcan en edición; "open loops" son espontáneos. Aplicar principios de Zeigarnik es aspiracional, no prescribible.
 
 ## Conflictos conocidos
 

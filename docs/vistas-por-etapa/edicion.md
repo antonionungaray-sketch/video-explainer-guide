@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/edicion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T22:55:28Z
+> Última regeneración: 2026-04-20T01:12:10Z
 
 ## Decisiones críticas
 
@@ -39,7 +39,7 @@
 ### 06. b-roll
 
 - **Pregunta:** ¿Dónde insertás B-roll o visuales de apoyo, y qué función cumple cada inserto?
-- **Fuentes:** P1-§2.3-#4 P1-§2.3-#5 P1-§2.3-#1 P2-edicion-patrones P2-ficha-veritasium P2-ficha-kurzgesagt 
+- **Fuentes:** P1-§2.3-#4 P1-§2.3-#5 P1-§2.3-#1 P2-edicion-patrones P2-ficha-veritasium P2-ficha-kurzgesagt P1-§10.3 
 - **Brief:** [`briefs/edicion/06-b-roll.md`](../briefs/edicion/06-b-roll.md)
 
 ### 07. voiceover
