@@ -85,6 +85,7 @@ También puedes invocar skills directamente:
 - `/record-explainer` — grabación
 - `/edit-explainer` — edición y post
 - `/publish-explainer` — publicación y medición
+- `/setup-environment` — configurar o actualizar tu perfil de entorno (OS, preferencias, hardware, herramientas). Los skills de etapa lo leen para adaptar recomendaciones a tu setup.
 - `/update-trends` — refrescar pilar 2
 - `/update-tools` — refrescar pilar 3
 - `/sync-briefs` — re-sincronizar briefs tras cambios en pilares

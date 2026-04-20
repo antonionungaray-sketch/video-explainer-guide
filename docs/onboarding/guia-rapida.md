@@ -85,6 +85,7 @@ Si quieres saltarte el orquestador y entrar directo a una skill (porque ya sabes
 - `/record-explainer` — pre-producción y captura.
 - `/edit-explainer` — edición y post.
 - `/publish-explainer` — publicación y medición.
+- `/setup-environment` — configurar o actualizar tu perfil de entorno (OS, preferencias, hardware, herramientas). Los skills de etapa lo leen para adaptar recomendaciones a tu setup.
 - `/update-trends` — refrescar tendencias y casos.
 - `/update-tools` — refrescar herramientas.
 - `/sync-briefs` — re-sincronizar briefs tras cambios en pilares.
