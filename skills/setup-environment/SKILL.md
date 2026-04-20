@@ -110,7 +110,7 @@ version: 1
 
 6. **Preguntar por override por proyecto:** "¿quieres crear también un override específico para este proyecto en `./video-explainer-profile.md`?" — si sí, repetir diálogo solo para las secciones a overridear.
 
-7. **Cerrar con resumen:** "perfil guardado en `~/.claude/video-explainer/profile.md`. Cuando invoques `record-explainer`, `edit-explainer` o `publish-explainer`, tus recomendaciones se filtrarán según este perfil."
+7. **Cerrar con resumen:** "perfil guardado en `~/.claude/video-explainer/profile.md`. Cuando invoques `concept-explainer`, `record-explainer`, `edit-explainer` o `publish-explainer`, tus recomendaciones se filtrarán según este perfil."
 
 ### Re-invocación — perfil ya existe
 
