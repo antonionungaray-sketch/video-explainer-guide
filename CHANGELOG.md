@@ -1,6 +1,44 @@
 # Changelog
 
-Todas las versiones relevantes de este proyecto se registran acá. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
+Todas las versiones relevantes de este proyecto se registran aquí. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
+
+## [1.3.2] — 2026-04-23
+
+**Enriquecimiento de Pilar 3 (`auto-editor`, refresh HyperFrames) y apertura de Pilar 2 al patrón emergente de pipelines agente-orquestados.** Evaluación de dos herramientas mostradas en un demo público del canal Atomic Treehouse (Hyperframes + video-use) contra la línea editorial "open-source primero con licencia declarada". HyperFrames ya estaba en Pilar 3 pero con status obsoleto; video-use no pasa el filtro (sin licencia declarada al 2026-04-23). Se documenta el patrón que video-use representa y se incorporan alternativas maduras con licencia limpia.
+
+### Added
+
+- **`auto-editor` en Pilar 3 [P3-edicion-postproc]** — Unlicense, v30.1.4, 4.2k★, 137 releases. Recorta silencios y pausas muertas por threshold, dB o motion. Exporta timelines XML a Premiere, DaVinci, Final Cut Pro, ShotCut y Kdenlive — encaja con la familia de editores ya listada. No quita filler words (queda explícito como límite). Metadata estructurada con `equivalentes: [ffmpeg]`.
+- **Nueva subsección [P2-edicion-pipelines-ia] en Pilar 2** — documenta el patrón emergente 2026-04 de pipelines IA-forward agente-orquestados (raw → auto-trim → transcribe → overlay → render). Lista `browser-use/video-use` como caso con caveat bloqueante ("no usar, no recomendar" hasta que upstream declare licencia) y dos alternativas MIT en observación: `DayadaUP/claude-code-auto-video-edit` y `6missedcalls/video-editing-skill`, ambas candidatas a Pilar 3 tras smoke test humano-en-loop.
+- **Línea nueva en "Cuándo elegir qué" de §Edición y post** — auto-editor como primer corte de silencios antes de entrar al editor; el juicio editorial fino de pacing variable por densidad cognitiva [P1-§4.4] sigue siendo humano.
+- **Referencia cruzada en brief `edicion/10-overlays-auxiliares`** — apunta a [P2-edicion-pipelines-ia] para pipelines completos orquestados por agente; sync bumpeado a 2026-04-23, version 4.
+
+### Changed
+
+- **Entry de HyperFrames en Pilar 3 refrescada** — status de `nuevo/cambia rápido (2026-04-18)` → `beta estable (v0.4.15, 9.8k★, activo; 2026-04-23)`. Comando de instalación explícito (`npx skills add heygen-com/hyperframes`), requisito Node ≥22 en `hardware-min`, aclaración de que el timeline editor visual mostrado en demos públicas es el dashboard hosted de `hyperframes.heygen.com` y no parte del repo open-source (el repo es CLI-only).
+- Tabla de Frescura de Pilar 3: añadida revisión 2026-04-23 (auto-editor + refresh HyperFrames); §Edición y post marca 2026-04-23 como última revisión.
+
+### Technical notes
+
+- No se tocaron IDs estables ni contratos de metadata existentes. El nuevo ID `[P2-edicion-pipelines-ia]` queda declarado en Pilar 2 §Edición y post; sólo el brief `edicion/10-overlays-auxiliares` lo cita inline (declarado en su `fuentes:` frontmatter).
+- `verificar-briefs.sh --strict` debe pasar limpio (los cambios son aditivos, sin rompimiento de IDs). `validar-metadata-pilar3.sh` debe pasar (los dos bloques `<!-- meta -->` tocados — HyperFrames actualizada con `hardware-min` nuevo, auto-editor agregada — siguen el contrato canónico de 5 campos).
+- Bump de versión 1.3.1 → 1.3.2. Enriquecimiento de contenido, no nueva funcionalidad ni ruptura.
+- El plan de evaluación que dio lugar a estos cambios vive en `~/.claude/plans/revisa-las-siguientes-ligas-atomic-treehouse.md`.
+
+## [1.3.1] — 2026-04-20
+
+**Unificación de variante lingüística a español neutro (México).** El CLAUDE.md del repo y la memoria global marcaban español de México como variante oficial, pero quedaban residuos de rioplatense que se colaban por default al generar contenido. Esta versión los erradica del workspace.
+
+### Fixed
+
+- Reemplazado `acá` → `aquí` en 19 ocurrencias (6 skills, 7 briefs de concepto/edición, `dry-run-fase-6.md`, este CHANGELOG).
+- Erradicado voseo activo: `Sos` → `Eres` (prompts de dispatch de variantes en `concept-explainer`, spec de capa de briefs, plan piloto), `querés` → `quieres` (dry-run), `Mirá` → `Observa` (plan piloto), `imaginá` → `imagina` (brief `guion/07-voz-registro`, plan piloto), `Revisá` → `Revisa` (hint del template HTML de storyboard).
+- Reescritos ejemplos entre comillas que citaban rioplatense incluso como antipatrón (el usuario fue explícito: citar rioplatense contamina igual): `"Abre el menú y dale a exportar"` → `"Abre el menú y haz clic en Exportar"`; `callouts "¡Mirá!"` → `callouts "¡Atención!"`; `"buscá el cursor"` → `"busca el cursor"`; `"suscríbete / dale like"` → `"suscríbete y deja like"`.
+- Removido `vos` de los enums de persona gramatical en `concept-explainer/SKILL.md`, `briefs/concepto/06-tono-y-restricciones`, `briefs/guion/07-voz-registro` y plan piloto. El enum queda `[tú | usted | vosotros | ustedes | nosotros]`.
+
+### Technical notes
+
+- Verificación: grep completo de patrones rioplatenses (voseo + léxico) sobre todo el workspace devuelve 0 matches. `verificar-briefs.sh --strict` devuelve 0 stale / 0 IDs huérfanos / 0 inline no declarados — los frontmatters y IDs estables no se tocaron.
 
 ## [1.3.0] — 2026-04-20
 

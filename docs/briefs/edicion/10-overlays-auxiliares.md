@@ -14,6 +14,7 @@ fuentes:
   - P1-§8                      # retrieval practice
   - P2-edicion-patrones
   - P2-edicion-antipatrones
+  - P2-edicion-pipelines-ia    # pipelines agente-orquestados (emergente)
   - P2-ficha-fireship
   - P2-ficha-kurzgesagt
   - P2-ficha-3b1b
@@ -21,8 +22,8 @@ fuentes:
   - P3-modalidades-live        # overlays en vivo via OBS
 admite-variantes: true
 varia-por-eje: [grado-edicion]
-sync: 2026-04-20
-version: 3
+sync: 2026-04-23
+version: 4
 ---
 
 ## Principio aplicable
@@ -109,3 +110,5 @@ HyperFrames para callouts y stat-callouts generados por agente IA.
 ```
 
 Cada entry: bloque, tipo, timestamps, descripción o prompt IA, herramienta.
+
+Para pipelines completos orquestados por agente (raw → trim → overlay → render), ver tendencias emergentes en [P2-edicion-pipelines-ia] — aún no promovidas a Pilar 3 por estado de licencia de los candidatos principales.

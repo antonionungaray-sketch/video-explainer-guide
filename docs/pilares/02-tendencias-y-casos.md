@@ -152,6 +152,18 @@ Convergencia: en los 10 videos observados directamente (2026-04-18), **NINGUNO**
 - **Forzar WPM alto sobre visuales densos** — Kurzgesagt a 200 WPM sería ilegible porque el viewer tiene que procesar animación saturada simultáneamente. Cada WPM alto observado (Fireship, Primeagen, 3B1B) coexiste con ritmo visual que lo permite.
 - **"Video legal leído" en compliance corporativo** — 30-60 min de abogado leyendo política, zero interactividad. Completion 20-30%. Anti-patrón establecido en literatura onboarding 2024-2025. Remediación: reestructurar a microlearning + scenarios.
 
+### Pipelines IA-forward agente-orquestados [P2-edicion-pipelines-ia]
+
+Patrón emergente 2026-04: un agente (Claude Code u otro) orquesta el flujo completo de post — raw → auto-trim filler/silencios → transcripción con timestamps → handoff a motion graphics → auto-eval del render. Está emergiendo porque los agentes absorben la orquestación que antes requería glue code manual. El patrón es real y útil, pero los candidatos principales todavía no todos cumplen la línea editorial del toolkit.
+
+- **`browser-use/video-use`** — dio visibilidad al patrón (canal Atomic Treehouse, 2026-04). **No usar, no recomendar** por ahora: (a) sin licencia declarada al 2026-04-23, bloqueante per línea editorial "open-source primero con licencia explícita"; (b) default de transcripción en ElevenLabs Scribe cloud, fuerza override manual a Whisper/WhisperX para cumplir línea IA-forward open-source; (c) costo ~240k tokens por minuto editado según demo pública. Revisar en próxima iteración de `update-trends`; candidato a promover a Pilar 3 solo si upstream declara licencia OSI-aprobada.
+
+- **Alternativas con licencia limpia, en observación** (candidatas a Pilar 3 tras smoke test humano-en-loop):
+    - `DayadaUP/claude-code-auto-video-edit` — MIT, 43★, push 2026-04-23. Skill de Claude Code: Whisper transcribe → análisis de puntos de corte IA → timeline DaVinci + SRT. Misma arquitectura que video-use pero con licencia MIT declarada y Whisper local por default.
+    - `6missedcalls/video-editing-skill` — MIT, 7★, push 2026-04-23. Bash + FFmpeg + Whisper puros; trim, jumpcut, caption (presets estilo Hormozi / standard / minimal), text overlay, speed change por lenguaje natural. Stack mínimo, componible con el resto de Pilar 3.
+
+- **Pieza madura que cubre el flanco más seguro del pipeline** — `auto-editor` ya está en Pilar 3 [P3-edicion-postproc]: recorta silencios y exporta XML a Premiere/DaVinci/FCP/Kdenlive, sin tocar filler words. Es la pieza "segura" del pipeline (el juicio editorial fino sigue siendo humano). Los skills agent-native de arriba se diferencian en que además deciden cortes semánticos con IA, decisión que el toolkit aún trata como asistida-pero-humana (ver brief `edicion/01-pacing`).
+
 ---
 
 ## Publicación y medición [P2-publicacion]

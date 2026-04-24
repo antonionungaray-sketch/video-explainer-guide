@@ -12,10 +12,10 @@
 
 | Sección | Última revisión |
 |---|---|
-| Global | 2026-04-17 (creación) · 2026-04-18 (ampliación IA-forward) · 2026-04-19 (modalidades ampliadas v2) |
+| Global | 2026-04-17 (creación) · 2026-04-18 (ampliación IA-forward) · 2026-04-19 (modalidades ampliadas v2) · 2026-04-23 (auto-editor + refresh HyperFrames) |
 | Idea → Guión | 2026-04-17 |
 | Pre-producción y grabación | 2026-04-18 |
-| Edición y post | 2026-04-18 |
+| Edición y post | 2026-04-23 |
 | Publicación y medición | 2026-04-17 |
 | Modalidades ampliadas (live, podcast, documental, data viz) | 2026-04-19 |
 
@@ -257,11 +257,12 @@ Presencia humana en cámara + guion leído: sin estas herramientas el espectador
   - licencia: open-source
   - modo: local
   - equivalentes: [motion-canvas, remotion]
-- **HyperFrames (HeyGen)** — Apache 2.0, compone video vía HTML/CSS/JS y está diseñado para que agentes IA (p. ej. Claude Code) editen video con primitivas web estándar. Complementa a Remotion cuando la pipeline está orquestada por agentes más que por devs humanos. *Status: nuevo/cambia rápido. Verificado: 2026-04-18.*
+- **HyperFrames (HeyGen)** — Apache 2.0, compone video vía HTML/CSS/JS y está diseñado para que agentes IA (p. ej. Claude Code) editen video con primitivas web estándar. Complementa a Remotion cuando la pipeline está orquestada por agentes más que por devs humanos. Instalación como skill: `npx skills add heygen-com/hyperframes`. Requiere Node ≥22 y FFmpeg. El repo open-source es CLI (`npx hyperframes preview/render/lint`); el timeline editor visual que aparece en demos públicas es el dashboard hosted de `hyperframes.heygen.com` y no viene en el repo. *Status: beta estable (v0.4.15, 9.8k★, activo). Verificado: 2026-04-23.*
   <!-- meta: hyperframes -->
   - plataformas: [linux, mac, windows, wsl, cloud]
   - licencia: open-source
   - modo: híbrido
+  - hardware-min: {node: ">=22"}
   - equivalentes: [remotion]
 - **Manim** — animación matemática estilo 3Blue1Brown.
   <!-- meta: manim -->
@@ -282,6 +283,12 @@ Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas
 - **Handbrake** — front-end gráfico de FFmpeg para conversiones masivas.
   <!-- meta: handbrake -->
   - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [ffmpeg]
+- **auto-editor** — recorta automáticamente silencios y pausas muertas por threshold de audio, dB o motion detection. Exporta timelines XML para Premiere, DaVinci Resolve, Final Cut Pro, ShotCut y Kdenlive — el creador sigue tomando las decisiones editoriales finas en su editor habitual sobre el primer corte. **No quita filler words** (un pipeline separado con Whisper + juicio humano cubre eso). *Status: estable (v30.1.4, 4.2k★, 137 releases, mantenido activamente). Verificado: 2026-04-23.*
+  <!-- meta: auto-editor -->
+  - plataformas: [linux, mac, windows, wsl]
   - licencia: open-source
   - modo: local
   - equivalentes: [ffmpeg]
@@ -339,6 +346,7 @@ Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas
 - Tutorial técnico de bajo presupuesto: Kdenlive + FFmpeg + Whisper.
 - Formación corporativa con muchas variaciones: Remotion + ElevenLabs.
 - Edición rápida de hablado: Descript.
+- Sesión con mucha pausa muerta antes de entrar al editor: `auto-editor` como primer corte (exporta XML al editor elegido) y luego el creador hace el juicio editorial fino de pacing variable por densidad cognitiva [P1-§4.4]. auto-editor ve silencios, no intención pedagógica — nunca reemplaza esa decisión.
 
 ---
 
