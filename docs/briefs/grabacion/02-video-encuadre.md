@@ -18,7 +18,7 @@ fuentes:
   - P2-ficha-midudev           # face-cam PiP + navegador
 admite-variantes: true
 varia-por-eje: [rol-presentador, arco-dominante]
-sync: 2026-04-19
+sync: 2026-04-26
 version: 2
 ---
 

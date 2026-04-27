@@ -8,7 +8,7 @@ fuentes:
   - P3-edicion-postproc        # FFmpeg para control fino
 admite-variantes: false
 varia-por-eje: [plataforma]
-sync: 2026-04-20
+sync: 2026-04-26
 version: 2
 ---
 

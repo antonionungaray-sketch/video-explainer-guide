@@ -14,7 +14,7 @@ fuentes:
   - P2-ficha-dotcsv            # CTA explícito (excepción hispana)
 admite-variantes: true
 varia-por-eje: [objetivo-cognitivo, plataforma]
-sync: 2026-04-19
+sync: 2026-04-26
 version: 2
 ---
 

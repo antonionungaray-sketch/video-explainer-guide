@@ -14,7 +14,7 @@ fuentes:
   - P3-edicion-composicion     # overlays auxiliares previstos
 admite-variantes: false
 varia-por-eje: [rol-presentador, grado-edicion]
-sync: 2026-04-20
+sync: 2026-04-26
 version: 2
 ---
 

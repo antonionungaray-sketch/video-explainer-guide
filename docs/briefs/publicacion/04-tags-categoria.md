@@ -17,7 +17,7 @@ fuentes:
   - P3-publicacion-plataformas # categorías YouTube / Vimeo / LMS
 admite-variantes: false
 varia-por-eje: [plataforma]
-sync: 2026-04-20
+sync: 2026-04-26
 version: 2
 ---
 

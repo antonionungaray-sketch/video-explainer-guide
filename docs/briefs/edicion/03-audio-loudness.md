@@ -9,7 +9,7 @@ fuentes:
   - P3-edicion-editores        # DaVinci/Audacity integran medidores LUFS
 admite-variantes: false
 varia-por-eje: []
-sync: 2026-04-20
+sync: 2026-04-26
 version: 2
 ---
 

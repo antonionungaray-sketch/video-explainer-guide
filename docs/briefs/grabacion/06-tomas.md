@@ -11,7 +11,7 @@ fuentes:
   - P2-ficha-coding-train      # one-take live-coding
 admite-variantes: true
 varia-por-eje: [grado-guion, grado-edicion]
-sync: 2026-04-19
+sync: 2026-04-26
 version: 2
 ---
 
