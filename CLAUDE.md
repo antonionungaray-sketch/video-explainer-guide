@@ -37,7 +37,7 @@ IDs are **stable contract**. Si una sección se renombra conceptualmente, el ID 
 
 ### Layer 2 — Briefs (precomputed synthesis)
 
-`docs/briefs/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 43 archivos (6+8+4+7+10+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
+`docs/briefs/{concepto,guion,previsualizacion,grabacion,edicion,publicacion,material}/NN-slug.md` — 50 archivos (6+8+4+7+10+8+7), 40-120 líneas cada uno. La etapa `material/` consume `material-explainer`; el resto consume las etapas de video. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
 **Contrato estricto de cada brief (post fase 4):**
 - Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), **`varia-por-eje: [lista]`**, `sync: YYYY-MM-DD`, `version`.
@@ -67,8 +67,9 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 
 ## Skills layout (`skills/`)
 
-- `create-explainer` — orchestrator. Identifica etapa y delega al skill de etapa. Invoca `concept-explainer` por default al inicio del flujo (saltable explícitamente). Ofrece `storyboard-explainer` como puente opcional entre guión y grabación (recomendado, no bloqueante). También filtra fuera-de-scope (vlog, reacción, gameplay, entretenimiento, etc.).
-- `concept-explainer` / `script-explainer` / `storyboard-explainer` / `record-explainer` / `edit-explainer` / `publish-explainer` — one per production stage. Consumen briefs, no pilares. `concept-explainer` produce un **Concept Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD` que define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones; `script-explainer` lo lee read-only en su Paso 0, avisa si está en `draft` y lo trata como contrato cuando está `locked`. `storyboard-explainer` produce un **Production Brief** análogo; `record-explainer` y `edit-explainer` lo leen read-only con la misma disciplina. Cambios post-lock en cualquiera de los dos briefs requieren re-invocar la skill correspondiente.
+- `create-explainer` — orchestrator. Pregunta primero si el usuario quiere producir **video** o **material estático** (láminas, slides, long-form). Si video: identifica etapa y delega al skill correspondiente; invoca `concept-explainer` por default al inicio del flujo (saltable explícitamente); ofrece `storyboard-explainer` como puente opcional entre guión y grabación. Si material: delega a `material-explainer`. También filtra fuera-de-scope (vlog, reacción, gameplay, entretenimiento, memes, anuncios sin componente explicativo).
+- `concept-explainer` / `script-explainer` / `storyboard-explainer` / `record-explainer` / `edit-explainer` / `publish-explainer` — one per video production stage. Consumen briefs, no pilares. `concept-explainer` produce un **Concept Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD` que define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones; `script-explainer` lo lee read-only en su Paso 0, avisa si está en `draft` y lo trata como contrato cuando está `locked`. `storyboard-explainer` produce un **Production Brief** análogo; `record-explainer` y `edit-explainer` lo leen read-only con la misma disciplina. Cambios post-lock en cualquiera de los dos briefs requieren re-invocar la skill correspondiente.
+- `material-explainer` — etapa de material didáctico no-video. Standalone (no invoca `concept-explainer`). Produce un **Didactic Brief** editable y luego lo materializa en uno o varios formatos: láminas didácticas (`prompts-laminas.md`), slides para presentar en vivo (`slides.md` formato Marp), long-form escrito (`articulo.md`). Carga 7 briefs de `docs/briefs/material/`. La generación de imágenes se delega a herramientas externas (Claude artifact, GPT image, Midjourney) — la skill produce los prompts.
 - `update-trends` / `update-tools` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sync-briefs` si hay stale.
 - `sync-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
 - `setup-environment` — construye y actualiza el perfil de entorno del usuario (OS, preferencias, hardware, herramientas ya elegidas). Re-invocable. Leído por los skills de etapa para filtrar recomendaciones de herramientas.
@@ -98,7 +99,7 @@ Zero-dependency. El hook parsea el stdin JSON con `python3` (preferido), con fal
 
 ## Vistas por etapa (derivadas)
 
-`docs/vistas-por-etapa/{concepto,guion,previsualizacion,grabacion,edicion,publicacion}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitas cambiar una vista, edita el brief correspondiente y regenera.
+`docs/vistas-por-etapa/{concepto,guion,previsualizacion,grabacion,edicion,publicacion,material}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitas cambiar una vista, edita el brief correspondiente y regenera.
 
 Nota: los slugs de los briefs y de las vistas siguen en español (`concepto/01-audiencia.md`, `vistas-por-etapa/concepto.md`) por contrato de ID estable con los pilares. El rebrand a inglés solo aplicó a los slugs del paquete y de las skills.
 
